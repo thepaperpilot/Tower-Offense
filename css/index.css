@@ -53,6 +53,7 @@ button:disabled {
   	align-items: center;
   	flex-wrap: wrap;
   	transition: opacity 1s ease;
+  	background: #2a323d;
 }
 
 .start.inactive {
@@ -70,6 +71,81 @@ button:disabled {
 	max-width: 90%;
 	margin: auto;
 	text-align: center;
+}
+
+.world {
+	background: url(../assets/Background.png);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+	background-position: center;
+	transition: all 1s ease;
+}
+
+.world.inactive {
+	top: -100%;
+	bottom: 100%;
+}
+
+.level {
+	position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    border: cyan solid 4px;
+    background-color: blue;
+}
+
+.level.completed {
+	background-color: darkcyan;
+    border-color: lightgreen;
+}
+
+.level.locked {
+	background-color: grey;
+	border-color: darkred;
+}
+
+.level.available {
+	cursor: pointer;
+}
+
+.level.available::before {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    min-width: 100px;
+	background: bisque;
+	left: -47px;
+    white-space: pre;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.level.available::after {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid bisque;
+    position: absolute;
+    top: -20px;
+    content: "";
+    left: -5px;
+}
+
+.level.available.below::before {
+    bottom: -48px;
+}
+
+.level.available.below::after {
+    top: 20px;
+    border-bottom: 10px solid bisque;
+    border-top: none;
 }
 
 .title {

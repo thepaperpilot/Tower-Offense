@@ -6,6 +6,8 @@
 </head>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <body>
+	<div id="world" class="world">
+	</div>
 	<div id="shop" class="shop inactive">
 		<div class="tab-buttons">
 			<button id="units-tab-button" class="tab-button">Units<p id="curr-food">0 Food</p></button>
@@ -16,16 +18,16 @@
 	</div>
 	<div id="start" class="start">
 		<div style="margin: auto; position: absolute; width: 100%; top: 10%">
-	      <p class="title">Team Offense</p>
+	      <p class="title">Tower Offense</p>
 	      <p class="subtitle">By Team NaN</p>
 	    </div>
 		<button id="start-button" class="start-button" disabled="true">Start Game</button>
 	</div>
-	<div id="next-level" class="start inactive">
+	<div id="continue" class="start inactive" style="z-index: -1;">
 		<div style="margin: auto; position: absolute; width: 100%; top: 10%">
 	      <p class="title">You Won!</p>
 	    </div>
-		<button id="continue-button" class="start-button">Next Level</button>
+		<button id="continue-button" class="start-button">Back to Map</button>
 	</div>
 	<div id="screen" class="stage"></div>
 	<div id="chatbox" class="chatbox inactive">

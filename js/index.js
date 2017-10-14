@@ -30,7 +30,11 @@ document.getElementById('buildings-tab-button').addEventListener('click', () => 
 })
 document.getElementById('start-button').addEventListener('click', () => {
 	document.getElementById('start').className = 'start inactive'
-	startLevel(0);
+	openMap()
+})
+document.getElementById('continue-button').addEventListener('click', () => {
+	document.getElementById('continue').className = 'start inactive'
+	openMap()
 })
 makeHorizontalScroll('buildings-tab')
 makeHorizontalScroll('units-tab')
@@ -84,10 +88,10 @@ let states = {
 	paused: {
 		update: () => {},
 		enter: () => {
-			document.getElementById('next-level').className = 'start'
+			document.getElementById('continue').className = 'start'
 		},
 		exit: () => {
-			document.getElementById('next-level').className = 'start inactive'
+			document.getElementById('continue').className = 'start inactive'
 		}
 	},
 	playing: {
@@ -148,6 +152,7 @@ let strategyManager = {
 // General variables
 let state = states.paused;
 let emitters = [];
+let nextLevel = 0;
 
 // Level specific variables
 let map, food, foodIncome, gold, enemyHealth;
@@ -195,13 +200,41 @@ function updateUI() {
 	goldDisplay.innerText = Math.floor(gold) + " Gold"
 }
 
+function openMap() {
+	let world = document.getElementById('world')
+	world.className = "world"
+	world.innerHTML = ''
+	for (let i = 0; i < levels.length; i++) {
+		let level = levels[i]
+		let element = document.createElement('div')
+		element.id = "level " + i
+		element.className = "level"
+		element.setAttribute("data-name", "Level " + (i + 1))
+		Object.assign(element.style, level.style)
+		if (level.below)
+			element.className += " below"
+		world.appendChild(element)
+	}
+	for (let i = 0; i < nextLevel; i++) {
+		document.getElementById('level ' + i).className += " completed"
+	}
+	document.getElementById('level ' + nextLevel).className += " available"
+	document.getElementById('level ' + nextLevel).addEventListener('click', () => {
+		world.className = "world inactive"
+		startLevel(nextLevel)
+	})
+	for (let i = nextLevel + 1; i < levels.length; i++) {
+		document.getElementById('level ' + i).className += " locked"	
+	}
+}
+
 function startLevel(i) {
 	let level = levels[i]
 
 	// Reset level specific values
-	food = 10
-	foodIncome = 0.01
-	gold = 0
+	food = 1000
+	foodIncome = 01
+	gold = 10000
 	enemyHealth = level.enemyHealth
 	buildingLevels = []
 	// Make rest of buildings set to 0
@@ -406,6 +439,7 @@ let Unit = function(unit) {
 				if (playerUnits.indexOf(this) !== -1)
 					new AddGold(this.damage, this.sprite.x, this.sprite.y)
 				if (enemyHealth <= 0) {
+					nextLevel++
 					state.exit()
 					state = states.paused
 					state.enter()

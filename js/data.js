@@ -9,9 +9,143 @@ let levels = [
 			{x: 1920, y: 360},
 		],
 		enemyHealth: 10,
+		enemyName: "Cool Dude",
 		background: "background",
 		startCutscene: "cutscene1",
 		endCutscene: "cutscene2",
+		style: {
+			left: "10%",
+			bottom: "10%"
+		},
+		below: false,
+		initialTowers: [
+			{
+				x: 1000,
+				y: 360,
+				type: 0
+			}
+		],
+		strategies: {
+			"spawnTower": {
+				enabled: true,
+				interval: 45000,
+				fire: function() {
+					strategyManager.spawnTower({
+						x: Math.random() * 1000 + 140,
+						y: Math.random() * 680 + 20,
+						type: 0
+					})
+				}
+			},
+			"spawnTower1": {
+				enabled: true,
+				interval: 15000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower1")
+					strategyManager.spawnTower({
+						x: 1800,
+						y: 500,
+						type: 0
+					})
+				}
+			},
+			"spawnTower2": {
+				enabled: true,
+				interval: 75000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower2")
+					strategyManager.spawnTower({
+						x: 320,
+						y: 180,
+						type: 0
+					})
+				}
+			}
+		}
+	},
+	{
+		enemyPath: [
+			{x: 0, y: 384},
+			{x: 420, y: 250},
+			{x: 640, y: 150},
+			{x: 960, y: 400},
+			{x: 1280, y: 640},
+			{x: 1920, y: 360},
+		],
+		enemyHealth: 10,
+		enemyName: "Cool Dude",
+		background: "background",
+		startCutscene: "cutscene1",
+		endCutscene: "cutscene2",
+		style: {
+			left: "30%",
+			top: "30%"
+		},
+		below: true,
+		initialTowers: [
+			{
+				x: 1000,
+				y: 360,
+				type: 0
+			}
+		],
+		strategies: {
+			"spawnTower": {
+				enabled: true,
+				interval: 45000,
+				fire: function() {
+					strategyManager.spawnTower({
+						x: Math.random() * 1000 + 140,
+						y: Math.random() * 680 + 20,
+						type: 0
+					})
+				}
+			},
+			"spawnTower1": {
+				enabled: true,
+				interval: 15000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower1")
+					strategyManager.spawnTower({
+						x: 1800,
+						y: 500,
+						type: 0
+					})
+				}
+			},
+			"spawnTower2": {
+				enabled: true,
+				interval: 75000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower2")
+					strategyManager.spawnTower({
+						x: 320,
+						y: 180,
+						type: 0
+					})
+				}
+			}
+		}
+	},
+	{
+		enemyPath: [
+			{x: 0, y: 384},
+			{x: 420, y: 250},
+			{x: 640, y: 150},
+			{x: 960, y: 400},
+			{x: 1280, y: 640},
+			{x: 1920, y: 360},
+		],
+		enemyHealth: 10,
+		enemyName: "Cool Dude",
+		background: "background",
+		startCutscene: "cutscene1",
+		endCutscene: "cutscene2",
+		style: {
+			right: "40%",
+			top: "40%"
+		},
+		below: true,
 		initialTowers: [
 			{
 				x: 1000,
@@ -167,7 +301,7 @@ let buildings = [
 		cost: 100,
 		buy: function() {
 			for (let i = 0; i < units.length; i++) {
-				units[i].speed *= 0.9
+				units[i].speed *= 1.1
 			}
 			this.cost *= 2
 			this.button.innerText = this.cost
