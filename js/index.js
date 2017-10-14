@@ -43,12 +43,12 @@ for (let i = 0; i < units.length; i++) {
 	unit.className = "shop-item"
 	if (!units[i].enabled)
 		unit.style.display = 'none'
-	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><p class="item-desc">' + units[i].description + '</p><button>' + units[i].cost + '</button>'
-	let button = unit.querySelector('button')
+	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><p class="item-desc">' + units[i].description + '</p><p class="food">' + units[i].cost + '</p>'
+	let button = unit.querySelector('.food')
 	units[i].element = unit
 	units[i].button = button
-	button.i = i
-	button.addEventListener('click', purchaseUnit)
+	unit.i = i
+	unit.addEventListener('click', purchaseUnit)
 	unitsTab.appendChild(unit)
 }
 for (let i = 0; i < buildings.length; i++) {
@@ -56,12 +56,12 @@ for (let i = 0; i < buildings.length; i++) {
 	building.className = "shop-item"
 	if (!buildings[i].enabled)
 		building.style.display = 'none'
-	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><p class="item-desc">' + buildings[i].description + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
-	let button = building.querySelector('button')
+	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><p class="item-desc">' + buildings[i].description + '</p><p class="gold">' + buildings[i].cost + '</p><div id="building ' + i + ' quantity" class="quantity ' + buildings[i].type + '" style="animation-name: none;">0</div>'
+	let button = building.querySelector('.gold')
 	buildings[i].element = building
 	buildings[i].button = button
-	button.i = i
-	button.addEventListener('click', purchaseBuilding)
+	building.i = i
+	building.addEventListener('click', purchaseBuilding)
 	building.querySelector('.quantity').addEventListener('animationend', removeAnimation)
 	buildingsTab.appendChild(building)
 }

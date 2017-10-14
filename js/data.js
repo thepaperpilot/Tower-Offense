@@ -11,7 +11,7 @@ let levels = [
 		enemyHealth: 10,
 		enemyName: "Cool Dude",
 		background: "background",
-		startCutscene: "cutscene1",
+		startCutscene: "cutscene2",
 		endCutscene: "cutscene2",
 		style: {
 			left: "10%",
@@ -28,11 +28,11 @@ let levels = [
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 450,
+				interval: 45000,
 				fire: function() {
 					strategyManager.spawnTower({
 						x: Math.random() * 1800 + 60,
-						y: Math.random() * 600 + 160,
+						y: Math.random() * 600 + 120,
 						type: 0
 					})
 				}
@@ -75,7 +75,7 @@ let levels = [
 		enemyHealth: 10,
 		enemyName: "Cool Dude",
 		background: "background",
-		startCutscene: "cutscene1",
+		startCutscene: "cutscene2",
 		endCutscene: "cutscene2",
 		style: {
 			left: "30%",
@@ -240,6 +240,7 @@ let buildings = [
 	{
 		name: "Farm",
 		description: "Increases Food Production",
+		type: "farm",
 		enabled: true,
 		cost: 6,
 		buy: function() {
@@ -250,6 +251,7 @@ let buildings = [
 	{
 		name: "Big Farm",
 		description: "Significantly Increases Food Production",
+		type: "farm",
 		enabled: false,
 		cost: 30,
 		buy: function() {
@@ -260,6 +262,7 @@ let buildings = [
 	{
 		name: "Farm Planet",
 		description: "Outrageously Increases Food Production",
+		type: "farm",
 		enabled: false,
 		cost: 777,
 		buy: function() {
@@ -269,6 +272,7 @@ let buildings = [
 	{
 		name: "Armory",
 		description: "Increases Unit Sturdiness",
+		type: "upgrade",
 		enabled: true,
 		cost: 10,
 		buy: function() {
@@ -276,7 +280,7 @@ let buildings = [
 				units[i].health *= 1.1
 			}
 			buildingCosts[3] += 5
-			this.button.innerText = this.cost
+			this.button.innerText = buildingCosts[4]
 			enableBuilding(6, true)
 			enableBuilding(7, true)
 		}
@@ -284,6 +288,7 @@ let buildings = [
 	{
 		name: "Blacksmith",
 		description: "Increases Unit Brawniness",
+		type: "upgrade",
 		enabled: true,
 		cost: 10,
 		buy: function() {
@@ -291,12 +296,13 @@ let buildings = [
 				units[i].damage *= 1.1
 			}
 			buildingCosts[4] += 5
-			this.button.innerText = this.cost
+			this.button.innerText = buildingCosts[4]
 		}
 	},
 	{
 		name: "Cobbler",
 		description: "Increases Unit Quickness",
+		type: "upgrade",
 		enabled: true,
 		cost: 100,
 		buy: function() {
@@ -304,12 +310,13 @@ let buildings = [
 				units[i].speed *= 1.1
 			}
 			buildingCosts[5].cost *= 2
-			this.button.innerText = this.cost
+			this.button.innerText = buildingCosts[4]
 		}
 	},
 	{
 		name: "Bearracks",
 		description: "Unlocks a Large Enemy",
+		type: "unlock",
 		enabled: false,
 		cost: 25,
 		buy: function() {
@@ -320,6 +327,7 @@ let buildings = [
 	{
 		name: "Burrow",
 		description: "Unlocks a Small Enemy",
+		type: "unlock",
 		enabled: false,
 		cost: 25,
 		buy: function() {

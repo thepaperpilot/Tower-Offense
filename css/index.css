@@ -12,6 +12,7 @@ canvas {
 	right: 0;
 	bottom: 0;
 	transition: all 1s ease;
+	top: 20%;
 }
 
 canvas.inactive {
@@ -36,6 +37,18 @@ button:hover {
 button:disabled {
   opacity: 0.65; 
   cursor: not-allowed;
+}
+
+.farm {
+    background-color: pink;
+}
+
+.upgrade {
+	background-color: blueviolet;
+}
+
+.unlock {
+	background-color: silver;
 }
 
 .inactive {
@@ -235,12 +248,25 @@ button:disabled {
 	justify-content: center;
 	margin-right: 8px;
 	border-radius: 4px;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
-.shop-item button {
-	height: unset;
+.shop-item:hover {
+    background: #2C333F;
+    cursor: pointer;
+}
+
+.shop-item p {
+	pointer-events: none;
+}
+
+.shop-item .gold, .shop-item .food {
 	font-size: large;
-	margin-right: unset;
 }
 
 .item-name {
@@ -257,7 +283,6 @@ button:disabled {
 }
 
 .quantity {
-	background-color: red;
     border-radius: 20px;
     position: absolute;
     right: -2px;
@@ -312,6 +337,16 @@ button:disabled {
 	text-align: center;
 }
 
+.food {
+	color: pink;
+	margin: 0;
+}
+
+.gold {
+	color: gold;
+	margin: 0;
+}
+
 @keyframes pulse_animation {
 	0% { transform: scale(1); }
 	50% { transform: scale(1.5); }
@@ -321,6 +356,7 @@ button:disabled {
 @media (max-height: 500px) {
   canvas {
   	max-height: calc(100% - 100px);
+  	top: 100px;
   }
 
   .shop.inactive {
