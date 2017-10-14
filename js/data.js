@@ -60,8 +60,9 @@ let levels = [
 
 let units = [
 	{
-		name: "Marine",
+		name: "Wolf",
 		description: "A Basic Unit",
+		enabled: true,
 		cost: 10,
 		sprite: "tower",
 		speed: 1,
@@ -69,8 +70,9 @@ let units = [
 		damage: 2
 	},
 	{
-		name: "Cool Guy",
+		name: "Fox",
 		description: "A Variant Unit",
+		enabled: true,
 		cost: 15,
 		sprite: "tower",
 		speed: 2,
@@ -78,17 +80,19 @@ let units = [
 		damage: 1
 	},
 	{
-		name: "The powerful one",
+		name: "Bear",
 		description: "A Slow but Sturdy Unit",
+		enabled: false,
 		cost: 25,
 		sprite: "tower",
-		speed: 0.5,
+		speed: 0.75,
 		health: 30,
 		damage: 2
 	},
 	{
-		name: "the fast one",
+		name: "Rabbit",
 		description: "A Fast but Frail Unit",
+		enabled: false,
 		cost: 20,
 		sprite: "tower",
 		speed: 3,
@@ -101,30 +105,36 @@ let buildings = [
 	{
 		name: "Farm",
 		description: "Increases Food Production",
+		enabled: true,
 		cost: 6,
 		buy: function() {
 			foodIncome += 0.005
+			enableBuilding(1, true)
 		}
 	},
 	{
 		name: "Big Farm",
 		description: "Significantly Increases Food Production",
+		enabled: false,
 		cost: 30,
 		buy: function() {
 			foodIncome += 0.03
+			enableBuilding(2, true)
 		}
 	},
 	{
 		name: "Farm Planet",
 		description: "Outrageously Increases Food Production",
-		cost: 7777777,
+		enabled: false,
+		cost: 777,
 		buy: function() {
-			foodIncome += 77
+			foodIncome += 0.77
 		}
 	},
 	{
 		name: "Armory",
 		description: "Increases Unit Sturdiness",
+		enabled: true,
 		cost: 10,
 		buy: function() {
 			for (let i = 0; i < units.length; i++) {
@@ -132,11 +142,14 @@ let buildings = [
 			}
 			this.cost += 5
 			this.button.innerText = this.cost
+			enableBuilding(6, true)
+			enableBuilding(7, true)
 		}
 	},
 	{
 		name: "Blacksmith",
 		description: "Increases Unit Brawniness",
+		enabled: true,
 		cost: 10,
 		buy: function() {
 			for (let i = 0; i < units.length; i++) {
@@ -149,6 +162,7 @@ let buildings = [
 	{
 		name: "Cobbler",
 		description: "Increases Unit Quickness",
+		enabled: true,
 		cost: 100,
 		buy: function() {
 			for (let i = 0; i < units.length; i++) {
@@ -156,6 +170,26 @@ let buildings = [
 			}
 			this.cost *= 2
 			this.button.innerText = this.cost
+		}
+	},
+	{
+		name: "Bearracks",
+		description: "Unlocks a Large Enemy",
+		enabled: false,
+		cost: 25,
+		buy: function() {
+			enableBuilding(6, false)
+			enableUnit(2, true)
+		}
+	},
+	{
+		name: "Burrow",
+		description: "Unlocks a Small Enemy",
+		enabled: false,
+		cost: 25,
+		buy: function() {
+			enableBuilding(7, false)
+			enableUnit(3, true)
 		}
 	}
 ]
