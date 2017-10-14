@@ -8,7 +8,8 @@ let Application = PIXI.Application,
     TextureCache = PIXI.utils.TextureCache,
     sound = PIXI.sound,
     Emitter = PIXI.particles.Emitter,
-    Graphics = PIXI.Graphics;
+    Graphics = PIXI.Graphics,
+    Text = PIXI.Text;
 
 // Create some basic objects
 let app = new Application(1280, 720, {antialias: true, transparent: true})
@@ -53,7 +54,8 @@ for (let i = 0; i < buildings.length; i++) {
 }
 
 // Constants
-let PROJECTILE_SPEED = 10
+let PROJECTILE_SPEED = 10 // Speed of projectiles
+let GOLD_INTERVAL = 250 // Interval in which units gain gold, in ms
 
 // Load assets
 loader
@@ -138,7 +140,7 @@ let state = states.paused;
 let emitters = [];
 
 // Level specific variables
-let map, food, gold, enemyHealth;
+let map, food, foodIncome, gold, enemyHealth;
 let buildingLevels = []
 let emittersContainer;
 let entitiesContainer, entities = [];
@@ -165,8 +167,7 @@ function updateParticles(delta) {
 }
 
 function updateGame(delta) {
-	food += Math.random() * delta * 20
-	gold += Math.random() * delta / 2
+	food += foodIncome * delta
 
 	for (let i = 0; i < entities.length; i++) {
 		// if entities[i].state(delta) returns true, then 
@@ -188,10 +189,13 @@ function startLevel(i) {
 	let level = levels[i]
 
 	// Reset level specific values
-	food = gold = 0
+	food = 10
+	foodIncome = 0.01
+	gold = 0
 	enemyHealth = level.enemyHealth
 	buildingLevels = []
-	for (let i = 0; i < buildings.length; i++) {
+	// Make rest of buildings set to 0
+	for (let i = 1; i < buildings.length; i++) {
 		buildingLevels.push(0)
 		document.getElementById('building ' + i + ' quantity').innerText = '0'
 	}
@@ -266,6 +270,7 @@ function purchaseBuilding(e) {
 	let building = buildings[e.target.i]
 	if (gold >= building.cost) {
 		buildingLevels[e.target.i]++
+		building.buy()
 		document.getElementById('building ' + e.target.i + ' quantity').innerText = buildingLevels[e.target.i]
 		gold -= building.cost
 	}
@@ -371,6 +376,7 @@ let Unit = function(unit) {
 	this.health = unit.health
 	this.damage = unit.damage
 	this.animTime = 0
+	this.goldTime = 0
 	this.states = {
 		moving: (delta) => {
 			// Check if we reached the castle
@@ -378,6 +384,8 @@ let Unit = function(unit) {
 				createEmitter(this.sprite.x, this.sprite.y)
 				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
+				if (playerUnits.indexOf(this) !== -1)
+					new AddGold(this.damage, this.sprite.x, this.sprite.y)
 				if (enemyHealth <= 0) {
 					state.exit()
 					state = states.paused
@@ -410,8 +418,11 @@ let Unit = function(unit) {
 			if (delta * this.speed * delta * this.speed > distance) {
 				this.sprite.x = this.target.x
 				this.sprite.y = this.target.y
-				if (distance === distancePoint) this.point++
-				else this.state = this.states.attacking
+				if (distance === distancePoint) {
+					this.point++
+					if (playerUnits.indexOf(this) !== -1 && this.point > 1)
+						new AddGold(this.point - 1, this.sprite.x, this.sprite.y)
+				} else this.state = this.states.attacking
 			} else {
 				dx /= magnitude
 				dy /= magnitude
@@ -421,9 +432,15 @@ let Unit = function(unit) {
 			}
 			this.animTime += delta
 			this.sprite.scale.y = 2 + Math.cos(this.animTime / 10) * 0.2
+			this.goldTime += delta
+			if (this.goldTime >= GOLD_INTERVAL && playerUnits.indexOf(this) !== -1) {
+				this.goldTime -= GOLD_INTERVAL
+				new AddGold(1, this.sprite.x, this.sprite.y)
+			}
 		},
 		attacking: (delta) => {
 			// TODO
+			// Make sure to award gold for doing this
 		}
 	}
 	this.state = this.states.moving
@@ -515,7 +532,7 @@ let Projectile = function(container, speed, damage, launcher, target) {
 			}
 
 			let dx = this.target.sprite.x - this.sprite.x
-			let dy = this.target.sprite.y - 24 - this.sprite.y
+			let dy = this.target.sprite.y - this.sprite.y
 
 			// Technically magnitude is distance, and distance is distance^2
 			let distance = dx * dx + dy * dy
@@ -536,6 +553,33 @@ let Projectile = function(container, speed, damage, launcher, target) {
 		}
 	}
 	this.state = this.states.moving
+	entitiesContainer.addChild(this.sprite)
+	entities.push(this)
+}
+
+let AddGold = function(amount, x, y) {
+	gold += amount
+	this.sprite = new Text("+" + amount + "G", {
+		fill: "#FFDF00",
+		stroke: '#000000',
+		strokeThickness: 2
+	})
+	this.sprite.x = x
+	this.sprite.y = y - 48
+	this.animTime = 0
+	this.states = {
+		fading: function(delta) {
+			this.animTime += delta / 100;
+			console.log(this.animTime)
+			if (this.animTime >= 0.5) {
+				removeEntity(this)
+				return
+			}
+			this.sprite.y -= delta * 2
+			this.sprite.alpha = 1 - this.animTime * 2
+		}
+	}
+	this.state = this.states.fading
 	entitiesContainer.addChild(this.sprite)
 	entities.push(this)
 }

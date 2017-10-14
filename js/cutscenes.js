@@ -118,6 +118,7 @@ function loaded() {
 	window.onresize = () => {
 		stage.resize(null, window.innerWidth, window.innerHeight / 2)
 	}
+	document.getElementById('start-button').disabled = false
 }
 
 function chatter(callback, target, chat, stage, textPos) {

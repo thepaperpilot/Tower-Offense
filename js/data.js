@@ -13,15 +13,15 @@ let levels = [
 		endCutscene: "cutscene2",
 		initialTowers: [
 			{
-				x: 320,
-				y: 180,
+				x: 640,
+				y: 500,
 				type: 0
 			}
 		],
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 20000,
+				interval: 45000,
 				fire: function() {
 					strategyManager.spawnTower({
 						x: Math.random() * 1000 + 140,
@@ -41,6 +41,18 @@ let levels = [
 						type: 0
 					})
 				}
+			},
+			"spawnTower2": {
+				enabled: true,
+				interval: 75000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower2")
+					strategyManager.spawnTower({
+						x: 320,
+						y: 180,
+						type: 0
+					})
+				}
 			}
 		}
 	}
@@ -49,34 +61,34 @@ let levels = [
 let units = [
 	{
 		name: "Marine",
-		cost: 1000,
+		cost: 10,
 		sprite: "tower",
 		speed: 1,
-		health: 10,
+		health: 15,
 		damage: 2
 	},
 	{
 		name: "Cool Guy",
-		cost: 1001,
+		cost: 15,
 		sprite: "tower",
 		speed: 2,
-		health: 4,
-		damage: 2
+		health: 15,
+		damage: 1
 	},
 	{
 		name: "The powerful one",
-		cost: 1002,
+		cost: 25,
 		sprite: "tower",
 		speed: 0.5,
-		health: 20,
+		health: 30,
 		damage: 2
 	},
 	{
 		name: "the fast one",
-		cost: 1003,
+		cost: 20,
 		sprite: "tower",
 		speed: 3,
-		health: 3,
+		health: 6,
 		damage: 1
 	}
 ]
@@ -84,15 +96,33 @@ let units = [
 let buildings = [
 	{
 		name: "Farm",
-		cost: 1000
+		cost: 6,
+		buy: function() {
+			foodIncome += 0.005
+		}
 	},
 	{
 		name: "Big Farm",
-		cost: 100000
+		cost: 30,
+		buy: function() {
+			foodIncome += 0.03
+		}
 	},
 	{
 		name: "Farm Planet",
-		cost: 77777777777777
+		cost: 7777777,
+		buy: function() {
+			foodIncome += 77
+		}
+	},
+	{
+		name: "Armory",
+		cost: 10,
+		buy: function() {
+			for (let i = 0; i < units.length; i++) {
+				health *= 1.1
+			}
+		}
 	}
 ]
 
