@@ -137,6 +137,7 @@ button:disabled {
 	padding: 8px;
 	box-sizing: border-box;
 	white-space: nowrap;
+	overflow-y: hidden;
 }
 
 .tab button {
@@ -182,6 +183,8 @@ button:disabled {
     font-size: medium;
     height: 1em;
     padding: 0 4px 2px 4px;
+	animation-name: pulse_animation;
+	animation-duration: 500ms;
 }
 
 .chatbox {
@@ -225,4 +228,10 @@ button:disabled {
 	bottom: 10px;
 	width: 100%;
 	text-align: center;
+}
+
+@keyframes pulse_animation {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.5); }
+	100% { transform: scale(1); }
 }

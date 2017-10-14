@@ -46,10 +46,11 @@ for (let i = 0; i < units.length; i++) {
 for (let i = 0; i < buildings.length; i++) {
 	let building = document.createElement('div')
 	building.className = "shop-item"
-	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity">0</div>'
+	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
 	let button = building.querySelector('button')
 	button.i = i
 	button.addEventListener('click', purchaseBuilding)
+	building.querySelector('.quantity').addEventListener('animationend', removeAnimation)
 	buildingsTab.appendChild(building)
 }
 
@@ -271,12 +272,14 @@ function purchaseBuilding(e) {
 	if (gold >= building.cost) {
 		buildingLevels[e.target.i]++
 		building.buy()
-		document.getElementById('building ' + e.target.i + ' quantity').innerText = buildingLevels[e.target.i]
+		let quantity = document.getElementById('building ' + e.target.i + ' quantity')
+		quantity.innerText = buildingLevels[e.target.i]
+		quantity.style.webkitAnimation = ''
 		gold -= building.cost
 	}
 }
 
-function createEmitter(x, y) {
+function createEmitter(x, y, angle) {
 	let emitter = new Emitter(emittersContainer,
 		[TextureCache.spark],
 		{
@@ -304,8 +307,8 @@ function createEmitter(x, y) {
 		},
 		"maxSpeed": 0,
 		"startRotation": {
-			"min": 160,
-			"max": 200
+			"min": angle - 20,
+			"max": angle + 20
 		},
 		"noRotation": false,
 		"rotationSpeed": {
@@ -364,6 +367,10 @@ function removeEntity(entity) {
 	entities.splice(entities.indexOf(entity), 1)
 }
 
+function removeAnimation(e) {
+	e.target.style.webkitAnimation = 'none'
+}
+
 let Unit = function(unit) {
 	this.sprite = new Sprite(TextureCache[unit.sprite])
 	this.sprite.x = map[0].x - 10
@@ -381,7 +388,7 @@ let Unit = function(unit) {
 		moving: (delta) => {
 			// Check if we reached the castle
 			if (this.point === map.length) {
-				createEmitter(this.sprite.x, this.sprite.y)
+				createEmitter(this.sprite.x, this.sprite.y, 180)
 				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
 				if (playerUnits.indexOf(this) !== -1)
@@ -421,7 +428,7 @@ let Unit = function(unit) {
 				if (distance === distancePoint) {
 					this.point++
 					if (playerUnits.indexOf(this) !== -1 && this.point > 1)
-						new AddGold(this.point - 1, this.sprite.x, this.sprite.y)
+						new AddGold(this.point, this.sprite.x, this.sprite.y)
 				} else this.state = this.states.attacking
 			} else {
 				dx /= magnitude
@@ -435,7 +442,7 @@ let Unit = function(unit) {
 			this.goldTime += delta
 			if (this.goldTime >= GOLD_INTERVAL && playerUnits.indexOf(this) !== -1) {
 				this.goldTime -= GOLD_INTERVAL
-				new AddGold(1, this.sprite.x, this.sprite.y)
+				new AddGold(this.point, this.sprite.x, this.sprite.y)
 			}
 		},
 		attacking: (delta) => {
@@ -461,7 +468,7 @@ let Tower = function(tower, x, y) {
 	this.sprite.addChild(unitSprite)
 	this.sprite.x = x
 	this.sprite.y = y
-	this.sprite.scale.x = 2
+	this.sprite.scale.x = -2
 	this.range = tower.range
 	this.speed = tower.speed
 	this.health = tower.health
@@ -540,6 +547,7 @@ let Projectile = function(container, speed, damage, launcher, target) {
 			if (delta * this.speed * delta * this.speed > distance) {
 				this.target.health -= this.damage
 				if (this.target.health <= 0) {
+					createEmitter(this.target.sprite.x, this.target.sprite.y, 270)
 					removeEntity(this.target)
 				}
 				removeEntity(this)
