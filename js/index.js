@@ -14,22 +14,36 @@ let app = new Application(1280, 720, {antialias: true, transparent: true})
 document.body.appendChild(app.view);
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
-// DOM listeners
+// Set up DOM
+let unitsTab = document.getElementById('units-tab')
+let buildingsTab = document.getElementById('buildings-tab')
 document.getElementById('units-tab-button').addEventListener('click', () => {
-	document.getElementById('units-tab').style.display = ''
-	document.getElementById('buildings-tab').style.display = 'none'
+	unitsTab.style.display = ''
+	buildingsTab.style.display = 'none'
 })
 document.getElementById('buildings-tab-button').addEventListener('click', () => {
-	document.getElementById('buildings-tab').style.display = ''
-	document.getElementById('units-tab').style.display = 'none'
+	unitsTab.style.display = 'none'
+	buildingsTab.style.display = ''
 })
 makeHorizontalScroll('buildings-tab')
 makeHorizontalScroll('units-tab')
+for (let i = 0; i < units.length; i++) {
+	let unit = document.createElement('div')
+	unit.className = "shop-item"
+	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><button>' + units[i].cost + '</button><div class="quantity">0</div>'
+	unitsTab.appendChild(unit)
+}
+for (let i = 0; i < buildings.length; i++) {
+	let building = document.createElement('div')
+	building.className = "shop-item"
+	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div class="quantity">0</div>'
+	buildingsTab.appendChild(building)
+}
 
 // Load assets
 loader
 	// Images
-	.add("background", "assets/depth.jpg")
+	.add("depth", "assets/depth.jpg")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
 	// Call setup after loading
@@ -40,40 +54,29 @@ let state;
 let emitters = [];
 
 // Level specific variables
-let map;
+let map, food, gold, enemyHealth;
+
+// UI Variables
+let foodDisplay = document.getElementById('curr-food')
+let goldDisplay = document.getElementById('curr-gold')
 
 // Sprites
-let background
+let background, enemyPath
 
 function setup() {
-	background = new Sprite(TextureCache.background);
-	background.anchor.x = 0.5;
-	background.x = 640
-	background.scale.x = background.scale.y = 0.5
-	app.stage.addChild(background);
-
-	map = new Map({
-		playerPath: [
-			{x: 0, y: 360},
-			{x: 320, y: 50},
-			{x: 460, y: 200},
-			{x: 640, y: 640},
-			{x: 1280, y: 360},
-		]
-	})
-
-	state = states.paused;
 	app.ticker.add((delta) => {
 		state.update(delta);
 	})
+
+	state = states.playing;
+	startLevel(0);
 }
 
 let states = {
 	paused: {
 		update: (delta) => {
-			// Update Particles
-
-			// Update UI
+			updateParticles()
+			updateUI()
 		},
 		enter: () => {
 
@@ -82,13 +85,11 @@ let states = {
 
 		}
 	},
-	play: {
+	playing: {
 		update: (delta) => {
-			// Update Particles
-
-			// Update Entities
-
-			// Update UI
+			updateParticles()
+			updateGame(delta)
+			updateUI()
 		},
 		enter: () => {
 
@@ -99,32 +100,52 @@ let states = {
 	}
 }
 
-let Map = function(settings) {
-	let g = new Graphics()
+function updateParticles() {
 
-	// Draw player path
+}
+
+function updateGame(delta) {
+	food += Math.random() * delta
+	gold += Math.random() * delta / 2
+}
+
+function updateUI() {
+	foodDisplay.innerText = Math.floor(food) + " Food"
+	goldDisplay.innerText = Math.floor(gold) + " Gold"
+}
+
+function startLevel(i) {
+	let level = levels[i]
+
+	// Reset level specific values
+	food = gold = 0
+	enemyHealth = level.enemyHealth
+
+	// Clean up old sprite
+	if (background) background.remove()
+	if (enemyPath) enemyPath.remove()
+
+	// Set up background
+	background = new Sprite(TextureCache[level.background]);
+	// Temporary
+	background.anchor.x = 0.5;
+	background.x = 640
+	background.scale.x = background.scale.y = 0.5
+	// End Temporary
+	app.stage.addChild(background);
+
+	// Set up enemy path
+	let g = new Graphics()
 	g.lineStyle(24, 0xffd900, 1);
-	g.moveTo(settings.playerPath[0].x, settings.playerPath[0].y)
-	for (let i = 1; i < settings.playerPath.length; i++) {
-		g.lineTo(settings.playerPath[i].x, settings.playerPath[i].y)
+	g.moveTo(level.enemyPath[0].x, level.enemyPath[0].y)
+	for (let i = 1; i < level.enemyPath.length; i++) {
+		g.lineTo(level.enemyPath[i].x, level.enemyPath[i].y)
 	}
 	g.beginFill(0xffd900);
-	for (let i = 0; i < settings.playerPath.length; i++) {
-		g.drawCircle(settings.playerPath[i].x, settings.playerPath[i].y, 15)
+	for (let i = 0; i < level.enemyPath.length; i++) {
+		g.drawCircle(level.enemyPath[i].x, level.enemyPath[i].y, 15)
 	}
 	g.endFill();
-
-	/*// Draw enemy path
-	g.lineStyle(24, 0xff00d9, 1);
-	g.drawCircle(settings.enemyPath[0].x, settings.enemyPath[0].y, 20)
-	g.moveTo(settings.enemyPath[0].x, settings.enemyPath[0].y)
-	for (let i = 1; i < settings.enemyPath.length; i++) {
-		g.lineTo(settings.enemyPath[i].x, settings.enemyPath[i].y)
-	}
-	lastNode = settings.enemyPath[settings.enemyPath.length - 1]
-	g.drawCircle(lastNode.x, lastNode.y, 20)
-	*/
-
 	app.stage.addChild(g)
 }
 

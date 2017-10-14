@@ -50,6 +50,12 @@ button:hover {
 .tab-button {
 	height: 50%;
 	width: 100%;
+	overflow-x: auto;
+}
+
+.tab-button p {
+	margin: 0;
+    font-size: small;
 }
 
 .tab {
@@ -77,7 +83,7 @@ button:hover {
 	display: inline-flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-right: 4px;
+	margin-right: 8px;
 	border-radius: 4px;
 }
 
