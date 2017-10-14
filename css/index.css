@@ -12,6 +12,11 @@ canvas {
 	right: 0;
 	top: 20%;
 	bottom: 0;
+	transition: all 1s ease;
+}
+
+canvas.inactive {
+	max-height: 0%;
 }
 
 button {
@@ -38,6 +43,11 @@ button:hover {
 	box-shadow: 2px 2px 3px #222;
 	z-index: 1;
 	display: flex;
+	transition: all 1s ease;
+}
+
+.shop.inactive {
+	top: -20%;
 }
 
 .tab-buttons {

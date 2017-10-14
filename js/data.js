@@ -15,19 +15,35 @@ let levels = [
 let units = [
 	{
 		name: "Marine",
-		cost: 1000
+		cost: 1000,
+		sprite: "Tower",
+		speed: 1,
+		health: 10,
+		damage: 2
 	},
 	{
 		name: "Cool Guy",
-		cost: 1001
+		cost: 1001,
+		sprite: "Tower",
+		speed: 2,
+		health: 4,
+		damage: 2
 	},
 	{
 		name: "The powerful one",
-		cost: 1002
+		cost: 1002,
+		sprite: "Tower",
+		speed: 0.5,
+		health: 20,
+		damage: 2
 	},
 	{
 		name: "the fast one",
-		cost: 1003
+		cost: 1003,
+		sprite: "Tower",
+		speed: 3,
+		health: 3,
+		damage: 1
 	}
 ]
 
