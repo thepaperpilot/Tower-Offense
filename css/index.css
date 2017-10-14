@@ -185,7 +185,8 @@ button:hover {
 	top: 50%;
 	width: 100%;
 	left: 0;
-	background: #2a323d;
+	background-color: #242a33;
+	box-shadow: 2px 2px 3px #222;
 	transition: all 1s;
 	overflow: hidden;
 }

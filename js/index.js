@@ -45,7 +45,7 @@ for (let i = 0; i < units.length; i++) {
 for (let i = 0; i < buildings.length; i++) {
 	let building = document.createElement('div')
 	building.className = "shop-item"
-	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div class="quantity">0</div>'
+	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity">0</div>'
 	let button = building.querySelector('button')
 	button.i = i
 	button.addEventListener('click', purchaseBuilding)
@@ -102,6 +102,7 @@ let emitters = [];
 
 // Level specific variables
 let map, food, gold, enemyHealth;
+let buildingLevels = []
 let emittersContainer;
 let entitiesContainer, entities = [];
 let closestEnemy // TODO deal with enemies entering the path behind our creeps
@@ -151,6 +152,11 @@ function startLevel(i) {
 	// Reset level specific values
 	food = gold = 0
 	enemyHealth = level.enemyHealth
+	buildingLevels = []
+	for (let i = 0; i < buildings.length; i++) {
+		buildingLevels.push(0)
+		document.getElementById('building ' + i + ' quantity').innerText = '0'
+	}
 
 	// Clean up old sprite
 	if (background) background.remove()
@@ -212,7 +218,8 @@ function purchaseUnit(e) {
 function purchaseBuilding(e) {
 	let building = buildings[e.target.i]
 	if (gold >= building.cost) {
-		console.log("Buying building " + building.name + "!")
+		buildingLevels[e.target.i]++
+		document.getElementById('building ' + e.target.i + ' quantity').innerText = buildingLevels[e.target.i]
 		gold -= building.cost
 	}
 }
