@@ -12,7 +12,7 @@ let Application = PIXI.Application,
     Text = PIXI.Text;
 
 // Create some basic objects
-let app = new Application(1280, 720, {antialias: true, transparent: true})
+let app = new Application(1920, 768, {antialias: true, transparent: true})
 app.view.className += " inactive"
 document.body.appendChild(app.view);
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
@@ -69,9 +69,10 @@ let GOLD_INTERVAL = 250 // Interval in which units gain gold, in ms
 // Load assets
 loader
 	// Images
-	.add("depth", "assets/depth.jpg")
+	.add("background", "assets/Background.png")
 	.add("tower", "assets/Tower.png")
 	.add("foxWizard", "assets/FoxWizard.png")
+	.add("foxWizardStatue", "assets/FoxWizardStatue.png")
 	.add("spark", "assets/spark.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
@@ -217,11 +218,6 @@ function startLevel(i) {
 
 	// Set up background
 	background = new Sprite(TextureCache[level.background]);
-	// Temporary
-	background.anchor.x = 0.5;
-	background.x = 640
-	background.scale.x = background.scale.y = 0.5
-	// End Temporary
 	app.stage.addChild(background);
 
 	// Set up enemy path
@@ -279,11 +275,11 @@ function purchaseBuilding(e) {
 	let building = buildings[e.target.i]
 	if (gold >= building.cost) {
 		buildingLevels[e.target.i]++
+		gold -= building.cost
 		building.buy()
 		let quantity = document.getElementById('building ' + e.target.i + ' quantity')
 		quantity.innerText = buildingLevels[e.target.i]
 		quantity.style.webkitAnimation = ''
-		gold -= building.cost
 	}
 }
 
@@ -495,8 +491,8 @@ let Tower = function(tower, x, y) {
 	this.shootProjectile = function(sprite, target) {
 		if (!sprite) {
 			sprite = new Graphics()
-			sprite.beginFill(0xFF700B, 1);
-			sprite.drawRect(0, 0, 4, 4);
+			sprite.beginFill(0xFF0000, 1);
+			sprite.drawRect(0, 0, 8, 8);
 			sprite.endFill()
 		}
 		new Projectile(sprite, PROJECTILE_SPEED, this.damage, this.sprite, target)
