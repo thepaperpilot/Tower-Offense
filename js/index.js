@@ -27,12 +27,16 @@ document.getElementById('buildings-tab-button').addEventListener('click', () => 
 	unitsTab.style.display = 'none'
 	buildingsTab.style.display = ''
 })
+document.getElementById('start-button').addEventListener('click', () => {
+	document.getElementById('start').className = 'start inactive'
+	startLevel(0);
+})
 makeHorizontalScroll('buildings-tab')
 makeHorizontalScroll('units-tab')
 for (let i = 0; i < units.length; i++) {
 	let unit = document.createElement('div')
 	unit.className = "shop-item"
-	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><button>' + units[i].cost + '</button><div class="quantity">0</div>'
+	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><button>' + units[i].cost + '</button>'
 	let button = unit.querySelector('button')
 	button.i = i
 	button.addEventListener('click', purchaseUnit)
@@ -53,6 +57,7 @@ loader
 	// Images
 	.add("depth", "assets/depth.jpg")
 	.add("Tower", "assets/Tower.png")
+	.add("spark", "assets/spark.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
 	// Call setup after loading
@@ -62,19 +67,19 @@ loader
 let states = {
 	paused: {
 		update: (delta) => {
-			updateParticles()
+			updateParticles(delta)
 			updateUI()
 		},
 		enter: () => {
-
+			document.getElementById('next-level').className = 'start'
 		},
 		exit: () => {
-
+			document.getElementById('next-level').className = 'start inactive'
 		}
 	},
 	playing: {
 		update: (delta) => {
-			updateParticles()
+			updateParticles(delta)
 			updateGame(delta)
 			updateUI()
 		},
@@ -95,7 +100,8 @@ let emitters = [];
 
 // Level specific variables
 let map, food, gold, enemyHealth;
-let entitiesContainer, entities = []
+let emittersContainer;
+let entitiesContainer, entities = [];
 let closestEnemy // TODO deal with enemies entering the path behind our creeps
 
 // UI Variables
@@ -109,12 +115,11 @@ function setup() {
 	app.ticker.add((delta) => {
 		state.update(delta);
 	})
-
-	startLevel(0);
 }
 
-function updateParticles() {
-
+function updateParticles(delta) {
+	for (let i = 0; i < emitters.length; i++)
+		emitters[i].update(delta / 100);
 }
 
 function updateGame(delta) {
@@ -148,6 +153,7 @@ function startLevel(i) {
 	if (background) background.remove()
 	if (enemyPath) enemyPath.remove()
 	if (entitiesContainer) entitiesContainer.remove()
+	if (emittersContainer) emittersContainer.remove()
 
 	// Set up background
 	background = new Sprite(TextureCache[level.background]);
@@ -177,6 +183,10 @@ function startLevel(i) {
 	entitiesContainer = new Container()
 	app.stage.addChild(entitiesContainer)
 
+	// Set up emitters container
+	emittersContainer = new Container()
+	app.stage.addChild(emittersContainer)
+
 	// Transition states
 	if (state != states.playing) {
 		state.exit()
@@ -201,6 +211,66 @@ function purchaseBuilding(e) {
 	}
 }
 
+function createEmitter(x, y) {
+	let emitter = new Emitter(emittersContainer,
+		[TextureCache.spark],
+		{
+		"alpha": {
+			"start": 1,
+			"end": 0.31
+		},
+		"scale": {
+			"start": 1,
+			"end": 0.001,
+			"minimumScaleMultiplier": 0.5
+		},
+		"color": {
+			"start": "#ffffff",
+			"end": "#ffffff"
+		},
+		"speed": {
+			"start": 400,
+			"end": 50,
+			"minimumSpeedMultiplier": 0.2
+		},
+		"acceleration": {
+			"x": 0,
+			"y": 0
+		},
+		"maxSpeed": 0,
+		"startRotation": {
+			"min": 160,
+			"max": 200
+		},
+		"noRotation": false,
+		"rotationSpeed": {
+			"min": 0,
+			"max": 20
+		},
+		"lifetime": {
+			"min": 0.25,
+			"max": 0.5
+		},
+		"blendMode": "normal",
+		"frequency": 0.005,
+		"emitterLifetime": 0.2,
+		"maxParticles": 1000,
+		"pos": {
+			"x": x,
+			"y": y
+		},
+		"addAtBack": false,
+		"spawnType": "rect",
+		"spawnRect": {
+			"x": 0,
+			"y": -32,
+			"w": 16,
+			"h": 32
+		}
+	})
+	emitters.push(emitter)
+}
+
 // Utility Functions
 function makeHorizontalScroll(divName) {
     function scrollHorizontally(e) {
@@ -222,7 +292,6 @@ function makeHorizontalScroll(divName) {
 
 let Unit = function(unit) {
 	this.sprite = new Sprite(TextureCache[unit.sprite])
-	console.log(this.sprite)
 	this.sprite.x = map[0].x - 10
 	this.sprite.y = map[0].y
 	this.sprite.anchor.y = 1
@@ -238,10 +307,14 @@ let Unit = function(unit) {
 			// Check if we reached the castle
 			if (this.point === map.length) {
 				entities.splice(entities.indexOf(this), 1)
+				createEmitter(this.sprite.x, this.sprite.y)
 				entitiesContainer.removeChild(this.sprite)
 				enemyHealth -= this.damage
-				// TODO switch state to paused if enemy is dead
-				// TODO particle effects
+				if (enemyHealth <= 0) {
+					state.exit()
+					state = states.paused
+					state.enter()
+				}
 				return true
 			}
 
@@ -265,12 +338,11 @@ let Unit = function(unit) {
 			dy = this.target.y - this.sprite.y
 
 			let magnitude = Math.sqrt(dx * dx + dy * dy)
-			if (magnitude > distance) {
+			if (delta * this.speed * delta * this.speed > distance) {
 				this.sprite.x = this.target.x
 				this.sprite.y = this.target.y
 				if (distance === distancePoint) this.point++
 				else this.state = this.states.attacking
-				console.log(this.point, this.state)
 			} else {
 				dx /= magnitude
 				dy /= magnitude
@@ -280,7 +352,6 @@ let Unit = function(unit) {
 			}
 			this.animTime += delta
 			this.sprite.scale.y = 2 + Math.cos(this.animTime / 10) * 0.2
-			console.log(this.sprite.x, this.sprite.y)
 		},
 		attacking: (delta) => {
 			// TODO

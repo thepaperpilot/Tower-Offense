@@ -7,7 +7,7 @@ let levels = [
 			{x: 640, y: 640},
 			{x: 1280, y: 360},
 		],
-		enemyHealth: 100,
+		enemyHealth: 10,
 		background: "depth"
 	}
 ]
