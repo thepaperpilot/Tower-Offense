@@ -199,7 +199,7 @@ let units = [
 		description: "A Basic Unit",
 		enabled: true,
 		cost: 10,
-		sprite: "wolfKnight",
+		sprite: "wolf",
 		speed: 1,
 		health: 15,
 		damage: 2
@@ -209,7 +209,7 @@ let units = [
 		description: "A Variant Unit",
 		enabled: true,
 		cost: 15,
-		sprite: "foxWizard",
+		sprite: "fox",
 		speed: 2,
 		health: 15,
 		damage: 1
@@ -219,7 +219,7 @@ let units = [
 		description: "A Slow but Sturdy Unit",
 		enabled: false,
 		cost: 25,
-		sprite: "foxWizard",
+		sprite: "bear",
 		speed: 0.75,
 		health: 30,
 		damage: 2
@@ -229,7 +229,7 @@ let units = [
 		description: "A Fast but Frail Unit",
 		enabled: false,
 		cost: 20,
-		sprite: "foxWizard",
+		sprite: "fox",
 		speed: 3,
 		health: 6,
 		damage: 1
@@ -339,7 +339,7 @@ let buildings = [
 
 let towers = [
 	{
-		sprite: "foxWizardStatue",
+		sprite: "foxStatue",
 		range: 200,
 		speed: 0.2,
 		health: 10,

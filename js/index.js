@@ -75,9 +75,10 @@ loader
 	// Images
 	.add("background", "assets/Background.png")
 	.add("tower", "assets/Tower.png")
-	.add("foxWizard", "assets/FoxWizard.png")
-	.add("wolfKnight", "assets/WolfKnight.png")
-	.add("foxWizardStatue", "assets/FoxWizardStatue.png")
+	.add("fox", "assets/FoxWizard.png")
+	.add("wolf", "assets/WolfKnight.png")
+	.add("bear", "assets/Barbearian.png")
+	.add("foxStatue", "assets/FoxWizardStatue.png")
 	.add("spark", "assets/spark.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
