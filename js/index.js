@@ -219,11 +219,13 @@ function openMap() {
 	for (let i = 0; i < nextLevel; i++) {
 		document.getElementById('level ' + i).className += " completed"
 	}
-	document.getElementById('level ' + nextLevel).className += " available"
-	document.getElementById('level ' + nextLevel).addEventListener('click', () => {
-		world.className = "world inactive"
-		startLevel(nextLevel)
-	})
+	if (nextLevel < levels.length) {
+		document.getElementById('level ' + nextLevel).className += " available"
+		document.getElementById('level ' + nextLevel).addEventListener('click', () => {
+			world.className = "world inactive"
+			startLevel(nextLevel)
+		})
+	}
 	for (let i = nextLevel + 1; i < levels.length; i++) {
 		document.getElementById('level ' + i).className += " locked"	
 	}
@@ -237,6 +239,9 @@ function startLevel(i) {
 	foodIncome = 01
 	gold = 10000
 	enemyHealth = level.enemyHealth
+	entities = [];
+	playerUnits = [];
+	enemyUnits = [];
 	buildingLevels = []
 	// Make rest of buildings set to 0
 	for (let i = 0; i < buildings.length; i++) {
@@ -245,10 +250,10 @@ function startLevel(i) {
 	}
 
 	// Clean up old sprite
-	if (background) background.remove()
-	if (enemyPath) enemyPath.remove()
-	if (entitiesContainer) entitiesContainer.remove()
-	if (emittersContainer) emittersContainer.remove()
+	if (background) background.parent.removeChild(background)
+	if (enemyPath) enemyPath.parent.removeChild(enemyPath)
+	if (entitiesContainer) entitiesContainer.parent.removeChild(entitiesContainer)
+	if (emittersContainer) emittersContainer.parent.removeChild(emittersContainer)
 
 	// Set up background
 	background = new Sprite(TextureCache[level.background]);
