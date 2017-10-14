@@ -28,11 +28,11 @@ let levels = [
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 45000,
+				interval: 450,
 				fire: function() {
 					strategyManager.spawnTower({
-						x: Math.random() * 1000 + 140,
-						y: Math.random() * 680 + 20,
+						x: Math.random() * 1800 + 60,
+						y: Math.random() * 600 + 160,
 						type: 0
 					})
 				}
