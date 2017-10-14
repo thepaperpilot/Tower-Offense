@@ -61,6 +61,7 @@ let levels = [
 let units = [
 	{
 		name: "Marine",
+		description: "A Basic Unit",
 		cost: 10,
 		sprite: "tower",
 		speed: 1,
@@ -69,6 +70,7 @@ let units = [
 	},
 	{
 		name: "Cool Guy",
+		description: "A Variant Unit",
 		cost: 15,
 		sprite: "tower",
 		speed: 2,
@@ -77,6 +79,7 @@ let units = [
 	},
 	{
 		name: "The powerful one",
+		description: "A Slow but Sturdy Unit",
 		cost: 25,
 		sprite: "tower",
 		speed: 0.5,
@@ -85,6 +88,7 @@ let units = [
 	},
 	{
 		name: "the fast one",
+		description: "A Fast but Frail Unit",
 		cost: 20,
 		sprite: "tower",
 		speed: 3,
@@ -96,6 +100,7 @@ let units = [
 let buildings = [
 	{
 		name: "Farm",
+		description: "Increases Food Production",
 		cost: 6,
 		buy: function() {
 			foodIncome += 0.005
@@ -103,6 +108,7 @@ let buildings = [
 	},
 	{
 		name: "Big Farm",
+		description: "Significantly Increases Food Production",
 		cost: 30,
 		buy: function() {
 			foodIncome += 0.03
@@ -110,6 +116,7 @@ let buildings = [
 	},
 	{
 		name: "Farm Planet",
+		description: "Outrageously Increases Food Production",
 		cost: 7777777,
 		buy: function() {
 			foodIncome += 77
@@ -117,6 +124,7 @@ let buildings = [
 	},
 	{
 		name: "Armory",
+		description: "Increases Unit Sturdiness",
 		cost: 10,
 		buy: function() {
 			for (let i = 0; i < units.length; i++) {

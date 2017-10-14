@@ -171,7 +171,13 @@ button:disabled {
     margin: 0;
     font-size: large;
     color: white;
-	margin: 8px;
+	margin: 4px;
+}
+
+.item-desc {
+	font-size: small;
+    color: white;
+    margin: 4px;
 }
 
 .quantity {

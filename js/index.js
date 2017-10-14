@@ -37,7 +37,7 @@ makeHorizontalScroll('units-tab')
 for (let i = 0; i < units.length; i++) {
 	let unit = document.createElement('div')
 	unit.className = "shop-item"
-	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><button>' + units[i].cost + '</button>'
+	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><p class="item-desc">' + units[i].description + '</p><button>' + units[i].cost + '</button>'
 	let button = unit.querySelector('button')
 	button.i = i
 	button.addEventListener('click', purchaseUnit)
@@ -46,7 +46,7 @@ for (let i = 0; i < units.length; i++) {
 for (let i = 0; i < buildings.length; i++) {
 	let building = document.createElement('div')
 	building.className = "shop-item"
-	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
+	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><p class="item-desc">' + buildings[i].description + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
 	let button = building.querySelector('button')
 	button.i = i
 	button.addEventListener('click', purchaseBuilding)
