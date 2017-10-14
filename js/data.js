@@ -130,6 +130,32 @@ let buildings = [
 			for (let i = 0; i < units.length; i++) {
 				units[i].health *= 1.1
 			}
+			this.cost += 5
+			this.button.innerText = this.cost
+		}
+	},
+	{
+		name: "Blacksmith",
+		description: "Increases Unit Brawniness",
+		cost: 10,
+		buy: function() {
+			for (let i = 0; i < units.length; i++) {
+				units[i].damage *= 1.1
+			}
+			this.cost += 5
+			this.button.innerText = this.cost
+		}
+	},
+	{
+		name: "Cobbler",
+		description: "Increases Unit Quickness",
+		cost: 100,
+		buy: function() {
+			for (let i = 0; i < units.length; i++) {
+				units[i].speed *= 0.9
+			}
+			this.cost *= 2
+			this.button.innerText = this.cost
 		}
 	}
 ]

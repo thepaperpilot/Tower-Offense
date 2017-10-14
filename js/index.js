@@ -39,6 +39,7 @@ for (let i = 0; i < units.length; i++) {
 	unit.className = "shop-item"
 	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><p class="item-desc">' + units[i].description + '</p><button>' + units[i].cost + '</button>'
 	let button = unit.querySelector('button')
+	units[i].button = button
 	button.i = i
 	button.addEventListener('click', purchaseUnit)
 	unitsTab.appendChild(unit)
@@ -48,6 +49,7 @@ for (let i = 0; i < buildings.length; i++) {
 	building.className = "shop-item"
 	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><p class="item-desc">' + buildings[i].description + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
 	let button = building.querySelector('button')
+	buildings[i].button = button
 	button.i = i
 	button.addEventListener('click', purchaseBuilding)
 	building.querySelector('.quantity').addEventListener('animationend', removeAnimation)
