@@ -1,20 +1,21 @@
 let levels = [
 	{
 		enemyPath: [
-			{x: 0, y: 360},
-			{x: 320, y: 50},
-			{x: 460, y: 200},
-			{x: 640, y: 640},
-			{x: 1280, y: 360},
+			{x: 0, y: 384},
+			{x: 420, y: 250},
+			{x: 640, y: 150},
+			{x: 960, y: 400},
+			{x: 1280, y: 640},
+			{x: 1920, y: 360},
 		],
 		enemyHealth: 10,
-		background: "depth",
+		background: "background",
 		startCutscene: "cutscene1",
 		endCutscene: "cutscene2",
 		initialTowers: [
 			{
-				x: 640,
-				y: 500,
+				x: 1000,
+				y: 360,
 				type: 0
 			}
 		],
@@ -36,8 +37,8 @@ let levels = [
 				fire: function() {
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
-						x: 1200,
-						y: 360,
+						x: 1800,
+						y: 500,
 						type: 0
 					})
 				}
@@ -64,7 +65,7 @@ let units = [
 		description: "A Basic Unit",
 		enabled: true,
 		cost: 10,
-		sprite: "tower",
+		sprite: "foxWizard",
 		speed: 1,
 		health: 15,
 		damage: 2
@@ -74,7 +75,7 @@ let units = [
 		description: "A Variant Unit",
 		enabled: true,
 		cost: 15,
-		sprite: "tower",
+		sprite: "foxWizard",
 		speed: 2,
 		health: 15,
 		damage: 1
@@ -84,7 +85,7 @@ let units = [
 		description: "A Slow but Sturdy Unit",
 		enabled: false,
 		cost: 25,
-		sprite: "tower",
+		sprite: "foxWizard",
 		speed: 0.75,
 		health: 30,
 		damage: 2
@@ -94,7 +95,7 @@ let units = [
 		description: "A Fast but Frail Unit",
 		enabled: false,
 		cost: 20,
-		sprite: "tower",
+		sprite: "foxWizard",
 		speed: 3,
 		health: 6,
 		damage: 1
@@ -196,7 +197,7 @@ let buildings = [
 
 let towers = [
 	{
-		sprite: "foxWizard",
+		sprite: "foxWizardStatue",
 		range: 200,
 		speed: 0.2,
 		health: 10,
