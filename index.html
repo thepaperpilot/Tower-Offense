@@ -27,10 +27,19 @@
 	    </div>
 		<button id="continue-button" class="start-button">Next Level</button>
 	</div>
-	<script src="lib/pixi.min.js"></script>
+	<div id="screen" class="stage"></div>
+	<div id="chatbox" class="chatbox inactive">
+		<div id="current_chat" style="display: none">
+			<div id="name" class="name">Gravy</div>
+			<div id="message" class="message">Waa?!?!?!</div>
+			<div class="continue">Click to continue</div>
+		</div>
+	</div>
+	<script src="lib/babble.js"></script>
 	<script src="lib/pixi-particles.min.js"></script>
 	<script src="lib/pixi-sound.min.js"></script>
 	<script src="js/data.js"></script>
+	<script src="js/cutscenes.js"></script>
 	<script src="js/index.js"></script>
 </body>
 </html>

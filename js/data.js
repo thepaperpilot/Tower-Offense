@@ -8,7 +8,9 @@ let levels = [
 			{x: 1280, y: 360},
 		],
 		enemyHealth: 10,
-		background: "depth"
+		background: "depth",
+		startCutscene: "cutscene1",
+		endCutscene: "cutscene2"
 	}
 ]
 

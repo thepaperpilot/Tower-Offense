@@ -66,10 +66,7 @@ loader
 // Game States
 let states = {
 	paused: {
-		update: (delta) => {
-			updateParticles(delta)
-			updateUI()
-		},
+		update: () => {},
 		enter: () => {
 			document.getElementById('next-level').className = 'start'
 		},
@@ -91,6 +88,11 @@ let states = {
 			app.view.className = 'inactive'
 			document.getElementById('shop').className = 'shop inactive'
 		}
+	},
+	cutscene: {
+		update: () => {},
+		enter: () => {},
+		exit: () => {}
 	}
 }
 
@@ -115,6 +117,7 @@ function setup() {
 	app.ticker.add((delta) => {
 		state.update(delta);
 	})
+	loadBabble()
 }
 
 function updateParticles(delta) {
@@ -188,11 +191,14 @@ function startLevel(i) {
 	app.stage.addChild(emittersContainer)
 
 	// Transition states
-	if (state != states.playing) {
+	state.exit()
+	state = states.cutscene
+	state.enter()
+	startCutscene(level.startCutscene, () => {
 		state.exit()
 		state = states.playing
 		state.enter()
-	}
+	})
 }
 
 function purchaseUnit(e) {

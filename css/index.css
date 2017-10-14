@@ -34,6 +34,10 @@ button:hover {
     cursor: pointer;
 }
 
+.inactive {
+	pointer-events: none;
+}
+
 .start {
 	position: absolute;
   	top: 0;
@@ -48,7 +52,6 @@ button:hover {
 
 .start.inactive {
 	opacity: 0;
-	pointer-events: none;
 }
 
 .start p {
@@ -79,6 +82,15 @@ button:hover {
 	margin: auto;
 }
 
+.stage {
+	pointer-events: none;
+}
+
+.stage canvas {
+	top: 0;
+	bottom: 50%;
+}
+
 .shop {
 	position: absolute;
 	top: 0;
@@ -89,6 +101,7 @@ button:hover {
 	z-index: 1;
 	display: flex;
 	transition: all 1s ease;
+	overflow: hidden;
 }
 
 .shop.inactive {
@@ -164,4 +177,46 @@ button:hover {
     font-size: medium;
     height: 1em;
     padding: 0 4px 2px 4px;
+}
+
+.chatbox {
+	position: absolute;
+	height: 50%;
+	top: 50%;
+	width: 100%;
+	left: 0;
+	background: #2a323d;
+	transition: all 1s;
+	overflow: hidden;
+}
+
+.chatbox.inactive {
+	top: 100%;
+	height: 0;
+}
+
+.chatbox > div {
+	width: calc(90% - 44px);
+	height: calc(90% - 44px);
+	border-radius: 20px;
+	border: 2px solid #969696;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	padding: 20px;
+	color: white;
+	font-size: x-large;
+}
+
+.name {
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: gold;
+}
+
+.continue {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
 }
