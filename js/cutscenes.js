@@ -1,5 +1,6 @@
 // Variables
 let chatClicked = false // whether or not the chatbox has been clicked
+let cutsceneIndex
 let callback // callback to call after running the current cutscene
 
 // Load the stage and characters and stuff
@@ -20,29 +21,7 @@ let cutscenes = {
 		"move 1 0,\n" +
 		"move 2 6;\n" +
 		"remove 1;\n" +
-		"remove 2;\n" +
-		"delay 1000;\n" +
-		"add gravy 1 0;\n" +
-		"move 1 1;\n" +
-		"jiggle 1;\n" +
-		"emote 1 8;\n" +
-		"chat 1 0;\n" +
-		"add not_gravy 2 6;\n" +
-		"move 2 4;\n" +
-		"emote 2 8;\n" +
-		"chat 2 1;\n" + 
-		"chat 1 2;\n" + 
-		"emote 2 1;\n" +
-		"chat 2 3,\n" +
-		"jiggle 2;\n" +
-		"delay 400;\n" +
-		"jiggle 2;\n" +
-		"delay 400;\n" +
-		"jiggle 2;\n" +
-		"delay 400;\n" +
-		"babble 2;\n" +
-		"move 1 0,\n" +
-		"move 2 6;",
+		"remove 2;",
 	cutscene2: "delay 1000;\n" +
 		"add gravy 1 0;\n" +
 		"add not_gravy 2 6;\n" +
@@ -101,30 +80,37 @@ window.loadBabble = function() {
 }
 
 window.startCutscene = function(i, cb) {
+	cutsceneIndex = i
 	callback = cb
     document.getElementById('chatbox').className = "chatbox"
-	let cutscene = new babble.Cutscene(stage, cutscenes[i], puppets, stopCutscene)
-	cutscene.actions.chat = function(callback, target, chatId) {
-		let chats = [{
-			name: "Protagonist",
-			message: "Alright, I'm ready to start hacking!"
-		}, {
-			name: "Antagonist",
-			message: "Not so fast! I can tell you're up to no good."
-		}, {
-			name: "Protagonist",
-			message: "Ah shucks, I've been found out"
-		}, {
-			name: "Antagonist",
-			message: "Bwahahahahahahahahhahahaha!"
-		}]
-		document.getElementById('current_chat').style.display = 'block'
-		document.getElementById('name').innerText = chats[chatId].name
-		this.stage.getPuppet(target).setBabbling(true)
-		chatClicked = false
-		chatter(callback, target, chats[chatId], this.stage, 0)
-	}
-	cutscene.start()
+	waitUntilLoaded()
+}
+
+function waitUntilLoaded() {
+	if (stage) {
+		let cutscene = new babble.Cutscene(stage, cutscenes[cutsceneIndex], puppets, stopCutscene)
+		cutscene.actions.chat = function(callback, target, chatId) {
+			let chats = [{
+				name: "Protagonist",
+				message: "Alright, I'm ready to start hacking!"
+			}, {
+				name: "Antagonist",
+				message: "Not so fast! I can tell you're up to no good."
+			}, {
+				name: "Protagonist",
+				message: "Ah shucks, I've been found out"
+			}, {
+				name: "Antagonist",
+				message: "Bwahahahahahahahahhahahaha!"
+			}]
+			document.getElementById('current_chat').style.display = 'block'
+			document.getElementById('name').innerText = chats[chatId].name
+			this.stage.getPuppet(target).setBabbling(true)
+			chatClicked = false
+			chatter(callback, target, chats[chatId], this.stage, 0)
+		}
+		cutscene.start()
+	} else requestAnimationFrame(waitUntilLoaded)
 }
 
 function loaded() {

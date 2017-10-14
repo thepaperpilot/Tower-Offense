@@ -52,11 +52,15 @@ for (let i = 0; i < buildings.length; i++) {
 	buildingsTab.appendChild(building)
 }
 
+// Constants
+let PROJECTILE_SPEED = 10
+
 // Load assets
 loader
 	// Images
 	.add("depth", "assets/depth.jpg")
-	.add("Tower", "assets/Tower.png")
+	.add("tower", "assets/Tower.png")
+	.add("foxWizard", "assets/FoxWizard.png")
 	.add("spark", "assets/spark.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
@@ -105,6 +109,7 @@ let map, food, gold, enemyHealth;
 let buildingLevels = []
 let emittersContainer;
 let entitiesContainer, entities = [];
+let playerUnits = [], enemyUnits = [];
 let closestEnemy // TODO deal with enemies entering the path behind our creeps
 
 // UI Variables
@@ -192,6 +197,12 @@ function startLevel(i) {
 	entitiesContainer = new Container()
 	app.stage.addChild(entitiesContainer)
 
+	// Set up initial towers
+	for (let i = 0; i < level.initialTowers.length; i++) {
+		let tower = level.initialTowers[i]
+		new Tower(towers[tower.type], tower.x, tower.y).playerOwned = false
+	}
+
 	// Set up emitters container
 	emittersContainer = new Container()
 	app.stage.addChild(emittersContainer)
@@ -210,7 +221,7 @@ function startLevel(i) {
 function purchaseUnit(e) {
 	let unit = units[e.target.i]
 	if (food >= unit.cost) {
-		new Unit(unit)
+		playerUnits.push(new Unit(unit))
 		food -= unit.cost
 	}
 }
@@ -303,6 +314,15 @@ function makeHorizontalScroll(divName) {
     }
 }
 
+function removeEntity(entity) {
+	entitiesContainer.removeChild(entity.sprite)
+	let index = playerUnits.indexOf(entity)
+	if (index !== -1) playerUnits.splice(index, 1)
+	index = enemyUnits.indexOf(entity)
+	if (index !== -1) enemyUnits.splice(index, 1)
+	entities.splice(entities.indexOf(entity), 1)
+}
+
 let Unit = function(unit) {
 	this.sprite = new Sprite(TextureCache[unit.sprite])
 	this.sprite.x = map[0].x - 10
@@ -319,15 +339,14 @@ let Unit = function(unit) {
 		moving: (delta) => {
 			// Check if we reached the castle
 			if (this.point === map.length) {
-				entities.splice(entities.indexOf(this), 1)
 				createEmitter(this.sprite.x, this.sprite.y)
-				entitiesContainer.removeChild(this.sprite)
 				enemyHealth -= this.damage
 				if (enemyHealth <= 0) {
 					state.exit()
 					state = states.paused
 					state.enter()
 				}
+				removeEntity(this)
 				return true
 			}
 
@@ -368,6 +387,115 @@ let Unit = function(unit) {
 		},
 		attacking: (delta) => {
 			// TODO
+		}
+	}
+	this.state = this.states.moving
+	entitiesContainer.addChild(this.sprite)
+	entities.push(this)
+}
+
+let Tower = function(tower, x, y) {
+	this.sprite = new Container()
+	let towerSprite = new Sprite(TextureCache.tower)
+	towerSprite.anchor.x = 0.5
+	towerSprite.anchor.y = 1
+	let unitSprite = new Sprite(TextureCache[tower.sprite])
+	unitSprite.anchor.x = 0.5
+	unitSprite.anchor.y = 1
+	unitSprite.y = -towerSprite.height / 2
+	this.sprite.addChild(towerSprite)
+	this.sprite.addChild(unitSprite)
+	this.sprite.x = x
+	this.sprite.y = y
+	this.sprite.scale.x = 2
+	this.range = tower.range
+	this.speed = tower.speed
+	this.health = tower.health
+	this.damage = tower.damage
+	this.animTime = 0
+	this.shootTime = 0
+	// helper methods for shooting
+	this.shootProjectile = function(sprite, target) {
+		if (!sprite) {
+			sprite = new Graphics()
+			sprite.beginFill(0xFF700B, 1);
+			sprite.drawRect(0, 0, 4, 4);
+			sprite.endFill()
+		}
+		new Projectile(sprite, PROJECTILE_SPEED, this.damage, this.sprite, target)
+	}
+	this.states = {
+		idle: (delta) => {
+			if (this.target) {
+				let dx = this.target.x - this.sprite.x
+				let dy = this.target.y - this.sprite.y
+				// Squaring is faster than square rooting
+				if (entities.indexOf(this.target) === -1 || dx * dx + dy * dy > this.range * this.range) {
+					this.target = null
+				}
+			}
+			if (!this.target) {
+				let targets = this.playerOwned ? enemyUnits : playerUnits
+				for (let i = 0; i < targets.length; i++) {
+					let dx = targets[i].sprite.x - this.sprite.x
+					let dy = targets[i].sprite.y - this.sprite.y
+					if (dx * dx + dy * dy <= this.range * this.range) {
+						this.target = targets[i]
+						break
+					}		
+				}
+			}
+			// Can I just mention I find this hilarious, flipping if statements for
+			// whether or not target exists?
+			if (this.target) {
+				this.shootTime += delta / 100
+				if (this.shootTime >= this.speed) {
+					tower.shoot.call(this, this.target)
+					this.shootTime -= this.speed
+				}
+			}
+			this.animTime += delta
+			this.sprite.scale.y = 2 + Math.cos(this.animTime / 10) * 0.2
+		}
+	}
+	this.state = this.states.idle
+	entitiesContainer.addChild(this.sprite)
+	entities.push(this)
+}
+
+let Projectile = function(container, speed, damage, launcher, target) {
+	this.sprite = container
+	this.speed = speed
+	this.damage = damage
+	this.sprite.x = launcher.x
+	this.sprite.y = launcher.y - 36
+	this.target = target
+	this.states = {
+		moving: (delta) => {
+			if (!this.target || entities.indexOf(this.target) === -1) {
+				removeEntity(this)
+				return
+			}
+
+			let dx = this.target.sprite.x - this.sprite.x
+			let dy = this.target.sprite.y - 24 - this.sprite.y
+
+			// Technically magnitude is distance, and distance is distance^2
+			let distance = dx * dx + dy * dy
+			let magnitude = Math.sqrt(dx * dx + dy * dy)
+			if (delta * this.speed * delta * this.speed > distance) {
+				this.target.health -= this.damage
+				if (this.target.health <= 0) {
+					removeEntity(this.target)
+				}
+				removeEntity(this)
+			} else {
+				dx /= magnitude
+				dy /= magnitude
+
+				this.sprite.x += dx * delta * this.speed
+				this.sprite.y += dy * delta * this.speed
+			}
 		}
 	}
 	this.state = this.states.moving
