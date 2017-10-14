@@ -76,6 +76,7 @@ loader
 	.add("background", "assets/Background.png")
 	.add("tower", "assets/Tower.png")
 	.add("foxWizard", "assets/FoxWizard.png")
+	.add("wolfKnight", "assets/WolfKnight.png")
 	.add("foxWizardStatue", "assets/FoxWizardStatue.png")
 	.add("spark", "assets/spark.png")
 	// Sounds
@@ -422,7 +423,7 @@ let Unit = function(unit) {
 	this.sprite.y = map[0].y
 	this.sprite.anchor.y = 1
 	this.sprite.anchor.x = 0.5
-	this.sprite.scale.x = 2
+	this.sprite.scale.x = 3
 	this.point = 0
 	this.speed = unit.speed
 	this.health = unit.health
@@ -484,7 +485,7 @@ let Unit = function(unit) {
 				this.sprite.y += dy * delta * this.speed
 			}
 			this.animTime += delta
-			this.sprite.scale.y = 2 + Math.cos(this.animTime / 10) * 0.2
+			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
 			this.goldTime += delta
 			if (this.goldTime >= GOLD_INTERVAL && playerUnits.indexOf(this) !== -1) {
 				this.goldTime -= GOLD_INTERVAL
@@ -514,7 +515,7 @@ let Tower = function(tower, x, y) {
 	this.sprite.addChild(unitSprite)
 	this.sprite.x = x
 	this.sprite.y = y
-	this.sprite.scale.x = -2
+	this.sprite.scale.x = -3
 	this.range = tower.range
 	this.speed = tower.speed
 	this.health = tower.health
@@ -562,7 +563,7 @@ let Tower = function(tower, x, y) {
 				}
 			}
 			this.animTime += delta
-			this.sprite.scale.y = 2 + Math.cos(this.animTime / 10) * 0.2
+			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
 		}
 	}
 	this.state = this.states.idle

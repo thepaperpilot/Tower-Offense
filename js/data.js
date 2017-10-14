@@ -199,7 +199,7 @@ let units = [
 		description: "A Basic Unit",
 		enabled: true,
 		cost: 10,
-		sprite: "foxWizard",
+		sprite: "wolfKnight",
 		speed: 1,
 		health: 15,
 		damage: 2
