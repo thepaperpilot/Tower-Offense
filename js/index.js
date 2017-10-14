@@ -37,8 +37,12 @@ makeHorizontalScroll('units-tab')
 for (let i = 0; i < units.length; i++) {
 	let unit = document.createElement('div')
 	unit.className = "shop-item"
-	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><button>' + units[i].cost + '</button>'
+	if (!units[i].enabled)
+		unit.style.display = 'none'
+	unit.innerHTML = '<p class="item-name">' + units[i].name + '</p><p class="item-desc">' + units[i].description + '</p><button>' + units[i].cost + '</button>'
 	let button = unit.querySelector('button')
+	units[i].element = unit
+	units[i].button = button
 	button.i = i
 	button.addEventListener('click', purchaseUnit)
 	unitsTab.appendChild(unit)
@@ -46,8 +50,12 @@ for (let i = 0; i < units.length; i++) {
 for (let i = 0; i < buildings.length; i++) {
 	let building = document.createElement('div')
 	building.className = "shop-item"
-	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
+	if (!buildings[i].enabled)
+		building.style.display = 'none'
+	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><p class="item-desc">' + buildings[i].description + '</p><button>' + buildings[i].cost + '</button><div id="building ' + i + ' quantity" class="quantity" style="animation-name: none;">0</div>'
 	let button = building.querySelector('button')
+	buildings[i].element = building
+	buildings[i].button = button
 	button.i = i
 	button.addEventListener('click', purchaseBuilding)
 	building.querySelector('.quantity').addEventListener('animationend', removeAnimation)
@@ -369,6 +377,14 @@ function removeEntity(entity) {
 
 function removeAnimation(e) {
 	e.target.style.webkitAnimation = 'none'
+}
+
+function enableBuilding(index, enabled) {
+	buildings[index].element.style.display = enabled ? '' : 'none'
+}
+
+function enableUnit(index, enabled) {
+	units[index].element.style.display = enabled ? '' : 'none'
 }
 
 let Unit = function(unit) {
