@@ -100,6 +100,39 @@ let states = {
 	}
 }
 
+// AI Controller
+let strategyManager = {
+	reset: function(strategies) {
+		let keys
+		if (this.strategies) {
+			keys = Object.keys(this.strategies)
+			for (let i = 0; i < keys.length; i++) {
+				let strategy = this.strategies[keys[i]]
+				if (strategy.instance)
+					clearInterval(strategy.instance)
+			}
+		}
+		this.strategies = strategies
+		keys = Object.keys(this.strategies)
+		for (let i = 0; i < keys.length; i++) {
+			let strategy = this.strategies[keys[i]]
+			if (strategy.enabled)
+				strategy.instance = setInterval(strategy.fire, strategy.interval)
+		}
+	},
+	toggleStrategy: function(name) {
+		let strategy = strategyManager.strategies[name]
+		strategy.enabled = !strategy.enabled
+		if (strategy.enabled)
+			strategy.instance = setInterval(strategy.fire, strategy.interval)
+		else
+			clearInterval(strategy.instance)
+	},
+	spawnTower: function(tower) {
+		new Tower(towers[tower.type], tower.x, tower.y).playerOwned = false
+	}
+}
+
 // General variables
 let state = states.paused;
 let emitters = [];
@@ -206,6 +239,9 @@ function startLevel(i) {
 	// Set up emitters container
 	emittersContainer = new Container()
 	app.stage.addChild(emittersContainer)
+
+	// Set up new AI
+	strategyManager.reset(level.strategies)
 
 	// Transition states
 	state.exit()
@@ -340,6 +376,7 @@ let Unit = function(unit) {
 			// Check if we reached the castle
 			if (this.point === map.length) {
 				createEmitter(this.sprite.x, this.sprite.y)
+				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
 				if (enemyHealth <= 0) {
 					state.exit()

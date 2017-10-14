@@ -17,7 +17,32 @@ let levels = [
 				y: 180,
 				type: 0
 			}
-		]
+		],
+		strategies: {
+			"spawnTower": {
+				enabled: true,
+				interval: 20000,
+				fire: function() {
+					strategyManager.spawnTower({
+						x: Math.random() * 1000 + 140,
+						y: Math.random() * 680 + 20,
+						type: 0
+					})
+				}
+			},
+			"spawnTower1": {
+				enabled: true,
+				interval: 15000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower1")
+					strategyManager.spawnTower({
+						x: 1200,
+						y: 360,
+						type: 0
+					})
+				}
+			}
+		}
 	}
 ]
 
