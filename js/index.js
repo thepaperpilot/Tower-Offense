@@ -195,7 +195,7 @@ function startLevel(i) {
 	enemyHealth = level.enemyHealth
 	buildingLevels = []
 	// Make rest of buildings set to 0
-	for (let i = 1; i < buildings.length; i++) {
+	for (let i = 0; i < buildings.length; i++) {
 		buildingLevels.push(0)
 		document.getElementById('building ' + i + ' quantity').innerText = '0'
 	}
@@ -570,7 +570,6 @@ let AddGold = function(amount, x, y) {
 	this.states = {
 		fading: function(delta) {
 			this.animTime += delta / 100;
-			console.log(this.animTime)
 			if (this.animTime >= 0.5) {
 				removeEntity(this)
 				return

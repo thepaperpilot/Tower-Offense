@@ -120,7 +120,7 @@ let buildings = [
 		cost: 10,
 		buy: function() {
 			for (let i = 0; i < units.length; i++) {
-				health *= 1.1
+				units[i].health *= 1.1
 			}
 		}
 	}
