@@ -275,7 +275,7 @@ let buildings = [
 			for (let i = 0; i < units.length; i++) {
 				units[i].health *= 1.1
 			}
-			this.cost += 5
+			buildingCosts[3] += 5
 			this.button.innerText = this.cost
 			enableBuilding(6, true)
 			enableBuilding(7, true)
@@ -290,7 +290,7 @@ let buildings = [
 			for (let i = 0; i < units.length; i++) {
 				units[i].damage *= 1.1
 			}
-			this.cost += 5
+			buildingCosts[4] += 5
 			this.button.innerText = this.cost
 		}
 	},
@@ -303,7 +303,7 @@ let buildings = [
 			for (let i = 0; i < units.length; i++) {
 				units[i].speed *= 1.1
 			}
-			this.cost *= 2
+			buildingCosts[5].cost *= 2
 			this.button.innerText = this.cost
 		}
 	},

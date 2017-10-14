@@ -157,7 +157,8 @@ let nextLevel = 0;
 
 // Level specific variables
 let map, food, foodIncome, gold, enemyHealth;
-let buildingLevels = []
+let buildingLevels = [], buildingCosts = []
+let healthModifier, damageModifier, speedModifier
 let emittersContainer;
 let entitiesContainer, entities = [];
 let playerUnits = [], enemyUnits = [];
@@ -235,17 +236,19 @@ function startLevel(i) {
 	let level = levels[i]
 
 	// Reset level specific values
-	food = 1000
-	foodIncome = 01
-	gold = 10000
+	food = 10
+	foodIncome = 0.01
+	gold = 0
 	enemyHealth = level.enemyHealth
 	entities = [];
 	playerUnits = [];
 	enemyUnits = [];
-	buildingLevels = []
-	// Make rest of buildings set to 0
+	buildingLevels = [];
+	buildingCosts = [];
+	healthModifier = damageModifier = speedModifier = 1;
 	for (let i = 0; i < buildings.length; i++) {
 		buildingLevels.push(0)
+		buildingCosts.push(buildings[i].cost)
 		document.getElementById('building ' + i + ' quantity').innerText = '0'
 	}
 
@@ -305,7 +308,7 @@ function startLevel(i) {
 function purchaseUnit(e) {
 	let unit = units[e.target.i]
 	if (food >= unit.cost) {
-		playerUnits.push(new Unit(unit))
+		new Unit(unit, true)
 		food -= unit.cost
 	}
 }
@@ -415,6 +418,7 @@ function removeAnimation(e) {
 }
 
 function enableBuilding(index, enabled) {
+	if (buildingLevels[index] !== 0 && enabled) return
 	buildings[index].element.style.display = enabled ? '' : 'none'
 }
 
@@ -422,7 +426,7 @@ function enableUnit(index, enabled) {
 	units[index].element.style.display = enabled ? '' : 'none'
 }
 
-let Unit = function(unit) {
+let Unit = function(unit, playerOwned) {
 	this.sprite = new Sprite(TextureCache[unit.sprite])
 	this.sprite.x = map[0].x - 10
 	this.sprite.y = map[0].y
@@ -433,6 +437,11 @@ let Unit = function(unit) {
 	this.speed = unit.speed
 	this.health = unit.health
 	this.damage = unit.damage
+	if (playerOwned) {
+		this.speed *= speedModifier
+		this.health *= healthModifier
+		this.damage *= damageModifier
+	}
 	this.animTime = 0
 	this.goldTime = 0
 	this.states = {
@@ -442,7 +451,7 @@ let Unit = function(unit) {
 				createEmitter(this.sprite.x, this.sprite.y, 180)
 				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
-				if (playerUnits.indexOf(this) !== -1)
+				if (playerOwned)
 					new AddGold(this.damage, this.sprite.x, this.sprite.y)
 				if (enemyHealth <= 0) {
 					nextLevel++
@@ -479,7 +488,7 @@ let Unit = function(unit) {
 				this.sprite.y = this.target.y
 				if (distance === distancePoint) {
 					this.point++
-					if (playerUnits.indexOf(this) !== -1 && this.point > 1)
+					if (playerOwned && this.point > 1)
 						new AddGold(this.point, this.sprite.x, this.sprite.y)
 				} else this.state = this.states.attacking
 			} else {
@@ -492,7 +501,7 @@ let Unit = function(unit) {
 			this.animTime += delta
 			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
 			this.goldTime += delta
-			if (this.goldTime >= GOLD_INTERVAL && playerUnits.indexOf(this) !== -1) {
+			if (this.goldTime >= GOLD_INTERVAL && playerOwned) {
 				this.goldTime -= GOLD_INTERVAL
 				new AddGold(this.point, this.sprite.x, this.sprite.y)
 			}
@@ -505,6 +514,10 @@ let Unit = function(unit) {
 	this.state = this.states.moving
 	entitiesContainer.addChild(this.sprite)
 	entities.push(this)
+	if (playerOwned)
+		playerUnits.push(this)
+	else
+		enemyUnits.push(this)
 }
 
 let Tower = function(tower, x, y) {
