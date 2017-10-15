@@ -31,14 +31,14 @@ let levels = [
 				fire: function() {
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
-						y: (Math.random() * 0.9 + 0.05) * 768,
+						y: (Math.random() * 0.8 + 0.15) * 768,
 						type: 0
 					})
 				}
 			},
 			"spawnTower1": {
 				enabled: true,
-				interval: 15000,
+				interval: 25000,
 				fire: function() {
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
@@ -71,7 +71,7 @@ let levels = [
 			{x: 1280, y: 640},
 			{x: 1920, y: 360},
 		],
-		enemyHealth: 10,
+		enemyHealth: 20,
 		background: "background",
 		startCutscene: "cutscene2",
 		endCutscene: "cutscene2",
@@ -94,14 +94,14 @@ let levels = [
 				fire: function() {
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
-						y: (Math.random() * 0.9 + 0.05) * 768,
+						y: (Math.random() * 0.8 + 0.15) * 768,
 						type: Math.floor(Math.random() * 3)
 					})
 				}
 			},
 			"spawnTower1": {
 				enabled: true,
-				interval: 15000,
+				interval: 25000,
 				fire: function() {
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
@@ -134,7 +134,7 @@ let levels = [
 			{x: 1280, y: 640},
 			{x: 1920, y: 360},
 		],
-		enemyHealth: 10,
+		enemyHealth: 30,
 		background: "background",
 		startCutscene: "cutscene1",
 		endCutscene: "cutscene2",
@@ -153,12 +153,12 @@ let levels = [
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 45000,
+				interval: 35000,
 				fire: function() {
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
-						y: (Math.random() * 0.9 + 0.05) * 768,
-						type: 0
+						y: (Math.random() * 0.8 + 0.15) * 768,
+						type: Math.floor(Math.random() * 3)
 					})
 				}
 			},
@@ -176,14 +176,31 @@ let levels = [
 			},
 			"spawnTower2": {
 				enabled: true,
-				interval: 75000,
+				interval: 85000,
 				fire: function() {
 					strategyManager.toggleStrategy("spawnTower2")
 					strategyManager.spawnTower({
 						x: 320,
 						y: 180,
-						type: 0
+						type: 1
 					})
+				}
+			},
+			"startUprootTower": {
+				enabled: true,
+				interval: 110000,
+				fire: function() {
+					strategyManager.toggleStrategy("uprootTower")
+				}
+			},
+			"uprootTower": {
+				enabled: false,
+				interval: 45000,
+				fire: function() {
+					console.log(enemyTowers)
+					if (enemyTowers.length > 0) {
+						enemyTowers[Math.floor(Math.random(enemyTowers.length))].uproot()
+					}
 				}
 			}
 		}
@@ -333,8 +350,9 @@ let towers = [
 		sprite: "foxStatue", // Base Tower
 		range: 200,
 		speed: 0.2,
+		movespeed: 1,
 		health: 10,
-		damage: 2,
+		damage: 1,
 		shoot: function(target) {
 			let sprite = new Graphics()
 			sprite.beginFill(0xFF0000, 1);
@@ -347,6 +365,7 @@ let towers = [
 		sprite: "wolfStatue", // AOE on projectile hit
 		range: 200,
 		speed: 0.2,
+		movespeed: 0.5,
 		health: 10,
 		damage: 2,
 		shoot: function(target) {
@@ -360,10 +379,10 @@ let towers = [
 					if (playerUnits[i] == target) continue
 					let dx = sprite.x - playerUnits[i].sprite.x
 					let dy = sprite.y - playerUnits[i].sprite.y
-					if (dx * dx + dy * dy < 50000) {
+					if (dx * dx + dy * dy < 25000) {
 						playerUnits[i].health -= damage
 						if (playerUnits[i].health <= 0) {
-							createEmitter(playerUnits[i].sprite.x, playerUnits[i].sprite.y, 270)
+							createEmitter(playerUnits[i].sprite.x, playerUnits[i].sprite.y, 270, '#FF0000')
 							removeEntity(playerUnits[i])
 						}
 					}
@@ -375,6 +394,7 @@ let towers = [
 		sprite: "bearStatue", // Wanders Map
 		range: 100,
 		speed: 0.1,
+		movespeed: 0.35,
 		health: 50,
 		damage: 4,
 		update: function(delta) {
@@ -388,7 +408,7 @@ let towers = [
 			let dy = this.moveTarget.y - this.sprite.y
 
 			let magnitude = Math.sqrt(dx * dx + dy * dy)
-			if (delta * delta > magnitude * magnitude) {
+			if (delta * this.movespeed * delta * this.movespeed > magnitude * magnitude) {
 				this.sprite.x = this.moveTarget.x
 				this.sprite.y = this.moveTarget.y
 				this.moveTarget = null
@@ -396,8 +416,8 @@ let towers = [
 				dx /= magnitude
 				dy /= magnitude
 
-				this.sprite.x += dx * delta
-				this.sprite.y += dy * delta
+				this.sprite.x += dx * delta * this.movespeed
+				this.sprite.y += dy * delta * this.movespeed
 			}
 		},
 		shoot: function(target) {
