@@ -38,19 +38,19 @@ Their thirst fully quenched, they turned back around, prouder of all of the skil
 
 
 Level 3 click start:
-As the critters reverse, they start to relax, “We’ve done it!” but that was quite far from exact. === Wolf, Bear, Fox, Rabbit enter stage right to exit stage left.  Rabbit speaks.  Dialogue during walking. <> Faces: All=2;
-For on their return, the towers were gone.  The critters were worried but had to press on.
-The army, excited by their success, quickly forgot about all their distress.
-Until, that is, they spotted their dens, covered in towers attacking their friends!
-“How could this happen?  What can we do?  The towers can walk and attack our homes too!”
-“We finish them off,” a critter responds, “for freedom from towers is our one true cause!”
+As the critters reverse, they start to relax, “We’ve done it!” but that was quite far from exact. === Wolf, Bear, Fox, Rabbit enter stage right to exit stage left.  Rabbit speaks.  Dialogue during walking. <> Faces: Bear=0; Else=2;
+For on their return, the towers were gone.  The critters were worried but had to press on. === Wolf, Bear, Fox, Rabbit enter stage right to exit stage left.  Dialogue during walking. <> FCs: Fox=10; Wolf=6; Bear=0; Rabbit=5;
+The army, excited by their success, quickly forgot about all their distress. === Wolf, Bear, Fox, Rabbit enter stage right to stop stage right. Dialogue during walking. <> FCs: Bear=0; Else=2;
+Until, that is, they spotted their dens, covered in towers attacking their friends! === Tower chases youth wolf on stage left and then off again stage left. Scene after dialogue happens. <> FCs: Youth=9; Tower=8; Else=7;
+“How could this happen?  What can we do?  The towers can walk and attack our homes too!” === Tower chases youth wolf on stage left and then off again stage left (Exact same code as last line for this). All turn to Rabbit. Rabbit speaks. <> FCs: Youth=9; Tower=8; Wolf=8; Rabbit=9; Bear=7; Fox=4;
+“We finish them off,” their leader responds, “for freedom from towers is our one true cause!” === Fox looks left and speaks. All look at Fox. Two towers enter stage left. All exit stage left. <> FCs: Tower=8; Fox=8; Wolf=8; Bear=4; Rabbit=4;
 
 LEVEL 3 HAPPENS
 
-The critters made battle for the longest hours, until they had managed to destroy the towers.
-And even destroy the statues that live, the beings the critters just could not forgive.
-“We’re finally free of these terrible towers.  Our water is free and we’ve gained some new powers.”
-“We must not forget all this strength that we’ve gained, for if we forget then we may well be slain.”
-“Perhaps we will last when we’re next outdone, now we should party, offense has won.”
-For you who have helped, you’ve done quite a lot, perhaps it is worth giving just one more shot!
+The critters made battle for the longest hours, until they had managed to destroy the towers. === Fox, Wolf, enter stage right.  Fox stops at the very center. <> Faces: Fox=4; Wolf=5;
+And even destroy the statues that live, the beings the critters just could not forgive. === Rabbit enters stage left. <> FCs: Rabbit=9; Wolf=9; Fox=5;
+“We’re finally free of these terrible towers.  Our water is free and we’ve gained some new powers.” === Bear enters stage left. <> FCs: Fox=0; Wolf=0; Rabbit=5; Bear=0;
+“We must not forget all this strength that we’ve gained, for if we forget then we may well be slain.” === Youth Wolf enters stage right behind Wolf. <> FCs: Rabbit=0; Youth=5;
+“Perhaps we will last when we’re next outdone, now we should party, offense has won.” === Fox turns around while speaking. Then everybody but Fox exits their respective sides. <> FCs: All=1;
+“For you who have helped, you’ve done quite a lot, perhaps it is worth giving just one more shot!” === Fox turns back around while speaking.  Then walks off stage right after finished. <> FCs: Fox=1;
 Game Over
