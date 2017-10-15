@@ -200,7 +200,7 @@ function updateGame(delta) {
 }
 
 function updateUI() {
-	foodDisplay.innerText = Math.floor(food) + " Food"
+	foodDisplay.innerText = Math.floor(food) + "/" + maxFood + " Food"
 	goldDisplay.innerText = Math.floor(gold) + " Gold"
 }
 
@@ -238,7 +238,7 @@ function startLevel(i) {
 	let level = levels[i]
 
 	// Reset level specific values
-	food = 100
+	food = 10
 	maxFood = 100
 	foodIncome = 0.01
 	gold = 0
@@ -331,7 +331,7 @@ function purchaseBuilding(e) {
 	}
 }
 
-function createEmitter(x, y, angle) {
+function createEmitter(x, y, angle, color) {
 	let emitter = new Emitter(emittersContainer,
 		[TextureCache.spark],
 		{
@@ -345,8 +345,8 @@ function createEmitter(x, y, angle) {
 			"minimumScaleMultiplier": 0.5
 		},
 		"color": {
-			"start": "#ffffff",
-			"end": "#ffffff"
+			"start": color || "#ffffff",
+			"end": color || "#ffffff"
 		},
 		"speed": {
 			"start": 400,
@@ -513,7 +513,7 @@ let Unit = function(unit, playerOwned) {
 		moving: (delta) => {
 			// Check if we reached the castle
 			if (this.point === map.length) {
-				createEmitter(this.sprite.x, this.sprite.y, 180)
+				createEmitter(this.sprite.x, this.sprite.y, 180, "#551a8b")
 				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
 				if (playerOwned)
