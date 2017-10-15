@@ -636,7 +636,7 @@ let Unit = function(unit, playerOwned) {
 				createEmitter(this.sprite.x, this.sprite.y, 180, "#551a8b")
 				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
-				enemyDisplay.text = enemyHealth
+				enemyDisplay.text = Math.ceil(enemyHealth)
 				if (playerOwned)
 					new AddGold(this.damage, this.sprite.x, this.sprite.y)
 				if (enemyHealth <= 0) {
