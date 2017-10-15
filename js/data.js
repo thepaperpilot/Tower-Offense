@@ -280,7 +280,7 @@ let buildings = [
 				units[i].health *= 1.1
 			}
 			buildingCosts[3] += 5
-			this.button.innerText = buildingCosts[4]
+			this.button.innerText = buildingCosts[3]
 			enableBuilding(6, true)
 			enableBuilding(7, true)
 		}
@@ -310,7 +310,7 @@ let buildings = [
 				units[i].speed *= 1.1
 			}
 			buildingCosts[5].cost *= 2
-			this.button.innerText = buildingCosts[4]
+			this.button.innerText = buildingCosts[5]
 		}
 	},
 	{

@@ -54,8 +54,6 @@ for (let i = 0; i < units.length; i++) {
 for (let i = 0; i < buildings.length; i++) {
 	let building = document.createElement('div')
 	building.className = "shop-item"
-	if (!buildings[i].enabled)
-		building.style.display = 'none'
 	building.innerHTML = '<p class="item-name">' + buildings[i].name + '</p><p class="item-desc">' + buildings[i].description + '</p><p class="gold">' + buildings[i].cost + '</p><div id="building ' + i + ' quantity" class="quantity ' + buildings[i].type + '" style="animation-name: none;">0</div>'
 	let button = building.querySelector('.gold')
 	buildings[i].element = building
@@ -251,6 +249,10 @@ function startLevel(i) {
 		buildingLevels.push(0)
 		buildingCosts.push(buildings[i].cost)
 		document.getElementById('building ' + i + ' quantity').innerText = '0'
+		buildings[i].element.style.display = buildings[i].enabled ? '' : 'none'
+	}
+	for (let i = 0; i < units.length; i++) {
+		units[i].element.style.display = units[i].enabled ? '' : 'none'
 	}
 
 	// Clean up old sprite
@@ -316,9 +318,9 @@ function purchaseUnit(e) {
 
 function purchaseBuilding(e) {
 	let building = buildings[e.target.i]
-	if (gold >= building.cost) {
+	if (gold >= buildingCosts[e.target.i]) {
 		buildingLevels[e.target.i]++
-		gold -= building.cost
+		gold -= buildingCosts[e.target.i]
 		building.buy()
 		let quantity = document.getElementById('building ' + e.target.i + ' quantity')
 		quantity.innerText = buildingLevels[e.target.i]
@@ -554,8 +556,8 @@ let Tower = function(tower, x, y) {
 	this.states = {
 		idle: (delta) => {
 			if (this.target) {
-				let dx = this.target.x - this.sprite.x
-				let dy = this.target.y - this.sprite.y
+				let dx = this.target.sprite.x - this.sprite.x
+				let dy = this.target.sprite.y - this.sprite.y
 				// Squaring is faster than square rooting
 				if (entities.indexOf(this.target) === -1 || dx * dx + dy * dy > this.range * this.range) {
 					this.target = null
