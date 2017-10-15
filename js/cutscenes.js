@@ -32,23 +32,24 @@ let cutscenes = {
 		"chat 1 4;\n" +
 		"emote 3 8;\n" +
 		"emote 1 9;\n" +
-		"move 1 0,\n" +
-		"move 3 0,\n" +
+		"(move 1 0;\n" +
+		"faceLeft 1 false;),\n" +
+		"(move 3 0;\n" +
+		"faceLeft 3 false;),\n" +
 		"chat 0 5;\n" +
-		"faceLeft 3 false;\n" +
 		"emote 1 4;\n" +
-		"move 1 -4,\n" +
+		"(move 1 -4;\n" +
+		"faceLeft 1 false;),\n" +
 		"chat 1 6;\n" +
-		"faceLeft 1 false;\n" +
 		"emote 3 4;\n" +
 		"move 3 -2,\n" +
 		"chat 1 7;\n" +
-		"move 1 0,\n" +
-		"move 2 6,\n" +
-		"move 3 6;\n" +
-		"remove 1;\n" +
-		"remove 2;\n" +
-		"remove 3;",
+		"(move 1 0;\n" +
+		"remove 1;),\n" +
+		"(move 2 6;\n" +
+		"remove 2;),\n" +
+		"(move 3 6;\n" +
+		"remove 3;);",
 	startLevel1: "delay 1000;\n" +
 		"add fox 1 0;\n" +
 		"emote 1 4;\n" +
