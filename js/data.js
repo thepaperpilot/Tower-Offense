@@ -64,17 +64,17 @@ let levels = [
 	},
 	{
 		enemyPath: [
-			{x: 0, y: 384},
-			{x: 420, y: 250},
-			{x: 640, y: 150},
-			{x: 960, y: 400},
-			{x: 1280, y: 640},
-			{x: 1920, y: 360},
+			{x: 0, y: 420},
+			{x: 404, y: 690},
+			{x: 707, y: 100},
+			{x: 1234, y: 666},
+			{x: 1691, y: 388},
+			{x: 1920, y: 398},
 		],
 		enemyHealth: 20,
 		background: "background",
-		startCutscene: "cutscene2",
-		endCutscene: "cutscene2",
+		startCutscene: "startLevel1",
+		endCutscene: "endLevel1",
 		style: {
 			left: "30%",
 			top: "30%"
@@ -127,17 +127,17 @@ let levels = [
 	},
 	{
 		enemyPath: [
-			{x: 0, y: 384},
-			{x: 420, y: 250},
-			{x: 640, y: 150},
-			{x: 960, y: 400},
-			{x: 1280, y: 640},
-			{x: 1920, y: 360},
+			{x: 0, y: 650},
+			{x: 666, y: 79},
+			{x: 824, y: 222},
+			{x: 1089, y: 155},
+			{x: 1569, y: 505},
+			{x: 1920, y: 218},
 		],
 		enemyHealth: 30,
 		background: "background",
-		startCutscene: "cutscene1",
-		endCutscene: "cutscene2",
+		startCutscene: "startLevel1",
+		endCutscene: "endLevel1",
 		style: {
 			right: "40%",
 			top: "40%"
