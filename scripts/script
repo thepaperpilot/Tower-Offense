@@ -14,7 +14,9 @@ Level 1 click start:
 As the critter had said, when the next day arose, it returned with its friends and a plan to bulldoze. === Fox, Wolf, Bear walk in screen left: .  Tower enters screen right. <> Faces: Fox=4; Wolf=8; Bear=0; Tower=0;
 They build their burrows and work all their farms, prepared to battle and to do some harm. === All critters walk around stage left to represent work.  Wolf ends right of other critters on stage left. <> Face changes: None.
 “We’ve all come to drink and we will not find stall.  We’ll huff through your towers and blow down your wall!” === Wolf speaks. <> Face Changes: None.
-LEVEL 1 HAPPENS
+
+ LEVEL 1 HAPPENS
+
 The battle was bloody and all were quite shaken, but now they knew nothing from them could be taken. === Bear, Wolf, Rabbit, Fox enter stage left. <> Faces: Fox=1; Wolf=2; Rabbit=0; Bear=1;
 “I’m surprised we could do it, burst through that wall?  Perhaps we are not all that weak after all.” === All turn to Bear. Bear speaks to other critters. <> Face Changes: Bear=11;
 “Are we sure that we’re safe?  Those stones really hurt.”  A small critter added while staying alert. === All turn to Rabbit. Rabbit speaks to other critters, looking around. <> FCs: Rabbit=7;
@@ -22,25 +24,29 @@ The battle was bloody and all were quite shaken, but now they knew nothing from 
 
  
 Level 2 click start:
-“Our beloved spring is just over that hill!”  Instead what they saw haunts the lot of them still. === Fox, Bear, Wolf enter stage left: excited.
-“Our spring, it’s gone!” the critters all cried, “they filled it with stones ‘til it totally dried!” === Fox, Bear, Wolf: shocked.  
-“How could this be?  It’s all too insane!  There’s no way that we could let one stone remain!”
-“You’ve taken our water!” a fox thus exclaimed, “So we will not stop until you all are maimed!”
+“Our beloved spring is just over that hill!”  Instead what they saw haunts the lot of them still. === Fox, Bear, Wolf enter stage left, Fox in front, then line plays. Fox is speaking. <> Faces: Fox=1; Wolf=1; Bear=11;
+“Our spring, it’s gone!” the critters all cried, “they filled it with stones ‘til it totally dried!” === Fox, Bear, Wolf turn right, shocked.  Tower walks in from right to stage right.  All speak. <> FCs: All=7;
+“How could this be?  It’s all too insane!  There’s no way that we could let one stone remain!” === Wolf speaks; <> FCs: Wolf=8;
+“You’ve taken our water!” a fox thus exclaimed, “So we will not stop until you all are maimed!” === Fox speaks; After text, everyone exits stage right. <> FCs: Fox=8; Bear=4;
+
 LEVEL 2 HAPPENS
-The next day passed quickly, they make the spring clean, all tearing up stone just to fill each canteen. 
-Their thirst fully quenched, they turned back around, prouder of all of the skills that they’ve found.
-“Somehow those towers were extra destructive.  No wonder they build them to be so obstructive.”
-“Making it through felt really climactic.  Thank goodness those turrets are totally static.”
+
+The next day passed quickly, they make the spring clean, all tearing up stone just to fill each canteen. === Wolf, Bear, Rabbit, Fox enter stage left during dialogue and stop stage right. <> Faces: Fox=4; Wolf=6; Rabbit=5; Bear=7;
+Their thirst fully quenched, they turned back around, prouder of all of the skills that they’ve found. === Faces change and then everyone moves stage center during dialogue. <> FCs: All=2;
+“Somehow those towers were extra destructive.  No wonder they build them to be so obstructive.” === Bear speaks; All look at him. <> FCs: Bear=10; Else=0;
+“Making it through felt really climactic.  Thank goodness those turrets are totally static.” === Wolf speaks; All look at him. Dialogue ends before everyone exits stage left. <> FCs: Wolf=2; Fox=1; Bear=0; Rabbit=1;
 
 
 Level 3 click start:
-As the critters reverse, they start to relax, “We’ve done it!” but that was quite far from exact.
+As the critters reverse, they start to relax, “We’ve done it!” but that was quite far from exact. === Wolf, Bear, Fox, Rabbit enter stage right to exit stage left.  Rabbit speaks.  Dialogue during walking. <> Faces: All=2;
 For on their return, the towers were gone.  The critters were worried but had to press on.
 The army, excited by their success, quickly forgot about all their distress.
 Until, that is, they spotted their dens, covered in towers attacking their friends!
 “How could this happen?  What can we do?  The towers can walk and attack our homes too!”
 “We finish them off,” a critter responds, “for freedom from towers is our one true cause!”
+
 LEVEL 3 HAPPENS
+
 The critters made battle for the longest hours, until they had managed to destroy the towers.
 And even destroy the statues that live, the beings the critters just could not forgive.
 “We’re finally free of these terrible towers.  Our water is free and we’ve gained some new powers.”
