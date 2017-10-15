@@ -5,6 +5,7 @@ let Application = PIXI.Application,
 	Container = PIXI.Container,
     loader = PIXI.loader,
     Sprite = PIXI.Sprite,
+    BaseTextureCache = PIXI.utils.BaseTextureCache,
     TextureCache = PIXI.utils.TextureCache,
     sound = PIXI.sound,
     Emitter = PIXI.particles.Emitter,
@@ -74,6 +75,7 @@ loader
 	// Images
 	.add("background", "assets/Background.png")
 	.add("tower", "assets/Tower.png")
+	.add("towerCreep", "assets/TowerAnimation.png")
 	.add("fox", "assets/FoxWizard.png")
 	.add("wolf", "assets/WolfKnight.png")
 	.add("bear", "assets/Barbearian.png")
@@ -82,6 +84,7 @@ loader
 	.add("wolfStatue", "assets/WolfKnightStatue.png")
 	.add("bearStatue", "assets/BarbearianStatue.png")
 	.add("spark", "assets/spark.png")
+	.add("smoke", "assets/CartoonSmoke.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
 	// Call setup after loading
@@ -149,7 +152,8 @@ let strategyManager = {
 			clearInterval(strategy.instance)
 	},
 	spawnTower: function(tower) {
-		new Tower(towers[tower.type], tower.x, tower.y).playerOwned = false
+		enemyTowers.push(new Tower(towers[tower.type], tower.x, tower.y))
+		tower[enemyTowers.length - 1].playerOwned = false
 		createEmitter(tower.x, tower.y, 270)
 	}
 }
@@ -164,10 +168,11 @@ let nextLevel = 0;
 let map, food, foodIncome, gold, enemyHealth, maxFood;
 let buildingLevels = [], buildingCosts = []
 let healthModifier, damageModifier, speedModifier
+let enemyTowers = []
 let emittersContainer;
 let entitiesContainer, entities = [];
 let playerUnits = [], enemyUnits = [];
-let closestEnemy // TODO deal with enemies entering the path behind our creeps
+let entitiesOnPath = []
 
 // UI Variables
 let foodDisplay = document.getElementById('curr-food')
@@ -250,7 +255,9 @@ function startLevel(i) {
 	entities = [];
 	playerUnits = [];
 	enemyUnits = [];
+	entitiesOnPath = [];
 	buildingLevels = [];
+	enemyTowers = [];
 	buildingCosts = [];
 	healthModifier = damageModifier = speedModifier = 1;
 	for (let i = 0; i < buildings.length; i++) {
@@ -319,7 +326,10 @@ function startLevel(i) {
 function purchaseUnit(e) {
 	let unit = units[e.target.i]
 	if (food >= unit.cost) {
-		new Unit(unit, true)
+		entitiesOnPath.push(new Unit(unit, true))
+		entitiesOnPath.sort((x, y) => {
+			return x.sprite.x - y.sprite.x
+		})
 		food -= unit.cost
 	}
 }
@@ -455,6 +465,62 @@ function createSplashEmitter(x, y) {
 	emitters.push(emitter)
 }
 
+function createSmokeEmitter() {
+	let emitter = new Emitter(emittersContainer,
+		[TextureCache.smoke],
+		{
+		"alpha": {
+			"start": 1,
+			"end": 0
+		},
+		"scale": {
+			"start": 0.04,
+			"end": 0.8,
+			"minimumScaleMultiplier": 0.5
+		},
+		"color": {
+			"start": "#ffffff",
+			"end": "#a8a8a8"
+		},
+		"speed": {
+			"start": 100,
+			"end": 15,
+			"minimumSpeedMultiplier": 0.5
+		},
+		"acceleration": {
+			"x": 0,
+			"y": 0
+		},
+		"maxSpeed": 0,
+		"startRotation": {
+			"min": 0,
+			"max": 360
+		},
+		"noRotation": false,
+		"rotationSpeed": {
+			"min": 0,
+			"max": 200
+		},
+		"lifetime": {
+			"min": 0.7,
+			"max": 1.2
+		},
+		"blendMode": "normal",
+		"frequency": 0.02,
+		"emitterLifetime": -1,
+		"maxParticles": 100,
+		"pos": {
+			"x": 0,
+			"y": 0
+		},
+		"addAtBack": true,
+		"spawnType": "point"
+	})
+	emitter.emit = false
+	emitters.push(emitter)
+	return emitter
+}
+
 // Utility Functions
 function makeHorizontalScroll(divName) {
     function scrollHorizontally(e) {
@@ -475,11 +541,16 @@ function makeHorizontalScroll(divName) {
 }
 
 function removeEntity(entity) {
+	if (entity.emitter) entity.emitter.emit = false
 	entitiesContainer.removeChild(entity.sprite)
 	let index = playerUnits.indexOf(entity)
 	if (index !== -1) playerUnits.splice(index, 1)
 	index = enemyUnits.indexOf(entity)
 	if (index !== -1) enemyUnits.splice(index, 1)
+	index = entitiesOnPath.indexOf(entity)
+	if (index !== -1) entitiesOnPath.splice(index, 1)
+	index = enemyTowers.indexOf(entity)
+	if (index !== -1) enemyTowers.splice(index, 1)
 	entities.splice(entities.indexOf(entity), 1)
 }
 
@@ -512,8 +583,10 @@ let Unit = function(unit, playerOwned) {
 		this.health *= healthModifier
 		this.damage *= damageModifier
 	}
+	this.emitter = createSmokeEmitter()
 	this.animTime = 0
 	this.goldTime = 0
+	this.attackTime = 0
 	this.states = {
 		moving: (delta) => {
 			// Check if we reached the castle
@@ -538,15 +611,20 @@ let Unit = function(unit, playerOwned) {
 			let dy = this.sprite.y - map[this.point].y
 			let distancePoint = dx * dx + dy * dy
 			let distance = distancePoint
-			if (closestEnemy) {
-				dx = this.sprite.x - closestEnemy.sprite.x
-				dy = this.sprite.y - closestEnemy.sprite.y
-				let distanceEnemy = dx * dx + dy * dy
-				if (distanceEnemy < distancePoint) {
-					this.target = {x: closestEnemy.sprite.x, y: closestEnemy.sprite.y}
-					distance = distanceEnemy
-				} else this.target = map[this.point]
-			} else this.target = map[this.point]
+			let i = entitiesOnPath.indexOf(this)
+			this.target = map[this.point]
+			while (i < entitiesOnPath.length - 1 && entitiesOnPath[++i].sprite.x < map[this.point].x) {
+				if (enemyUnits.indexOf(entitiesOnPath[i]) !== -1) {
+					let x = entitiesOnPath[i].sprite.x
+					let y = entitiesOnPath[i].sprite.y
+					let dx = this.sprite.x - x
+					let dy = this.sprite.y - y
+					this.enemy = entitiesOnPath[i]
+					this.target = {x, y}
+					distance = dx * dx + dy * dy
+					break
+				}
+			}
 
 			// Move towards current target
 			dx = this.target.x - this.sprite.x
@@ -558,9 +636,18 @@ let Unit = function(unit, playerOwned) {
 				this.sprite.y = this.target.y
 				if (distance === distancePoint) {
 					this.point++
+					entitiesOnPath.sort((x, y) => {
+						return x.sprite.x - y.sprite.x
+					})
 					if (playerOwned && this.point > 1)
 						new AddGold(this.point, this.sprite.x, this.sprite.y)
-				} else this.state = this.states.attacking
+				} else {
+					this.target = this.enemy
+					this.state = this.states.attacking
+					this.emitter.emit = true
+					this.emitter.spawnPos.x = this.sprite.x
+					this.emitter.spawnPos.y = this.sprite.y - 24
+				}
 			} else {
 				dx /= magnitude
 				dy /= magnitude
@@ -577,8 +664,25 @@ let Unit = function(unit, playerOwned) {
 			}
 		},
 		attacking: (delta) => {
-			// TODO
-			// Make sure to award gold for doing this
+			if (entities.indexOf(this.target) === -1) {
+				this.state = this.states.moving
+				this.emitter.emit = false
+			} else {
+				this.attackTime += delta / 100
+				if (this.attackTime > 1 / this.speed) {
+					this.target.health -= this.damage
+					this.attackTime -= 1 / this.speed
+					if (this.target.health <= 0) {
+						new AddGold(5, this.sprite.x, this.sprite.y)
+						createEmitter(this.target.sprite.x, this.target.sprite.y, 270)
+						removeEntity(this.target)
+						this.state = this.states.moving
+						this.emitter.emit = false
+					}
+				}
+			}
+			this.animTime += delta
+			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
 		}
 	}
 	this.state = this.states.moving
@@ -606,10 +710,44 @@ let Tower = function(tower, x, y) {
 	this.sprite.scale.x = -3
 	this.range = tower.range
 	this.speed = tower.speed
+	this.movespeed = tower.movespeed
 	this.health = tower.health
 	this.damage = tower.damage
 	this.animTime = 0
 	this.shootTime = 0
+	this.attackTime = 0
+	this.uproot = function() {
+		this.sprite.removeChild(towerSprite)
+		let frames = []
+		for (let i = 0; i < 4; i++) {
+			frames.push(new PIXI.Texture(BaseTextureCache["assets/TowerAnimation.png"], new PIXI.Rectangle(16 * i, 0, 16, 32)))
+		}
+		towerSprite = new PIXI.extras.AnimatedSprite(frames)
+		towerSprite.animationSpeed = 0.02;
+		towerSprite.loop = false
+		towerSprite.play()
+		towerSprite.anchor.x = 0.5
+		towerSprite.anchor.y = 1
+		this.sprite.addChildAt(towerSprite, 0)
+
+		let closest = 1
+		let dx = map[1].x - this.sprite.x
+		let dy = map[1].y - this.sprite.y
+		let distance = dx * dx + dy * dy
+		for (let i = 2; i < map.length - 1; i++) {
+			dx = map[i].x - this.sprite.x
+			dy = map[i].y - this.sprite.y
+			let newDistance = dx * dx + dy * dy
+			if (newDistance < distance) {
+				distance = newDistance
+				closest = i
+			}
+		}
+		this.onPath = false
+		this.point = closest // closest point
+		this.state = this.states.walking
+		enemyUnits.push(this)
+	}
 	// helper methods for shooting
 	this.shootProjectile = function(sprite, target, callback) {
 		if (!sprite) {
@@ -655,6 +793,91 @@ let Tower = function(tower, x, y) {
 			}
 			this.animTime += delta
 			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
+		},
+		walking: (delta) => {
+			// Check if we reached the castle
+			if (this.point === -1) {
+				// TODO game over
+				removeEntity(this)
+				//state.exit()
+				//state = states.paused
+				//state.enter()
+				return true
+			}
+
+			// Update current target
+			let dx = this.sprite.x - map[this.point].x
+			let dy = this.sprite.y - map[this.point].y
+			let distancePoint = dx * dx + dy * dy
+			let distance = distancePoint
+			let i = entitiesOnPath.indexOf(this)
+			this.target = map[this.point]
+			if (i !== -1) {
+				while (i > 0 && entitiesOnPath[i - 1].sprite.x > map[this.point].x) {
+					i--
+					if (playerUnits.indexOf(entitiesOnPath[i]) !== -1) {
+						let x = entitiesOnPath[i].sprite.x
+						let y = entitiesOnPath[i].sprite.y
+						let dx = this.sprite.x - x
+						let dy = this.sprite.y - y
+						this.target = {x, y}
+						this.enemy = entitiesOnPath[i]
+						distance = dx * dx + dy * dy
+						break
+					}
+				}
+			}
+
+			// Move towards current target
+			dx = this.target.x - this.sprite.x
+			dy = this.target.y - this.sprite.y
+
+			let magnitude = Math.sqrt(dx * dx + dy * dy)
+			if (delta * this.movespeed * delta * this.movespeed > distance) {
+				this.sprite.x = this.target.x
+				this.sprite.y = this.target.y
+				if (distance === distancePoint) {
+					this.point--
+					if (!this.onPath) {
+						entitiesOnPath.push(this)
+						this.onPath = true
+					}
+					entitiesOnPath.sort((x, y) => {
+						return x.sprite.x - y.sprite.x
+					})
+				} else {
+					this.target = this.enemy
+					this.state = this.states.attacking
+				}
+			} else {
+				dx /= magnitude
+				dy /= magnitude
+
+				this.sprite.x += dx * delta * this.movespeed
+				this.sprite.y += dy * delta * this.movespeed
+			}
+			this.animTime += delta
+			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
+		},
+		attacking: (delta) => {
+			if (entities.indexOf(this.target) === -1) {
+				this.state = this.states.walking
+			} else {
+				this.attackTime += delta / 100
+				console.log(this.attackTime, this.speed, delta)
+				if (this.attackTime > this.speed) {
+					this.target.health -= this.damage
+					console.log(this.target)
+					this.attackTime -= this.speed
+					if (this.target.health <= 0) {
+						createEmitter(this.target.sprite.x, this.target.sprite.y, 270, '#FF0000')
+						removeEntity(this.target)
+						this.state = this.states.walking
+					}
+				}
+			}
+			this.animTime += delta
+			this.sprite.scale.y = 3 + Math.cos(this.animTime / 10) * 0.2
 		}
 	}
 	this.state = this.states.idle
@@ -686,7 +909,7 @@ let Projectile = function(container, speed, damage, launcher, target, callback) 
 				if (callback) callback(this.target, damage)
 				this.target.health -= this.damage
 				if (this.target.health <= 0) {
-					createEmitter(this.target.sprite.x, this.target.sprite.y, 270)
+					createEmitter(this.target.sprite.x, this.target.sprite.y, 270, "#FF0000")
 					removeEntity(this.target)
 				}
 				removeEntity(this)
