@@ -153,7 +153,7 @@ let strategyManager = {
 	},
 	spawnTower: function(tower) {
 		enemyTowers.push(new Tower(towers[tower.type], tower.x, tower.y))
-		tower[enemyTowers.length - 1].playerOwned = false
+		enemyTowers[enemyTowers.length - 1].playerOwned = false
 		createEmitter(tower.x, tower.y, 270)
 	}
 }
@@ -598,6 +598,7 @@ let Unit = function(unit, playerOwned) {
 					new AddGold(this.damage, this.sprite.x, this.sprite.y)
 				if (enemyHealth <= 0) {
 					nextLevel++
+					document.getElementById('result').innerText = "You Won!"
 					state.exit()
 					state = states.paused
 					state.enter()
@@ -797,11 +798,11 @@ let Tower = function(tower, x, y) {
 		walking: (delta) => {
 			// Check if we reached the castle
 			if (this.point === -1) {
-				// TODO game over
 				removeEntity(this)
-				//state.exit()
-				//state = states.paused
-				//state.enter()
+				document.getElementById('result').innerText = "Game Over!"
+				state.exit()
+				state = states.paused
+				state.enter()
 				return true
 			}
 

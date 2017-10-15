@@ -182,7 +182,7 @@ let levels = [
 					strategyManager.spawnTower({
 						x: 320,
 						y: 180,
-						type: 1
+						type: 0
 					})
 				}
 			},
@@ -197,7 +197,6 @@ let levels = [
 				enabled: false,
 				interval: 45000,
 				fire: function() {
-					console.log(enemyTowers)
 					if (enemyTowers.length > 0) {
 						enemyTowers[Math.floor(Math.random(enemyTowers.length))].uproot()
 					}
@@ -280,7 +279,7 @@ let buildings = [
 		enabled: false,
 		cost: 77,
 		buy: function() {
-			maxFood += 100
+			maxFood += 50
 		}
 	},
 	{
