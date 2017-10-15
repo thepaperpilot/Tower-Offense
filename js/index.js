@@ -148,6 +148,7 @@ let strategyManager = {
 	},
 	spawnTower: function(tower) {
 		new Tower(towers[tower.type], tower.x, tower.y).playerOwned = false
+		createEmitter(tower.x, tower.y, 270)
 	}
 }
 
