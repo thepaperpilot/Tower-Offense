@@ -86,7 +86,7 @@ button:disabled {
 }
 
 .world {
-	background: url(../assets/Background.png);
+	background: url(../assets/WorldMap.png);
     position: absolute;
     top: 0;
     bottom: 0;

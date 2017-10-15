@@ -14,8 +14,8 @@ let levels = [
 		endCutscene: "endLevel1",
 		bgm: 'level1BGM',
 		style: {
-			left: "10%",
-			bottom: "10%"
+			left: "37.5%",
+			top: "57.7%"
 		},
 		below: false,
 		initialTowers: [
@@ -78,8 +78,8 @@ let levels = [
 		endCutscene: "endLevel1",
 		bgm: 'level2BGM',
 		style: {
-			left: "30%",
-			top: "30%"
+			left: "51%",
+			top: "63.3%"
 		},
 		below: true,
 		initialTowers: [
@@ -142,8 +142,8 @@ let levels = [
 		endCutscene: "endLevel1",
 		bgm: 'level3BGM',
 		style: {
-			right: "40%",
-			top: "40%"
+			left: "53.6%",
+			top: "46.3%"
 		},
 		below: true,
 		initialTowers: [
