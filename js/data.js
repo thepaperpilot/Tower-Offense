@@ -226,7 +226,7 @@ let units = [
 		description: "A Fast but Frail Unit",
 		enabled: false,
 		cost: 20,
-		sprite: "fox",
+		sprite: "rabbit",
 		speed: 3,
 		health: 6,
 		damage: 1

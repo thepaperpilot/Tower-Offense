@@ -77,6 +77,7 @@ loader
 	.add("fox", "assets/FoxWizard.png")
 	.add("wolf", "assets/WolfKnight.png")
 	.add("bear", "assets/Barbearian.png")
+	.add("rabbit", "assets/BunnyBard.png")
 	.add("foxStatue", "assets/FoxWizardStatue.png")
 	.add("wolfStatue", "assets/WolfKnightStatue.png")
 	.add("bearStatue", "assets/BarbearianStatue.png")
@@ -624,8 +625,8 @@ let Tower = function(tower, x, y) {
 				tower.update.call(this, delta)
 			}
 			if (this.target) {
-				let dx = this.target.x - this.sprite.x
-				let dy = this.target.y - this.sprite.y
+				let dx = this.target.sprite.x - this.sprite.x
+				let dy = this.target.sprite.y - this.sprite.y
 				// Squaring is faster than square rooting
 				if (entities.indexOf(this.target) === -1 || dx * dx + dy * dy > this.range * this.range) {
 					this.target = null
