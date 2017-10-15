@@ -30,14 +30,14 @@ let cutscenes = {
 		"move 1 0,\n" +
 		"move 2 6;\n" +
 		"delay 1000;\n" +
-		"move 1 1;\n" +
+		"move 1 2;\n" +
 		"jiggle 1;\n" +
 		"emote 1 8;\n" +
 		"chat 1 0;\n" +
 		"move 2 4;\n" +
 		"emote 2 8;\n" +
-		"chat 2 1;\n" + 
-		"chat 1 2;\n" + 
+		"chat 2 1;\n" +
+		"chat 1 2;\n" +
 		"emote 2 1;\n" +
 		"chat 2 3,\n" +
 		"jiggle 2;\n" +
