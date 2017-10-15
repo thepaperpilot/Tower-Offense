@@ -273,9 +273,7 @@ let buildings = [
 		enabled: true,
 		cost: 10,
 		buy: function() {
-			for (let i = 0; i < units.length; i++) {
-				units[i].health *= 1.1
-			}
+			healthModifier *= 1.1
 			buildingCosts[3] += 5
 			this.button.innerText = buildingCosts[3]
 			enableBuilding(6, true)
@@ -289,9 +287,7 @@ let buildings = [
 		enabled: true,
 		cost: 10,
 		buy: function() {
-			for (let i = 0; i < units.length; i++) {
-				units[i].damage *= 1.1
-			}
+			damageModifier *= 1.1
 			buildingCosts[4] += 5
 			this.button.innerText = buildingCosts[4]
 		}
@@ -303,9 +299,7 @@ let buildings = [
 		enabled: true,
 		cost: 100,
 		buy: function() {
-			for (let i = 0; i < units.length; i++) {
-				units[i].speed *= 1.1
-			}
+			speedModifier *= 1.1
 			buildingCosts[5].cost *= 2
 			this.button.innerText = buildingCosts[5]
 		}

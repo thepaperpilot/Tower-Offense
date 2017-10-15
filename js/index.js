@@ -256,6 +256,7 @@ function startLevel(i) {
 	for (let i = 0; i < buildings.length; i++) {
 		buildingLevels.push(0)
 		buildingCosts.push(buildings[i].cost)
+		buildings[i].button.innerText = buildingCosts[i]
 		document.getElementById('building ' + i + ' quantity').innerText = '0'
 		buildings[i].element.style.display = buildings[i].enabled ? '' : 'none'
 	}
