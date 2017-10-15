@@ -11,18 +11,19 @@ But not before muttering a terrible promise, “I warn you, you demons, that I a
 
  
 Level 1 click start:
-As the critter had said, when the next day arose, it returned with its friends and a plan to bulldoze.
-They build their burrows and work all their farms, prepared to battle and to deal some harm.
-“We’ve all come to drink and we will not find stall.  We’ll huff through your towers and blow down your wall!”
+As the critter had said, when the next day arose, it returned with its friends and a plan to bulldoze. === Fox, Wolf, Bear walk in screen left: .  Tower enters screen right. <> Faces: Fox=4; Wolf=8; Bear=0; Tower=0;
+They build their burrows and work all their farms, prepared to battle and to do some harm. === All critters walk around stage left to represent work.  Wolf ends right of other critters on stage left. <> Face changes: None.
+“We’ve all come to drink and we will not find stall.  We’ll huff through your towers and blow down your wall!” === Wolf speaks. <> Face Changes: None.
 LEVEL 1 HAPPENS
-The battle was bloody and all were quite shaken, but now they knew nothing from them could be taken.
-“I’m surprised we could do it, burst through that wall?  Perhaps we are not all that weak after all.”
-“Are we sure that we’re safe?  Those stones really hurt.”  A small critter added while staying alert.  
-“We’ve passed through the worst, we mustn’t look back.  Lucky they don’t know we’re best in a pack.”
+The battle was bloody and all were quite shaken, but now they knew nothing from them could be taken. === Bear, Wolf, Rabbit, Fox enter stage left. <> Faces: Fox=1; Wolf=2; Rabbit=0; Bear=1;
+“I’m surprised we could do it, burst through that wall?  Perhaps we are not all that weak after all.” === All turn to Bear. Bear speaks to other critters. <> Face Changes: Bear=11;
+“Are we sure that we’re safe?  Those stones really hurt.”  A small critter added while staying alert. === All turn to Rabbit. Rabbit speaks to other critters, looking around. <> FCs: Rabbit=7;
+“We’ve passed through the worst, we mustn’t look back.  Lucky they don’t know we’re best in a pack.” === All turn to Wolf.  Wolf speaks to other critters.  Exit stage right. <> FCs: Wolf=1; Rabbit=1; Bear=1;
 
+ 
 Level 2 click start:
-“Our beloved spring is just over that hill!”  Instead what they saw haunts the lot of them still.  
-“Our spring, it’s gone!” the critters all cried, “they filled it with stones ‘til it totally dried!”
+“Our beloved spring is just over that hill!”  Instead what they saw haunts the lot of them still. === Fox, Bear, Wolf enter stage left: excited.
+“Our spring, it’s gone!” the critters all cried, “they filled it with stones ‘til it totally dried!” === Fox, Bear, Wolf: shocked.  
 “How could this be?  It’s all too insane!  There’s no way that we could let one stone remain!”
 “You’ve taken our water!” a fox thus exclaimed, “So we will not stop until you all are maimed!”
 LEVEL 2 HAPPENS
@@ -30,7 +31,6 @@ The next day passed quickly, they make the spring clean, all tearing up stone ju
 Their thirst fully quenched, they turned back around, prouder of all of the skills that they’ve found.
 “Somehow those towers were extra destructive.  No wonder they build them to be so obstructive.”
 “Making it through felt really climactic.  Thank goodness those turrets are totally static.”
-
 
 
 Level 3 click start:
