@@ -90,6 +90,7 @@ loader
 	.add("bearStatue", "assets/BarbearianStatue.png")
 	.add("spark", "assets/spark.png")
 	.add("smoke", "assets/CartoonSmoke.png")
+	.add("heart", "assets/StoneHeart.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
 	// Call setup after loading
@@ -184,7 +185,7 @@ let foodDisplay = document.getElementById('curr-food')
 let goldDisplay = document.getElementById('curr-gold')
 
 // Sprites
-let background, enemyPath
+let background, enemyPath, enemyHealthContainer, enemyDisplay
 
 function setup() {
 	app.ticker.add((delta) => {
@@ -281,6 +282,7 @@ function startLevel(i) {
 	if (enemyPath) enemyPath.parent.removeChild(enemyPath)
 	if (entitiesContainer) entitiesContainer.parent.removeChild(entitiesContainer)
 	if (emittersContainer) emittersContainer.parent.removeChild(emittersContainer)
+	if (enemyHealthContainer) enemyHealthContainer.parent.removeChild(enemyHealthContainer)
 
 	// Set up background
 	background = new Sprite(TextureCache[level.background]);
@@ -314,6 +316,25 @@ function startLevel(i) {
 	// Set up emitters container
 	emittersContainer = new Container()
 	app.stage.addChild(emittersContainer)
+
+	// Set up enemy health display
+	enemyHealthContainer = new Container()
+	let heart = new Sprite(TextureCache.heart)
+	heart.anchor.x = 0.5
+	heart.anchor.y = 1
+	heart.scale.x = heart.scale.y = 3
+	enemyHealthContainer.addChild(heart)
+	enemyDisplay = new Text(enemyHealth, {
+		fill: "#FF0000",
+		stroke: '#000000',
+		strokeThickness: 3
+	})
+	enemyDisplay.anchor.x = 0.5
+	enemyDisplay.y = 10
+	enemyHealthContainer.addChild(enemyDisplay)
+	enemyHealthContainer.x = map[map.length - 1].x - 50
+	enemyHealthContainer.y = map[map.length - 1].y - 100
+	app.stage.addChild(enemyHealthContainer)
 
 	// Transition states
 	state.exit()
@@ -599,6 +620,7 @@ let Unit = function(unit, playerOwned) {
 				createEmitter(this.sprite.x, this.sprite.y, 180, "#551a8b")
 				// TODO show enemyHealth to player
 				enemyHealth -= this.damage
+				enemyDisplay.text = enemyHealth
 				if (playerOwned)
 					new AddGold(this.damage, this.sprite.x, this.sprite.y)
 				if (enemyHealth <= 0) {
