@@ -1,0 +1,73 @@
+{
+    "numCharacters": 5,
+    "puppetScale": 1,
+    "greenScreen": "#00FF00",
+    "alwaysOnTop": false,
+    "ip": "localhost",
+    "port": 8080,
+    "characters": [
+        {
+            "name": "Gravy",
+            "id": 1,
+            "location": "1.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 24,
+            "location": "24.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 30,
+            "location": "30.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 32,
+            "location": "32.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 33,
+            "location": "33.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 39,
+            "location": "39.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 41,
+            "location": "41.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 42,
+            "location": "42.json"
+        },
+        {
+            "name": "New Puppet",
+            "id": 43,
+            "location": "43.json"
+        }
+    ],
+    "hotbar": [
+        1,
+        30,
+        24,
+        41,
+        32,
+        33,
+        39,
+        42,
+        43
+    ],
+    "actor": {
+        "id": 43,
+        "position": 3,
+        "facingLeft": false,
+        "emote": "0"
+    },
+    "numAssets": 49
+}

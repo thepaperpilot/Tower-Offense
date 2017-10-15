@@ -1,0 +1,307 @@
+{
+    "deadbonesStyle": false,
+    "body": [
+        {
+            "x": 1.5,
+            "y": -54,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:11"
+        }
+    ],
+    "head": [
+        {
+            "x": 1,
+            "y": -210.5,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:12"
+        }
+    ],
+    "hat": [],
+    "mouths": [
+        7,
+        10,
+        5,
+        11
+    ],
+    "eyes": [
+        0,
+        1,
+        4,
+        5
+    ],
+    "emotes": [
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -15.5,
+                    "y": -125,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:8"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -7,
+                    "y": -187.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                },
+                {
+                    "x": -6.5,
+                    "y": -210,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:1"
+                }
+            ],
+            "name": "default"
+        },
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -16,
+                    "y": -125.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:8"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -7,
+                    "y": -187.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                },
+                {
+                    "x": -10.5,
+                    "y": -225,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:0"
+                }
+            ],
+            "name": "happy"
+        },
+        {
+            "enabled": false,
+            "mouth": [],
+            "eyes": [],
+            "name": "wink"
+        },
+        {
+            "enabled": false,
+            "mouth": [],
+            "eyes": [],
+            "name": "kiss"
+        },
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -12,
+                    "y": -128.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:6"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -7,
+                    "y": -187.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                },
+                {
+                    "x": -7,
+                    "y": -207,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:4"
+                }
+            ],
+            "name": "angry"
+        },
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -14.5,
+                    "y": -125.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:10"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -7,
+                    "y": -187.75,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                },
+                {
+                    "x": -7.5,
+                    "y": -211.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:3"
+                }
+            ],
+            "name": "sad"
+        },
+        {
+            "enabled": false,
+            "mouth": [],
+            "eyes": [],
+            "name": "ponder"
+        },
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -5.5,
+                    "y": -123.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:9"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -10.5,
+                    "y": -225,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:0"
+                },
+                {
+                    "x": -7,
+                    "y": -187.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                }
+            ],
+            "name": "gasp"
+        },
+        {
+            "enabled": false,
+            "mouth": [],
+            "eyes": [],
+            "name": "veryangry"
+        },
+        {
+            "enabled": false,
+            "mouth": [],
+            "eyes": [],
+            "name": "verysad"
+        },
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -6,
+                    "y": -126.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:6"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -7,
+                    "y": -187.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                },
+                {
+                    "x": -9,
+                    "y": -212.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:2"
+                }
+            ],
+            "name": "confused"
+        },
+        {
+            "enabled": true,
+            "mouth": [
+                {
+                    "x": -2,
+                    "y": -122.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:7"
+                }
+            ],
+            "eyes": [
+                {
+                    "x": -9.5,
+                    "y": -220,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:0"
+                },
+                {
+                    "x": -7,
+                    "y": -187.5,
+                    "rotation": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:5"
+                }
+            ],
+            "name": "ooo"
+        }
+    ],
+    "props": [
+        {
+            "x": -3,
+            "y": -158,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1,
+            "id": "165e1af4-93ac-4566-a5eb-bddb4fbcd16c:13"
+        }
+    ],
+    "name": "Gravy",
+    "id": 1,
+    "position": 1,
+    "facingLeft": false,
+    "emote": 0
+}
