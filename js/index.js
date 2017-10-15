@@ -77,6 +77,8 @@ loader
 	.add("wolf", "assets/WolfKnight.png")
 	.add("bear", "assets/Barbearian.png")
 	.add("foxStatue", "assets/FoxWizardStatue.png")
+	.add("wolfStatue", "assets/WolfKnightStatue.png")
+	.add("bearStatue", "assets/BarbearianStatue.png")
 	.add("spark", "assets/spark.png")
 	// Sounds
 	//.add("deflect", "assets/deflect.mp3")
@@ -155,7 +157,7 @@ let emitters = [];
 let nextLevel = 0;
 
 // Level specific variables
-let map, food, foodIncome, gold, enemyHealth;
+let map, food, foodIncome, gold, enemyHealth, maxFood;
 let buildingLevels = [], buildingCosts = []
 let healthModifier, damageModifier, speedModifier
 let emittersContainer;
@@ -184,6 +186,7 @@ function updateParticles(delta) {
 
 function updateGame(delta) {
 	food += foodIncome * delta
+	if (food > maxFood) food = maxFood
 
 	for (let i = 0; i < entities.length; i++) {
 		// if entities[i].state(delta) returns true, then 
@@ -235,7 +238,8 @@ function startLevel(i) {
 	let level = levels[i]
 
 	// Reset level specific values
-	food = 10
+	food = 100
+	maxFood = 100
 	foodIncome = 0.01
 	gold = 0
 	enemyHealth = level.enemyHealth
@@ -294,9 +298,6 @@ function startLevel(i) {
 	emittersContainer = new Container()
 	app.stage.addChild(emittersContainer)
 
-	// Set up new AI
-	strategyManager.reset(level.strategies)
-
 	// Transition states
 	state.exit()
 	state = states.cutscene
@@ -304,6 +305,8 @@ function startLevel(i) {
 	startCutscene(level.startCutscene, () => {
 		state.exit()
 		state = states.playing
+		// Set up new AI
+		strategyManager.reset(level.strategies)
 		state.enter()
 	})
 }
@@ -383,6 +386,65 @@ function createEmitter(x, y, angle) {
 			"y": -32,
 			"w": 16,
 			"h": 32
+		}
+	})
+	emitters.push(emitter)
+}
+
+function createSplashEmitter(x, y) {
+	let emitter = new Emitter(emittersContainer,
+		[TextureCache.spark],
+		{
+		"alpha": {
+			"start": 1,
+			"end": 0.31
+		},
+		"scale": {
+			"start": 1,
+			"end": 0.001,
+			"minimumScaleMultiplier": 0.5
+		},
+		"color": {
+			"start": "#ffffff",
+			"end": "#0000ff"
+		},
+		"speed": {
+			"start": 200,
+			"end": 50,
+			"minimumSpeedMultiplier": 0.2
+		},
+		"acceleration": {
+			"x": 0,
+			"y": 0
+		},
+		"maxSpeed": 0,
+		"startRotation": {
+			"min": 250,
+			"max": 290
+		},
+		"noRotation": false,
+		"rotationSpeed": {
+			"min": 0,
+			"max": 20
+		},
+		"lifetime": {
+			"min": 0.25,
+			"max": 0.5
+		},
+		"blendMode": "normal",
+		"frequency": 0.001,
+		"emitterLifetime": 0.2,
+		"maxParticles": 1000,
+		"pos": {
+			"x": x,
+			"y": y
+		},
+		"addAtBack": false,
+		"spawnType": "circle",
+		"spawnCircle": {
+			"x": 0,
+			"y": 0,
+			"r": 50
 		}
 	})
 	emitters.push(emitter)
@@ -544,20 +606,23 @@ let Tower = function(tower, x, y) {
 	this.animTime = 0
 	this.shootTime = 0
 	// helper methods for shooting
-	this.shootProjectile = function(sprite, target) {
+	this.shootProjectile = function(sprite, target, callback) {
 		if (!sprite) {
 			sprite = new Graphics()
 			sprite.beginFill(0xFF0000, 1);
 			sprite.drawRect(0, 0, 8, 8);
 			sprite.endFill()
 		}
-		new Projectile(sprite, PROJECTILE_SPEED, this.damage, this.sprite, target)
+		new Projectile(sprite, PROJECTILE_SPEED, this.damage, this.sprite, target, callback)
 	}
 	this.states = {
 		idle: (delta) => {
+			if (tower.update) {
+				tower.update.call(this, delta)
+			}
 			if (this.target) {
-				let dx = this.target.sprite.x - this.sprite.x
-				let dy = this.target.sprite.y - this.sprite.y
+				let dx = this.target.x - this.sprite.x
+				let dy = this.target.y - this.sprite.y
 				// Squaring is faster than square rooting
 				if (entities.indexOf(this.target) === -1 || dx * dx + dy * dy > this.range * this.range) {
 					this.target = null
@@ -592,7 +657,7 @@ let Tower = function(tower, x, y) {
 	entities.push(this)
 }
 
-let Projectile = function(container, speed, damage, launcher, target) {
+let Projectile = function(container, speed, damage, launcher, target, callback) {
 	this.sprite = container
 	this.speed = speed
 	this.damage = damage
@@ -613,6 +678,7 @@ let Projectile = function(container, speed, damage, launcher, target) {
 			let distance = dx * dx + dy * dy
 			let magnitude = Math.sqrt(dx * dx + dy * dy)
 			if (delta * this.speed * delta * this.speed > distance) {
+				if (callback) callback(this.target, damage)
 				this.target.health -= this.damage
 				if (this.target.health <= 0) {
 					createEmitter(this.target.sprite.x, this.target.sprite.y, 270)

@@ -9,7 +9,6 @@ let levels = [
 			{x: 1920, y: 360},
 		],
 		enemyHealth: 10,
-		enemyName: "Cool Dude",
 		background: "background",
 		startCutscene: "cutscene2",
 		endCutscene: "cutscene2",
@@ -31,8 +30,8 @@ let levels = [
 				interval: 45000,
 				fire: function() {
 					strategyManager.spawnTower({
-						x: Math.random() * 1800 + 60,
-						y: Math.random() * 600 + 120,
+						x: (Math.random() * 0.9 + 0.05) * 1920,
+						y: (Math.random() * 0.9 + 0.05) * 768,
 						type: 0
 					})
 				}
@@ -73,7 +72,6 @@ let levels = [
 			{x: 1920, y: 360},
 		],
 		enemyHealth: 10,
-		enemyName: "Cool Dude",
 		background: "background",
 		startCutscene: "cutscene2",
 		endCutscene: "cutscene2",
@@ -95,9 +93,9 @@ let levels = [
 				interval: 45000,
 				fire: function() {
 					strategyManager.spawnTower({
-						x: Math.random() * 1000 + 140,
-						y: Math.random() * 680 + 20,
-						type: 0
+						x: (Math.random() * 0.9 + 0.05) * 1920,
+						y: (Math.random() * 0.9 + 0.05) * 768,
+						type: Math.floor(Math.random() * 3)
 					})
 				}
 			},
@@ -137,7 +135,6 @@ let levels = [
 			{x: 1920, y: 360},
 		],
 		enemyHealth: 10,
-		enemyName: "Cool Dude",
 		background: "background",
 		startCutscene: "cutscene1",
 		endCutscene: "cutscene2",
@@ -159,8 +156,8 @@ let levels = [
 				interval: 45000,
 				fire: function() {
 					strategyManager.spawnTower({
-						x: Math.random() * 1000 + 140,
-						y: Math.random() * 680 + 20,
+						x: (Math.random() * 0.9 + 0.05) * 1920,
+						y: (Math.random() * 0.9 + 0.05) * 768,
 						type: 0
 					})
 				}
@@ -221,7 +218,7 @@ let units = [
 		cost: 25,
 		sprite: "bear",
 		speed: 0.75,
-		health: 30,
+		health: 40,
 		damage: 2
 	},
 	{
@@ -260,13 +257,13 @@ let buildings = [
 		}
 	},
 	{
-		name: "Farm Planet",
-		description: "Outrageously Increases Food Production",
+		name: "Barn",
+		description: "Increases Food Storage",
 		type: "farm",
 		enabled: false,
-		cost: 777,
+		cost: 77,
 		buy: function() {
-			foodIncome += 0.77
+			maxFood += 100
 		}
 	},
 	{
@@ -339,13 +336,82 @@ let buildings = [
 
 let towers = [
 	{
-		sprite: "foxStatue",
+		sprite: "foxStatue", // Base Tower
 		range: 200,
 		speed: 0.2,
 		health: 10,
 		damage: 2,
 		shoot: function(target) {
-			this.shootProjectile(null, target)
+			let sprite = new Graphics()
+			sprite.beginFill(0xFF0000, 1);
+			sprite.drawRect(0, 0, 8, 8);
+			sprite.endFill()
+			this.shootProjectile(sprite, target)
+		}
+	},
+	{
+		sprite: "wolfStatue", // AOE on projectile hit
+		range: 200,
+		speed: 0.2,
+		health: 10,
+		damage: 2,
+		shoot: function(target) {
+			let sprite = new Graphics()
+			sprite.beginFill(0x0000FF, 1);
+			sprite.drawRect(0, 0, 8, 8);
+			sprite.endFill()
+			this.shootProjectile(sprite, target, (target, damage) => {
+				createSplashEmitter(target.sprite.x, target.sprite.y)
+				for (let i = 0; i < playerUnits.length; i++) {
+					if (playerUnits[i] == target) continue
+					let dx = sprite.x - playerUnits[i].sprite.x
+					let dy = sprite.y - playerUnits[i].sprite.y
+					if (dx * dx + dy * dy < 50000) {
+						playerUnits[i].health -= damage
+						if (playerUnits[i].health <= 0) {
+							createEmitter(playerUnits[i].sprite.x, playerUnits[i].sprite.y, 270)
+							removeEntity(playerUnits[i])
+						}
+					}
+				}
+			})
+		},
+	},
+	{
+		sprite: "bearStatue", // Wanders Map
+		range: 100,
+		speed: 0.1,
+		health: 50,
+		damage: 4,
+		update: function(delta) {
+			if (!this.moveTarget) {
+				this.moveTarget = {
+					x: (Math.random() * 0.9 + 0.05) * 1920,
+					y: (Math.random() * 0.9 + 0.05) * 768
+				}
+			}
+			let dx = this.moveTarget.x - this.sprite.x
+			let dy = this.moveTarget.y - this.sprite.y
+
+			let magnitude = Math.sqrt(dx * dx + dy * dy)
+			if (delta * delta > magnitude * magnitude) {
+				this.sprite.x = this.moveTarget.x
+				this.sprite.y = this.moveTarget.y
+				this.moveTarget = null
+			} else {
+				dx /= magnitude
+				dy /= magnitude
+
+				this.sprite.x += dx * delta
+				this.sprite.y += dy * delta
+			}
+		},
+		shoot: function(target) {
+			let sprite = new Graphics()
+			sprite.beginFill(0x00FF00, 1);
+			sprite.drawRect(0, 0, 8, 8);
+			sprite.endFill()
+			this.shootProjectile(sprite, target)
 		}
 	}
 ]
