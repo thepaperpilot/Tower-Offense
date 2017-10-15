@@ -49,35 +49,71 @@ let cutscenes = {
 		"remove 1;\n" +
 		"remove 2;\n" +
 		"remove 3;",
-	cutscene2: "delay 1000;\n" +
+	startLevel1: "delay 1000;\n" +
 		"add fox 1 0;\n" +
-		"add foxStatue 2 6;\n" +
-		"move 1 1,\n" +
-		"move 2 5;\n" +
-		"move 1 0,\n" +
-		"move 2 6;\n" +
-		"delay 1000;\n" +
-		"move 1 2;\n" +
-		"jiggle 1;\n" +
-		"emote 1 8;\n" +
-		"chat 1 4;\n" +
-		"move 2 4;\n" +
+		"emote 1 4;\n" +
+		"add fox 2 0;\n" + // TODO wolf
 		"emote 2 8;\n" +
-		"chat 2 7;\n" +
-		"chat 1 2;\n" +
-		"emote 2 1;\n" +
-		"chat 2 3,\n" +
-		"jiggle 2;\n" +
-		"delay 400;\n" +
-		"jiggle 2;\n" +
-		"delay 400;\n" +
-		"jiggle 2;\n" +
-		"delay 400;\n" +
-		"babble 2;\n" +
-		"move 1 0,\n" +
-		"move 2 6;\n" +
+		"add fox 3 0;\n" + // TODO bear
+		"add fox 4 6;\n" + // TODO tower
+		"move 1 1,\n" +
+		"move 2 2,\n" +
+		"move 3 3,\n" +
+		"move 4 5,\n" +
+		"chat 0 8;\n" +
+		"move 1 3,\n" +
+		"move 2 1,\n" +
+		"move 3 2;\n" +
+		"move 1 2,\n" +
+		"move 2 3,\n" +
+		"move 3 1,\n" +
+		"chat 0 9;\n" +
+		"chat 2 10;\n" +
+		"move 4 6,\n" +
+		"move 3 6,\n" +
+		"move 2 6,\n" +
+		"move 1 6;\n" +
 		"remove 1;\n" +
-		"remove 2;\n"
+		"remove 2;\n" +
+		"remove 3;\n" +
+		"remove 4;",
+	endLevel1: "delay 1000;\n" +
+		"add fox 1 0;\n" + // TODO bear
+		"emote 1 1;\n" +
+		"add fox 2 0;\n" + // TODO wolf
+		"emote 2 2;\n" +
+		"add fox 3 0;\n" + // TODO rabbit
+		"add fox 4 0;\n" +
+		"emote 4 1;\n" +
+		"move 1 1,\n" +
+		"move 2 2,\n" +
+		"move 3 3,\n" +
+		"move 4 4;\n" +
+		"chat 0 11;\n" +
+		"emote 3 11;\n" +
+		"faceLeft 2;\n" +
+		"faceLeft 3;\n" +
+		"faceLeft 4;\n" +
+		"chat 1 12;\n" +
+		"emote 3 7;\n" +
+		"faceLeft 1 false;\n" +
+		"faceLeft 2 false;\n" +
+		"faceLeft 3;\n" +
+		"faceLeft 4;\n" +
+		"chat 3 13;\n" +
+		"emote 1 1;\n" +
+		"emote 2 1;\n" +
+		"emote 3 1;\n" +
+		"chat 2 14;\n" +
+		"move 2 5;\n" +
+		"move 4 6,\n" +
+		"move 3 6,\n" +
+		"move 2 6,\n" +
+		"move 1 6;\n" +
+		"remove 1;\n" +
+		"remove 2;\n" +
+		"remove 3;\n" +
+		"remove 4;\n"
 }
 
 let scripts = [
@@ -89,9 +125,20 @@ let scripts = [
 	"“But where will we drink?” the critter exclaimed.  “How could you come and destroy this terrain!”",
 	"With nothing received but bashes near deathly, the critter ran home with speed quite expressly.",
 	"But not before muttering a terrible promise, “I warn you, you demons, that I am quite honest.”",
-	"“When I next appear, prepare your defense, for I will return with a Tower Offense!”"
+	"“When I next appear, prepare your defense, for I will return with a Tower Offense!”",
 
 	// Level 1 intro: Starting at index 8
+	"As the critter had said, when the next day arose, it returned with its friends and a plan to bulldoze.",
+	"They build their burrows and work all their farms, prepared to battle and to do some harm.",
+	"“We’ve all come to drink and we will not find stall.  We’ll huff through your towers and blow down your wall!”",
+
+	// Level 1 outro: Starting at index 11
+	"The battle was bloody and all were quite shaken, but now they knew nothing from them could be taken.",
+	"“I’m surprised we could do it, burst through that wall?  Perhaps we are not all that weak after all.”",
+	"“Are we sure that we’re safe?  Those stones really hurt.”  A small critter added while staying alert.",
+	"“We’ve passed through the worst, we mustn’t look back.  Lucky they don’t know we’re best in a pack.”"
+
+	// Level 2 intro: Starting at index 15
 ]
 
 window.loadBabble = function() {
@@ -154,7 +201,7 @@ function chatter(callback, target, chat, stage, textPos) {
 				stage.getPuppet(target).setBabbling(false)
 		}
 		document.getElementById('message').innerText = chat.substring(0, textPos) + "_"
-		setTimeout(() => {chatter(callback, target, chat, stage, textPos)}, 20)
+		setTimeout(() => {chatter(callback, target, chat, stage, textPos)}, 40)
 	}
 }
 

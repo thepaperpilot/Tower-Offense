@@ -10,8 +10,8 @@ let levels = [
 		],
 		enemyHealth: 10,
 		background: "background",
-		startCutscene: "cutscene2",
-		endCutscene: "cutscene2",
+		startCutscene: "startLevel1",
+		endCutscene: "endLevel1",
 		style: {
 			left: "10%",
 			bottom: "10%"

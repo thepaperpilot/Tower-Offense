@@ -39,9 +39,20 @@ document.getElementById('start-button').addEventListener('click', () => {
 		openMap()
 	})
 })
-document.getElementById('continue-button').addEventListener('click', () => {
+document.getElementById('continue-button').addEventListener('click', (e) => {
+	let beaten = e.target.beaten
+	e.target.beaten = false
 	document.getElementById('continue').className = 'start inactive'
-	openMap()
+	if (beaten) {
+		state.exit()
+		state = states.cutscene
+		state.enter()
+		startCutscene(levels[nextLevel - 1].endCutscene, () => {
+			openMap()
+		})
+	} else {
+		openMap()
+	}
 })
 makeHorizontalScroll('buildings-tab')
 makeHorizontalScroll('units-tab')
@@ -626,6 +637,7 @@ let Unit = function(unit, playerOwned) {
 				if (enemyHealth <= 0) {
 					nextLevel++
 					document.getElementById('result').innerText = "You Won!"
+					document.getElementById('continue-button').beaten = true
 					state.exit()
 					state = states.paused
 					state.enter()
