@@ -24,9 +24,10 @@ document.getElementById('units-tab-button').addEventListener('click', () => {
 	unitsTab.style.display = ''
 	buildingsTab.style.display = 'none'
 })
-document.getElementById('buildings-tab-button').addEventListener('click', () => {
+document.getElementById('buildings-tab-button').addEventListener('click', (e) => {
 	unitsTab.style.display = 'none'
 	buildingsTab.style.display = ''
+	e.target.classList.remove('pulse')
 })
 document.getElementById('start-button').addEventListener('click', () => {
 	document.getElementById('start').className = 'start inactive'
@@ -153,6 +154,7 @@ let strategyManager = {
 }
 
 // General variables
+let hasGottenGold = false
 let state = states.paused;
 let emitters = [];
 let nextLevel = 0;
@@ -702,6 +704,10 @@ let Projectile = function(container, speed, damage, launcher, target, callback) 
 
 let AddGold = function(amount, x, y) {
 	gold += amount
+	if (!hasGottenGold && gold >= 6) {
+		hasGottenGold = true
+		document.getElementById('buildings-tab-button').className += " pulse"
+	}
 	this.sprite = new Text("+" + amount + "G", {
 		fill: "#FFDF00",
 		stroke: '#000000',

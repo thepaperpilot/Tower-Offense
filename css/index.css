@@ -194,7 +194,6 @@ button:disabled {
 	z-index: 1;
 	display: flex;
 	transition: all 1s ease;
-	overflow: hidden;
 	min-height: 100px;
 }
 
@@ -347,11 +346,26 @@ button:disabled {
 	margin: 0;
 }
 
+.pulse {
+  	box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+	-webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  	-moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  	-ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  	animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  	z-index: 100;
+	position: relative;
+}
+
 @keyframes pulse_animation {
 	0% { transform: scale(1); }
 	50% { transform: scale(1.5); }
 	100% { transform: scale(1); }
 }
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 
 @media (max-height: 500px) {
   canvas {
