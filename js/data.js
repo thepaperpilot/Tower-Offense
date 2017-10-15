@@ -74,8 +74,8 @@ let levels = [
 		],
 		enemyHealth: 20,
 		background: "background",
-		startCutscene: "startLevel1",
-		endCutscene: "endLevel1",
+		startCutscene: "startLevel2",
+		endCutscene: "endLevel2",
 		bgm: 'level2BGM',
 		style: {
 			left: "51%",
@@ -138,8 +138,8 @@ let levels = [
 		],
 		enemyHealth: 30,
 		background: "background",
-		startCutscene: "startLevel1",
-		endCutscene: "endLevel1",
+		startCutscene: "startLevel3",
+		endCutscene: "endLevel3",
 		bgm: 'level3BGM',
 		style: {
 			left: "53.6%",

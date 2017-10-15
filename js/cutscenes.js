@@ -14,7 +14,7 @@ let puppets = {
 	wolf2: {"deadbonesStyle":true,"body":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:46","x":14,"y":-203,"rotation":0,"scaleX":1.4007155635062614,"scaleY":1.544}],"head":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:40","x":3,"y":-174,"rotation":0,"scaleX":1,"scaleY":1}],"hat":[],"mouths":[4,11,5,7,10,8],"eyes":[11,0,1,3,7,6],"emotes":[{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-157,"rotation":0,"scaleX":1,"scaleY":1}],"name":"default"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:32","x":82,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"happy"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:27","x":60,"y":-160,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":45,"y":-135,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":42,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"wink"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":29,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"name":"kiss"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":34,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":30,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"name":"angry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-152,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-140,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":32,"y":-132,"rotation":0,"scaleX":1,"scaleY":1}],"name":"sad"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ponder"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":109,"y":-165,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":35,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"gasp"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":49,"y":-157,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":19,"y":-155,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":30,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":28,"y":-146,"rotation":0,"scaleX":1,"scaleY":1}],"name":"veryangry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":-16,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":34,"y":-136,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":40,"y":-122,"rotation":0,"scaleX":1,"scaleY":1}],"name":"verysad"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":0,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":36,"y":-153,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":36,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"name":"confused"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":18,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-162,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":26,"y":-173,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ooo"}],"props":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:41","x":219,"y":-77,"rotation":0.7464657976454164,"scaleX":1.9188281034029953,"scaleY":1.871595845408168}],"name":"New Puppet","id":33,"position":1,"facingLeft":false,"emote":0},
 	youthWolf: {"deadbonesStyle":true,"body":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:39","x":-2,"y":-198,"rotation":0,"scaleX":1.2146690518783543,"scaleY":1.3119999999999998}],"head":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:40","x":3,"y":-174,"rotation":0,"scaleX":1,"scaleY":1}],"hat":[],"mouths":[4,11,5,7,10,8],"eyes":[11,0,1,3,7,6],"emotes":[{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-157,"rotation":0,"scaleX":1,"scaleY":1}],"name":"default"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:32","x":82,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"happy"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:27","x":60,"y":-160,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":45,"y":-135,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":42,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"wink"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":29,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"name":"kiss"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":34,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":30,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"name":"angry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-152,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-140,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":32,"y":-132,"rotation":0,"scaleX":1,"scaleY":1}],"name":"sad"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ponder"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":109,"y":-165,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":35,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"gasp"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":49,"y":-157,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":19,"y":-155,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":30,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":28,"y":-146,"rotation":0,"scaleX":1,"scaleY":1}],"name":"veryangry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":-16,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":34,"y":-136,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":40,"y":-122,"rotation":0,"scaleX":1,"scaleY":1}],"name":"verysad"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":0,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":36,"y":-153,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":36,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"name":"confused"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":18,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-162,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":26,"y":-173,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ooo"}],"props":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:41","x":219,"y":-77,"rotation":0.7464657976454164,"scaleX":1.9188281034029953,"scaleY":1.871595845408168}],"name":"New Puppet","id":39,"position":1,"facingLeft":false,"emote":0},
 	bear: {"deadbonesStyle":true,"body":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:42","x":-10,"y":-176,"rotation":0,"scaleX":1,"scaleY":1}],"head":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:43","x":2,"y":-177,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:44","x":3,"y":-175,"rotation":0,"scaleX":1,"scaleY":1}],"hat":[],"mouths":[4,11,5,7,10,8],"eyes":[11,0,1,3,7,6],"emotes":[{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"default"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:32","x":82,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"happy"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:27","x":60,"y":-160,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":45,"y":-135,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":42,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"wink"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":29,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"name":"kiss"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":34,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":30,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"name":"angry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-152,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-140,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":32,"y":-132,"rotation":0,"scaleX":1,"scaleY":1}],"name":"sad"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ponder"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":109,"y":-165,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":35,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"gasp"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":49,"y":-157,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":19,"y":-155,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":30,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":28,"y":-146,"rotation":0,"scaleX":1,"scaleY":1}],"name":"veryangry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":-16,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":34,"y":-136,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":40,"y":-122,"rotation":0,"scaleX":1,"scaleY":1}],"name":"verysad"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":0,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":36,"y":-153,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":36,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"name":"confused"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":18,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-162,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":26,"y":-173,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ooo"}],"props":[],"name":"New Puppet","id":41,"position":1,"facingLeft":false,"emote":0},
-	tower: {"deadbonesStyle":true,"body":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:45","x":28,"y":-244,"rotation":0,"scaleX":1,"scaleY":1}],"head":[],"hat":[],"mouths":[4,11,5,7,10,8],"eyes":[11,0,1,3,7,6],"emotes":[{"enabled":true,"mouth":[],"eyes":[],"name":"default"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:32","x":82,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"happy"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:27","x":60,"y":-160,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":45,"y":-135,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":42,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"wink"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":29,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"name":"kiss"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":34,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":30,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"name":"angry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-152,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-140,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":32,"y":-132,"rotation":0,"scaleX":1,"scaleY":1}],"name":"sad"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ponder"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":109,"y":-165,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":35,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"gasp"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:47","x":24,"y":-240,"rotation":0,"scaleX":1,"scaleY":1}],"name":"veryangry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":-16,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":34,"y":-136,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":40,"y":-122,"rotation":0,"scaleX":1,"scaleY":1}],"name":"verysad"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":0,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":36,"y":-153,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":36,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"name":"confused"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":18,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-162,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":26,"y":-173,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ooo"}],"props":[],"name":"New Puppet","id":42,"position":1,"facingLeft":false,"emote":0},
+	tower: {"deadbonesStyle":true,"body":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:45","x":28,"y":-244,"rotation":0,"scaleX":1,"scaleY":1}],"head":[],"hat":[],"mouths":[4,11,5,7,10,8],"eyes":[11,0,1,3,7,6],"emotes":[{"enabled":true,"mouth":[],"eyes":[],"name":"default"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:32","x":82,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"happy"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:27","x":60,"y":-160,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":45,"y":-135,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":42,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"wink"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":29,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"name":"kiss"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":34,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":30,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"name":"angry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":24,"y":-152,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-140,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":32,"y":-132,"rotation":0,"scaleX":1,"scaleY":1}],"name":"sad"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ponder"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":109,"y":-165,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":35,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"gasp"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:50","x":26,"y":-238,"rotation":0,"scaleX":1,"scaleY":1}],"name":"veryangry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":-16,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":34,"y":-136,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":40,"y":-122,"rotation":0,"scaleX":1,"scaleY":1}],"name":"verysad"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":0,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":36,"y":-153,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":36,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"name":"confused"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":18,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-162,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":26,"y":-173,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ooo"}],"props":[],"name":"New Puppet","id":42,"position":1,"facingLeft":false,"emote":0},
 	rabbit: {"deadbonesStyle":true,"body":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:48","x":-19,"y":-204,"rotation":0,"scaleX":1,"scaleY":1}],"head":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:47","x":-17,"y":-195,"rotation":0,"scaleX":1,"scaleY":1}],"hat":[],"mouths":[4,11,5,7,10,8],"eyes":[11,0,1,3,7,6],"emotes":[{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"default"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:32","x":10,"y":-147,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"happy"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:27","x":60,"y":-160,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":45,"y":-135,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":42,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"wink"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":0,"y":-141,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":-6,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":29,"y":-162,"rotation":0,"scaleX":1,"scaleY":1}],"name":"kiss"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":34,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":32,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":30,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"name":"angry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":8,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-140,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":32,"y":-132,"rotation":0,"scaleX":1,"scaleY":1}],"name":"sad"},{"enabled":true,"mouth":[],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":32,"y":-156,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ponder"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":39,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":35,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":34,"y":-158,"rotation":0,"scaleX":1,"scaleY":1}],"name":"gasp"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:34","x":48,"y":-156,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":19,"y":-155,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":30,"y":-154,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:26","x":28,"y":-146,"rotation":0,"scaleX":1,"scaleY":1}],"name":"veryangry"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":-16,"y":-144,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":34,"y":-136,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:25","x":40,"y":-122,"rotation":0,"scaleX":1,"scaleY":1}],"name":"verysad"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:22","x":0,"y":-150,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:28","x":36,"y":-153,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":36,"y":-154,"rotation":0,"scaleX":1,"scaleY":1}],"name":"confused"},{"enabled":true,"mouth":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:23","x":-3,"y":-149,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:33","x":-12,"y":-149,"rotation":0,"scaleX":1,"scaleY":1}],"eyes":[{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:31","x":33,"y":-162,"rotation":0,"scaleX":1,"scaleY":1},{"id":"055869ba-3404-45a3-8f39-21d2e96a90ac:24","x":26,"y":-173,"rotation":0,"scaleX":1,"scaleY":1}],"name":"ooo"}],"props":[],"name":"New Puppet","id":43,"position":1,"facingLeft":false,"emote":0}
 }
 
@@ -205,49 +205,17 @@ let cutscenes = {
 		"move 2 3,\n" +
 		"move 3 4,\n" +
 		"move 4 5;\n" +
-		"chat 4 23,\n" +
-		"move 4 0,\n" +
-		"move 3 0,\n" +
-		"move 2 0,\n" +
-		"move 1 0;\n" +
-		"remove 1;\n" +
-		"remove 2;\n" +
-		"remove 3;\n" +
-		"remove 4;\n" +
-		"add fox 1 6;\n" +
-		"emote 1 10;\n" +
-		"add wolf 2 6;\n" +
-		"emote 2 6;\n" +
-		"add bear 3 6;\n" +
-		"emote 3 0;\n" +
-		"add rabbit 4 6;\n" +
-		"emote 4 5;\n" +
-		"move 1 2,\n" +
-		"move 2 3,\n" +
-		"move 3 4,\n" +
-		"move 4 5;\n" +
-		"chat 0 24,\n" +
-		"move 4 0,\n" +
-		"move 3 0,\n" +
-		"move 2 0,\n" +
-		"move 1 0;\n" +
-		"remove 1;\n" +
-		"remove 2;\n" +
-		"remove 3;\n" +
-		"remove 4;\n" +
-		"add fox 1 6;\n" +
-		"emote 1 2;\n" +
-		"add wolf 2 6;\n" +
-		"emote 2 2;\n" +
-		"add bear 3 6;\n" +
-		"emote 3 0;\n" +
-		"add rabbit 4 6;\n" +
-		"emote 4 2;\n" +
-		"chat 0 25,\n" +
-		"move 1 2,\n" +
-		"move 2 3,\n" +
-		"move 3 4,\n" +
-		"move 4 5;\n" +
+		"chat 4 23;\n" +
+		"move 4 -4,\n" +
+		"move 3 -3,\n" +
+		"move 2 -2,\n" +
+		"move 1 -1;\n" +
+		"chat 0 24;\n" +
+		"move 4 -4,\n" +
+		"move 3 -3,\n" +
+		"move 2 -2,\n" +
+		"move 1 -1,\n" +
+		"chat 0 25;\n" +
 		"add tower 5 0;\n" +
 		"emote 5 8;\n" +
 		"add youthWolf 6 0;\n" +
@@ -265,7 +233,7 @@ let cutscenes = {
 		"emote 1 4;\n" +
 		"emote 2 8;\n" +
 		"emote 3 7;\n" +
-		"emote 4 9\n" +
+		"emote 4 9;\n" +
 		"move 5 1,\n" +
 		"move 6 2;\n" +
 		"move 5 2,\n" +
@@ -286,8 +254,8 @@ let cutscenes = {
 		"emote 4 4;\n" +
 		"add tower 5 0;\n" +
 		"emote 5 8;\n" +
-		"emote 6 8;\n" +
 		"add tower 6 0;\n" +
+		"emote 6 8;\n" +
 		"move 5 2,\n" +
 		"move 6 1,\n" +
 		"chat 1 28;\n" +
@@ -323,12 +291,12 @@ let cutscenes = {
         "emote 3 5;\n" +
         "move 4 1,\n" +
         "chat 1 31;\n" +
-        "add youngWolf 5 6;\n" +
+        "add youthWolf 5 6;\n" +
         "emote 3 0;\n" +
         "emote 5 5;\n" +
         "move 5 5,\n" +
         "chat 1 32;\n" +
-        "faceleft 1 false;\n" +
+        "faceLeft 1 false;\n" +
         "chat 1 33;\n" +
         "emote 1 1;\n" +
         "emote 2 1;\n" +
@@ -343,7 +311,7 @@ let cutscenes = {
         "remove 3;),\n" +
         "(move 4 0;\n" +
         "remove 4;);\n" +
-        "faceleft 1;\n" +
+        "faceLeft 1;\n" +
         "chat 1 34;\n" +
         "(move 1 0;\n" +
         "remove 1;);\n"
@@ -369,35 +337,35 @@ let scripts = [
 	"The battle was bloody and all were quite shaken, but now they knew nothing from them could be taken.",
 	"“I’m surprised we could do it, burst through that wall?  Perhaps we are not all that weak after all.”",
 	"“Are we sure that we’re safe?  Those stones really hurt.”  A small critter added while staying alert.",
-	"“We’ve passed through the worst, we mustn’t look back.  Lucky they don’t know we’re best in a pack.”"
+	"“We’ve passed through the worst, we mustn’t look back.  Lucky they don’t know we’re best in a pack.”",
 
 	// Level 2 intro: Starting at index 15
-	"“Our beloved spring is just over that hill!”  Instead what they saw haunts the lot of them still."
-	"“Our spring, it’s gone!” the critters all cried, “they filled it with stones ‘til it totally dried!”"
-	"“How could this be?  It’s all too insane!  There’s no way that we could let one stone remain!”"
-	"“You’ve taken our water!” a fox thus exclaimed, “So we will not stop until you all are maimed!”"
+	"“Our beloved spring is just over that hill!”  Instead what they saw haunts the lot of them still.",
+	"“Our spring, it’s gone!” the critters all cried, “they filled it with stones ‘til it totally dried!”",
+	"“How could this be?  It’s all too insane!  There’s no way that we could let one stone remain!”",
+	"“You’ve taken our water!” a fox thus exclaimed, “So we will not stop until you all are maimed!”",
 	
 	// Level 2 outro: Starting at index 19
-	"The next day passed quickly, they make the spring clean, all tearing up stone just to fill each canteen."
-	"Their thirst fully quenched, they turned back around, prouder of all of the skills that they’ve found."
-	"“Somehow those towers were extra destructive.  No wonder they build them to be so obstructive.”"
-	"“Making it through felt really climactic.  Thank goodness those turrets are totally static.”"
+	"The next day passed quickly, they make the spring clean, all tearing up stone just to fill each canteen.",
+	"Their thirst fully quenched, they turned back around, prouder of all of the skills that they’ve found.",
+	"“Somehow those towers were extra destructive.  No wonder they build them to be so obstructive.”",
+	"“Making it through felt really climactic.  Thank goodness those turrets are totally static.”",
 	
 	// Level 3 intro: Starting at index 23
-	"As the critters reverse, they start to relax, “We’ve done it!” but that was quite far from exact."
-	"For on their return, the towers were gone.  The critters were worried but had to press on."
-	"The army, excited by their success, quickly forgot about all their distress."
-	"Until, that is, they spotted their dens, covered in towers attacking their friends!"
-	"“How could this happen?  What can we do?  The towers can walk and attack our homes too!”"
-	"“We finish them off,” their leader responds, “for freedom from towers is our one true cause!”"
+	"As the critters reverse, they start to relax, “We’ve done it!” but that was quite far from exact.",
+	"For on their return, the towers were gone.  The critters were worried but had to press on.",
+	"The army, excited by their success, quickly forgot about all their distress.",
+	"Until, that is, they spotted their dens, covered in towers attacking their friends!",
+	"“How could this happen?  What can we do?  The towers can walk and attack our homes too!”",
+	"“We finish them off,” their leader responds, “for freedom from towers is our one true cause!”",
 	
 	// Level 3 outro: Starting at index 29
-	"The critters made battle for the longest hours, until they had managed to destroy the towers."
-	"And even destroy the statues that live, the beings the critters just could not forgive."
-	"“We’re finally free of these terrible towers.  Our water is free and we’ve gained some new powers.”"
-	"“We must not forget all this strength that we’ve gained, for if we forget then we may well be slain.”"
-	"“Perhaps we will last when we’re next outdone, now we should party, offense has won.”"
-	"“For you who have helped, you’ve done quite a lot, perhaps it is worth giving just one more shot!”"
+	"The critters made battle for the longest hours, until they had managed to destroy the towers.",
+	"And even destroy the statues that live, the beings the critters just could not forgive.",
+	"“We’re finally free of these terrible towers.  Our water is free and we’ve gained some new powers.”",
+	"“We must not forget all this strength that we’ve gained, for if we forget then we may well be slain.”",
+	"“Perhaps we will last when we’re next outdone, now we should party, offense has won.”",
+	"“For you who have helped, you’ve done quite a lot, perhaps it is worth giving just one more shot!”",
 	"Game Over"
 ]
 
