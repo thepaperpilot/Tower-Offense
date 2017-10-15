@@ -311,16 +311,17 @@ button:disabled {
 }
 
 .chatbox > div {
-	width: calc(90% - 44px);
-	height: calc(90% - 44px);
-	border-radius: 20px;
-	border: 2px solid #969696;
-	position: absolute;
-	top: 5%;
-	left: 5%;
-	padding: 20px;
-	color: white;
-	font-size: x-large;
+	width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    border-radius: 8px;
+    border: 2px solid #969696;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 20px;
+    color: white;
+    font-size: large;
+    box-sizing: border-box;
 }
 
 .name {
