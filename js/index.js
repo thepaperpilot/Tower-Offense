@@ -31,8 +31,13 @@ document.getElementById('buildings-tab-button').addEventListener('click', (e) =>
 	e.target.classList.remove('pulse')
 })
 document.getElementById('start-button').addEventListener('click', () => {
-	document.getElementById('start').className = 'start inactive'
-	openMap()
+	document.getElementById('start').className = 'start inactive'	
+	state.exit()
+	state = states.cutscene
+	state.enter()
+	startCutscene("intro", () => {
+		openMap()
+	})
 })
 document.getElementById('continue-button').addEventListener('click', () => {
 	document.getElementById('continue').className = 'start inactive'

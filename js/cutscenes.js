@@ -13,15 +13,42 @@ let puppets = {
 }
 
 let cutscenes = {
-	cutscene1: "delay 1000;\n" +
+	intro: "delay 1000;\n" +
+		"chat 0 0;\n" +
 		"add fox 1 0;\n" +
-		"add foxStatue 2 6;\n" +
-		"move 1 1,\n" +
+		"emote 1 1;\n" +
+		"move 1 2;\n" +
+		"emote 1 5;\n" +
+		"chat 0 1;\n" +
+		"emote 1 7;\n" +
+		"chat 0 2;\n" +
+		"add fox 2 6;\n" + // TODO tower puppet
 		"move 2 5;\n" +
+		"add foxStatue 3 6;\n" +
+		"emote 3 4;\n" +
+		"move 3 4,\n" +
+		"chat 0 3;\n" +
+		"emote 1 5;\n" +
+		"chat 1 4;\n" +
+		"emote 3 8;\n" +
+		"emote 1 9;\n" +
 		"move 1 0,\n" +
-		"move 2 6;\n" +
+		"move 3 0,\n" +
+		"chat 0 5;\n" +
+		"faceLeft 3 false;\n" +
+		"emote 1 4;\n" +
+		"move 1 -4,\n" +
+		"chat 1 6;\n" +
+		"faceLeft 1 false;\n" +
+		"emote 3 4;\n" +
+		"move 3 -2,\n" +
+		"chat 1 7;\n" +
+		"move 1 0,\n" +
+		"move 2 6,\n" +
+		"move 3 6;\n" +
 		"remove 1;\n" +
-		"remove 2;",
+		"remove 2;\n" +
+		"remove 3;",
 	cutscene2: "delay 1000;\n" +
 		"add fox 1 0;\n" +
 		"add foxStatue 2 6;\n" +
@@ -33,10 +60,10 @@ let cutscenes = {
 		"move 1 2;\n" +
 		"jiggle 1;\n" +
 		"emote 1 8;\n" +
-		"chat 1 0;\n" +
+		"chat 1 4;\n" +
 		"move 2 4;\n" +
 		"emote 2 8;\n" +
-		"chat 2 1;\n" +
+		"chat 2 7;\n" +
 		"chat 1 2;\n" +
 		"emote 2 1;\n" +
 		"chat 2 3,\n" +
@@ -52,6 +79,20 @@ let cutscenes = {
 		"remove 1;\n" +
 		"remove 2;\n"
 }
+
+let scripts = [
+	// Intro: Starting at index 0
+	"In a strange forest at the break of daylight, the animals were happy and all was alright.",
+	"Yet on a walk through a grassy green glade, a curious animal became quite afraid!",
+	"Where once was the road to the watering spot, now stands walls of stone, a path there is not.",
+	"The top of these towers held creatures of stone, who watched the approach with rocks nearly thrown.",
+	"“But where will we drink?” the critter exclaimed.  “How could you come and destroy this terrain!”",
+	"With nothing received but bashes near deathly, the critter ran home with speed quite expressly.",
+	"But not before muttering a terrible promise, “I warn you, you demons, that I am quite honest.”",
+	"“When I next appear, prepare your defense, for I will return with a Tower Offense!”"
+
+	// Level 1 intro: Starting at index 8
+]
 
 window.loadBabble = function() {
 	stage = new babble.Stage("screen", {
@@ -70,25 +111,16 @@ window.startCutscene = function(i, cb) {
 function waitUntilLoaded() {
 	if (stage) {
 		let cutscene = new babble.Cutscene(stage, cutscenes[cutsceneIndex], puppets, stopCutscene)
-		cutscene.actions.chat = function(callback, target, chatId, babble) {
-			let chats = [{
-				name: "Protagonist",
-				message: "Alright, I'm ready to start hacking!"
-			}, {
-				name: "Antagonist",
-				message: "Not so fast! I can tell you're up to no good."
-			}, {
-				name: "Protagonist",
-				message: "Ah shucks, I've been found out"
-			}, {
-				name: "Antagonist",
-				message: "Bwahahahahahahahahhahahaha!"
-			}]
+		cutscene.actions.chat = function(callback, target, chatId) {
 			document.getElementById('current_chat').style.display = 'block'
-			document.getElementById('name').innerText = chats[chatId].name
-			this.stage.getPuppet(target).setBabbling((babble || "true") === "true")
 			chatClicked = false
-			chatter(callback, target, chats[chatId], this.stage, 0)
+			chatter(callback, target, scripts[chatId], this.stage, 0)
+		}
+		cutscene.actions.faceLeft = function(callback, target, faceLeft) {
+			let puppet = this.stage.getPuppet(target)
+			puppet.facingLeft = faceLeft !== "false"
+			puppet.container.scale.x = puppet.facingLeft ? -1 : 1
+			callback()
 		}
 		cutscene.start()
 	} else requestAnimationFrame(waitUntilLoaded)
@@ -103,19 +135,25 @@ function loaded() {
 }
 
 function chatter(callback, target, chat, stage, textPos) {
-	if (chatClicked && textPos < chat.message.length) {
-		textPos = chat.message.length
+	if (chatClicked && textPos < chat.length) {
+		if (target && stage.getPuppet(target)) stage.getPuppet(target).setBabbling(false)
+		textPos = chat.length
 		chatClicked = false
 	}
-	if (textPos++ > chat.message.length) {
-		stage.getPuppet(target).setBabbling(false)
+	if (textPos++ > chat.length) {
 		if (chatClicked) {
 			document.getElementById('current_chat').style.display = 'none'
 			callback()
 		}
 		else setTimeout(() => {chatter(callback, target, chat, stage, textPos)}, 1)
 	} else {
-		document.getElementById('message').innerText = chat.message.substring(0, textPos) + "_"
+		if (target && stage.getPuppet(target)) {
+			if (chat.charAt(textPos - 1) === '“')
+				stage.getPuppet(target).setBabbling(true)
+			else if (chat.charAt(textPos - 1) === '”')
+				stage.getPuppet(target).setBabbling(false)
+		}
+		document.getElementById('message').innerText = chat.substring(0, textPos) + "_"
 		setTimeout(() => {chatter(callback, target, chat, stage, textPos)}, 20)
 	}
 }
