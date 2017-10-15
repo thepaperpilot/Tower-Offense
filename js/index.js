@@ -38,12 +38,15 @@ document.getElementById('start-button').addEventListener('click', () => {
 	startCutscene("intro", () => {
 		openMap()
 	})
+	sound.play('level1BGM', {loop: true})
 })
 document.getElementById('continue-button').addEventListener('click', (e) => {
 	let beaten = e.target.beaten
 	e.target.beaten = false
 	document.getElementById('continue').className = 'start inactive'
 	if (beaten) {
+		sound.stopAll()
+		sound.play(levels[nextLevel].bgm, {loop: true})
 		state.exit()
 		state = states.cutscene
 		state.enter()
@@ -103,7 +106,9 @@ loader
 	.add("smoke", "assets/CartoonSmoke.png")
 	.add("heart", "assets/StoneHeart.png")
 	// Sounds
-	//.add("deflect", "assets/deflect.mp3")
+	.add("level1BGM", "assets/Rest Song 1.wav")
+	.add("level2BGM", "assets/Action Song 1.wav")
+	.add("level3BGM", "assets/God Song Base.wav")
 	// Call setup after loading
 	.load(setup);
 

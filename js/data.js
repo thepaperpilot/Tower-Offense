@@ -12,6 +12,7 @@ let levels = [
 		background: "background",
 		startCutscene: "startLevel1",
 		endCutscene: "endLevel1",
+		bgm: 'level1BGM',
 		style: {
 			left: "10%",
 			bottom: "10%"
@@ -75,6 +76,7 @@ let levels = [
 		background: "background",
 		startCutscene: "startLevel1",
 		endCutscene: "endLevel1",
+		bgm: 'level2BGM',
 		style: {
 			left: "30%",
 			top: "30%"
@@ -138,6 +140,7 @@ let levels = [
 		background: "background",
 		startCutscene: "startLevel1",
 		endCutscene: "endLevel1",
+		bgm: 'level3BGM',
 		style: {
 			right: "40%",
 			top: "40%"
