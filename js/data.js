@@ -262,6 +262,8 @@ let buildings = [
 		buy: function() {
 			foodIncome += 0.005
 			enableBuilding(1, true)
+			buildingCosts[0].cost += 1
+			this.button.innerText = buildingCosts[0]
 		}
 	},
 	{
@@ -273,6 +275,8 @@ let buildings = [
 		buy: function() {
 			foodIncome += 0.03
 			enableBuilding(2, true)
+			buildingCosts[1].cost += 5
+			this.button.innerText = buildingCosts[1]
 		}
 	},
 	{
@@ -280,9 +284,11 @@ let buildings = [
 		description: "Increases Food Storage",
 		type: "farm",
 		enabled: false,
-		cost: 77,
+		cost: 70,
 		buy: function() {
 			maxFood += 50
+			buildingCosts[2].cost += 7
+			this.button.innerText = buildingCosts[2]
 		}
 	},
 	{
