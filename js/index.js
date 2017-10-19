@@ -57,6 +57,11 @@ document.getElementById('continue-button').addEventListener('click', (e) => {
 		openMap()
 	}
 })
+document.getElementById('mute').addEventListener('click', (e) => {
+	e.stopPropagation()
+	let muted = PIXI.sound.toggleMuteAll()
+	e.target.innerText = muted ? "unmute" : "mute"
+})
 makeHorizontalScroll('buildings-tab')
 makeHorizontalScroll('units-tab')
 for (let i = 0; i < units.length; i++) {

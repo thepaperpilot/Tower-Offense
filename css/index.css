@@ -293,6 +293,31 @@ button:disabled {
 	animation-duration: 500ms;
 }
 
+.settings {
+	position: absolute;
+	bottom: -2em;
+	height: 2em;
+	right: .5em;
+	text-align: right;
+	background-color: #333c4a;
+	box-shadow: 2px 2px 3px #222;
+}
+
+.settings-button {
+	background: unset;
+	font-size: medium;
+	pointer-events: all;
+	text-align: center;
+	width: 6em;
+	padding: 0;
+	margin: .5em;
+	overflow: hidden;
+}
+
+.settings-button:hover {
+	background: unset;
+}
+
 .chatbox {
 	position: absolute;
 	height: 50%;
