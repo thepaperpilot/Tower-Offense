@@ -206,11 +206,19 @@ let cutscenes = {
 		"move 3 4,\n" +
 		"move 4 5;\n" +
 		"chat 4 23;\n" +
+		"move 1 0,\n" +
+		"move 2 0,\n" +
+		"move 3 0,\n" +
+		"move 4 0;\n" +
 		"move 4 -4,\n" +
 		"move 3 -3,\n" +
 		"move 2 -2,\n" +
 		"move 1 -1;\n" +
 		"chat 0 24;\n" +
+		"move 4 0,\n" +
+		"move 3 0,\n" +
+		"move 2 0,\n" +
+		"move 1 0;\n" +
 		"move 4 -4,\n" +
 		"move 3 -3,\n" +
 		"move 2 -2,\n" +
@@ -241,20 +249,14 @@ let cutscenes = {
 		"move 5 0;\n" +
 		"remove 5;\n" +
 		"remove 6;\n" +
-		"faceLeft 1 false;\n" +
-		"faceLeft 2 false;\n" +
-		"faceLeft 3 false;\n" +
 		"chat 4 27;\n" +
-		"faceLeft 1;\n" +
-		"faceLeft 2;\n" +
-		"faceLeft 3;\n" +
 		"emote 1 8,\n" +
 		"emote 2 8,\n" +
 		"emote 3 4,\n" +
 		"emote 4 4;\n" +
 		"add tower 5 0;\n" +
 		"emote 5 8;\n" +
-		"add tower 6 0;\n" +
+		"add youthWolf 6 0;\n" +
 		"emote 6 8;\n" +
 		"move 5 2,\n" +
 		"move 6 1,\n" +
