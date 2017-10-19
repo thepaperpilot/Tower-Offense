@@ -145,10 +145,10 @@ let cutscenes = {
 		"emote 1 2,\n" +
 		"emote 3 4;\n" +
 		"chat 1 18;\n" +
-		"move 1 6,\n" +
 		"move 2 6,\n" +
-		"move 3 6,\n" +
-		"move 4 6;\n" +
+		"move 4 6,\n" +
+		"move 1 6,\n" +
+		"move 3 6;\n" +
 		"remove 1;\n" +
 		"remove 2;\n" +
 		"remove 3;\n" +
