@@ -187,7 +187,7 @@ let cutscenes = {
 		"move 4 0,\n" +
 		"move 3 0,\n" +
 		"move 2 0,\n" +
-		"move 1 0,\n" +
+		"move 1 0;\n" +
 		"remove 1;\n" +
 		"remove 2;\n" +
 		"remove 3;\n" +
