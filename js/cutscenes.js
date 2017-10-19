@@ -406,6 +406,7 @@ function loaded() {
 	window.onresize = () => {
 		stage.resize(null, window.innerWidth, window.innerHeight / 2)
 	}
+	document.getElementById('start-button').innerText = "Start Game"
 	document.getElementById('start-button').disabled = false
 }
 
