@@ -46,7 +46,7 @@ document.getElementById('continue-button').addEventListener('click', (e) => {
 	document.getElementById('continue').className = 'start inactive'
 	if (beaten) {
 		sound.stopAll()
-		sound.play(levels[nextLevel].bgm, {loop: true})
+		if (levels[nextLevel]) sound.play(levels[nextLevel].bgm, {loop: true})
 		state.exit()
 		state = states.cutscene
 		state.enter()
