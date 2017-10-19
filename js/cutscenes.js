@@ -68,9 +68,9 @@ let cutscenes = {
 		"move 3 3,\n" +
 		"move 4 5,\n" +
 		"chat 0 8;\n" +
-		"move 1 3,\n" +
 		"move 2 1,\n" +
-		"move 3 2;\n" +
+		"move 3 2,\n" +
+		"move 1 3;\n" +
 		"move 1 2,\n" +
 		"move 2 3,\n" +
 		"move 3 1,\n" +
