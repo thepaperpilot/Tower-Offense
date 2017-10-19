@@ -97,7 +97,7 @@ let levels = [
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
 						y: (Math.random() * 0.8 + 0.15) * 768,
-						type: Math.floor(Math.random() * 3)
+						type: Math.floor(Math.random() * 2)
 					})
 				}
 			},
@@ -109,7 +109,7 @@ let levels = [
 					strategyManager.spawnTower({
 						x: 1800,
 						y: 500,
-						type: 0
+						type: 1
 					})
 				}
 			},
@@ -185,7 +185,29 @@ let levels = [
 					strategyManager.spawnTower({
 						x: 320,
 						y: 180,
-						type: 0
+						type: 1
+					})
+				}
+			},
+			"spawnTower3": {
+				enabled: true,
+				interval: 110000,
+				fire: function() {
+					strategyManager.toggleStrategy("spawnTower3")
+					strategyManager.spawnTower({
+						x: 1600,
+						y: 450,
+						type: 2
+					})
+					strategyManager.spawnTower({
+						x: 1200,
+						y: 600,
+						type: 2
+					})
+					strategyManager.spawnTower({
+						x: 800,
+						y: 200,
+						type: 2
 					})
 				}
 			},
@@ -198,7 +220,7 @@ let levels = [
 			},
 			"uprootTower": {
 				enabled: false,
-				interval: 45000,
+				interval: 36000,
 				fire: function() {
 					if (enemyTowers.length > 0) {
 						enemyTowers[Math.floor(Math.random(enemyTowers.length))].uproot()
