@@ -19,7 +19,7 @@ let puppets = {
 }
 
 let cutscenes = {
-	intro: "delay 1000;\n" +
+	intro: "delay 500;\n" +
         "chat 0 0;\n" +
         "add fox 1 0;\n" +
         "emote 1 1;\n" +
@@ -56,7 +56,7 @@ let cutscenes = {
         "remove 2;),\n" +
         "(move 3 6;\n" +
         "remove 3;);",
-	startLevel1: "delay 1000;\n" +
+	startLevel1: "delay 500;\n" +
 		"add fox 1 0;\n" +
 		"emote 1 4;\n" +
 		"add wolf 2 0;\n" +
@@ -84,7 +84,7 @@ let cutscenes = {
 		"remove 2;\n" +
 		"remove 3;\n" +
 		"remove 4;",
-	endLevel1: "delay 1000;\n" +
+	endLevel1: "delay 500;\n" +
 		"add bear 1 0;\n" +
 		"emote 1 1;\n" +
 		"add wolf 2 0;\n" +
@@ -121,7 +121,7 @@ let cutscenes = {
 		"remove 2;\n" +
 		"remove 3;\n" +
 		"remove 4;\n",
-	startLevel2: "delay 1000;\n" + 
+	startLevel2: "delay 500;\n" + 
 		"add fox 1 0;\n" +
 		"emote 1 1;\n" +
 		"add wolf 2 0;\n" +
@@ -153,7 +153,7 @@ let cutscenes = {
 		"remove 2;\n" +
 		"remove 3;\n" +
 		"remove 4;\n",
-	endLevel2: "delay 1000;\n" +
+	endLevel2: "delay 500;\n" +
 		"add fox 1 0;\n" +
 		"emote 1 4;\n" +
 		"add wolf 2 0;\n" +
@@ -192,7 +192,7 @@ let cutscenes = {
 		"remove 2;\n" +
 		"remove 3;\n" +
 		"remove 4;\n",
-	startLevel3: "delay 1000;\n" +
+	startLevel3: "delay 500;\n" +
 		"add fox 1 6;\n" +
 		"emote 1 2;\n" +
 		"add wolf 2 6;\n" +
@@ -273,7 +273,7 @@ let cutscenes = {
 		"remove 4;\n" +
 		"remove 5;\n" +
 		"remove 6;\n",
-	endLevel3: "delay 1000;\n" +
+	endLevel3: "delay 500;\n" +
         "add fox 1 6;\n" +
         "add wolf 2 6;\n" +
         "move 1 4,\n" +
