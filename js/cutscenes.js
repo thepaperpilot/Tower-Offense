@@ -316,7 +316,8 @@ let cutscenes = {
         "faceLeft 1;\n" +
         "chat 1 34;\n" +
         "(move 1 0;\n" +
-        "remove 1;);\n"
+        "remove 1;);\n" +
+        "chat 1 35;\n"
 }
 
 let scripts = [
