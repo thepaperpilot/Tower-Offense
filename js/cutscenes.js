@@ -263,10 +263,10 @@ let cutscenes = {
 		"chat 1 28;\n" +
 		"move 6 0,\n" +
 		"move 5 0,\n" +
-		"move 1 0,\n" +
-		"move 2 0,\n" +
+		"move 4 0,\n" +
 		"move 3 0,\n" +
-		"move 4 0;\n" +
+		"move 2 0,\n" +
+		"move 1 0;\n" +
 		"remove 1;\n" +
 		"remove 2;\n" +
 		"remove 3;\n" +
