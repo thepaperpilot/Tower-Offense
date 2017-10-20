@@ -189,7 +189,7 @@ let levels = [
 		initialTowers: [
 			{
 				x: 1000,
-				y: 360,
+				y: 320,
 				type: 0
 			}
 		],
@@ -210,8 +210,8 @@ let levels = [
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
 						x: 1800,
-						y: 500,
-						type: 0
+						y: 460,
+						type: 1
 					})
 				}, 15000)
 			},
@@ -256,10 +256,14 @@ let levels = [
 			"uprootTower": {
 				enabled: false,
 				interval: new IntervalTimer(function() {
-					if (enemyTowers.length > 0) {
-						enemyTowers[Math.floor(Math.random(enemyTowers.length))].uproot()
+					while (enemyTowers.length > 0) {
+						let tower = enemyTowers[Math.floor(Math.random(enemyTowers.length))]
+						if (!tower.point) {
+							tower.uproot()
+							break
+						}
 					}
-				}, 36000)
+				}, 35000)
 			}
 		}
 	}
@@ -318,7 +322,7 @@ let buildings = [
 		buy: function() {
 			foodIncome += 0.005
 			enableBuilding(1, true)
-			buildingCosts[0].cost += 1
+			buildingCosts[0] += 1
 			this.button.innerText = buildingCosts[0]
 		}
 	},
@@ -331,7 +335,7 @@ let buildings = [
 		buy: function() {
 			foodIncome += 0.03
 			enableBuilding(2, true)
-			buildingCosts[1].cost += 5
+			buildingCosts[1] += 5
 			this.button.innerText = buildingCosts[1]
 		}
 	},
@@ -343,7 +347,7 @@ let buildings = [
 		cost: 70,
 		buy: function() {
 			maxFood += 50
-			buildingCosts[2].cost += 7
+			buildingCosts[2] += 7
 			this.button.innerText = buildingCosts[2]
 		}
 	},
@@ -381,7 +385,7 @@ let buildings = [
 		cost: 100,
 		buy: function() {
 			speedModifier *= 1.1
-			buildingCosts[5].cost *= 2
+			buildingCosts[5] *= 2
 			this.button.innerText = buildingCosts[5]
 		}
 	},
