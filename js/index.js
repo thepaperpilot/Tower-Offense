@@ -31,7 +31,6 @@ document.getElementById('buildings-tab-button').addEventListener('click', (e) =>
 	e.target.classList.remove('pulse')
 })
 document.getElementById('start-button').addEventListener('click', () => {
-	document.getElementById('start').className = 'start inactive'	
 	state.exit()
 	state = states.cutscene
 	state.enter()
@@ -43,7 +42,6 @@ document.getElementById('start-button').addEventListener('click', () => {
 document.getElementById('continue-button').addEventListener('click', (e) => {
 	let beaten = e.target.beaten
 	e.target.beaten = false
-	document.getElementById('continue').className = 'start inactive'
 	if (beaten) {
 		sound.stopAll()
 		if (levels[nextLevel]) sound.play(levels[nextLevel].bgm, {loop: true})
@@ -61,6 +59,22 @@ document.getElementById('mute').addEventListener('click', (e) => {
 	e.stopPropagation()
 	let muted = PIXI.sound.toggleMuteAll()
 	e.target.innerText = muted ? "unmute" : "mute"
+})
+document.getElementById('pause').addEventListener('click', (e) => {
+	e.stopPropagation()
+	paused = !paused
+	let keys = Object.keys(strategyManager.strategies)
+	for (let i = 0; i < keys.length; i++) {
+		if (paused) {
+			strategyManager.strategies[keys[i]].interval.pause()
+			console.log("pausing strategy")
+		}
+		else {
+			strategyManager.strategies[keys[i]].interval.resume()
+			console.log("resuming strategy")
+		}
+	}
+	e.target.innerText = paused ? "resume" : "pause"
 })
 makeHorizontalScroll('buildings-tab')
 makeHorizontalScroll('units-tab')
@@ -126,10 +140,13 @@ let states = {
 		},
 		exit: () => {
 			document.getElementById('continue').className = 'start inactive'
+			document.getElementById('start').className = 'start inactive'
 		}
 	},
 	playing: {
 		update: (delta) => {
+			if (paused) return;
+
 			updateParticles(delta)
 			updateGame(delta)
 			updateUI()
@@ -137,10 +154,12 @@ let states = {
 		enter: () => {
 			app.view.className = ''
 			document.getElementById('shop').className = 'shop'
+			document.getElementById('pause').className = 'settings-button'
 		},
 		exit: () => {
 			app.view.className = 'inactive'
 			document.getElementById('shop').className = 'shop inactive'
+			document.getElementById('pause').className = 'settings-button inactive'
 		}
 	},
 	cutscene: {
@@ -157,9 +176,7 @@ let strategyManager = {
 		if (this.strategies) {
 			keys = Object.keys(this.strategies)
 			for (let i = 0; i < keys.length; i++) {
-				let strategy = this.strategies[keys[i]]
-				if (strategy.instance)
-					clearInterval(strategy.instance)
+				this.strategies[keys[i]].interval.stop()
 			}
 		}
 		this.strategies = strategies
@@ -167,16 +184,16 @@ let strategyManager = {
 		for (let i = 0; i < keys.length; i++) {
 			let strategy = this.strategies[keys[i]]
 			if (strategy.enabled)
-				strategy.instance = setInterval(strategy.fire, strategy.interval)
+				strategy.interval.start()
 		}
 	},
 	toggleStrategy: function(name) {
 		let strategy = strategyManager.strategies[name]
 		strategy.enabled = !strategy.enabled
 		if (strategy.enabled)
-			strategy.instance = setInterval(strategy.fire, strategy.interval)
+			strategy.interval.start()
 		else
-			clearInterval(strategy.instance)
+			strategy.interval.stop()
 	},
 	spawnTower: function(tower) {
 		enemyTowers.push(new Tower(towers[tower.type], tower.x, tower.y))
@@ -188,6 +205,7 @@ let strategyManager = {
 // General variables
 let hasGottenGold = false
 let state = states.paused;
+let paused = false; // Whether the game is paused (separate from states)
 let emitters = [];
 let nextLevel = 0;
 
@@ -372,7 +390,7 @@ function startLevel(i) {
 
 function purchaseUnit(e) {
 	let unit = units[e.target.i]
-	if (food >= unit.cost) {
+	if (!paused && food >= unit.cost) {
 		entitiesOnPath.push(new Unit(unit, true))
 		entitiesOnPath.sort((x, y) => {
 			return x.sprite.x - y.sprite.x

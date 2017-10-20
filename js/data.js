@@ -1,3 +1,49 @@
+let IntervalTimer = function (callback, interval) {
+    var timerId, startTime, remaining = 0;
+    var state = 0; //  0 = idle, 1 = running, 2 = paused, 3= resumed
+
+    this.pause = function () {
+        if (state != 1) return;
+
+        remaining = interval - (new Date() - startTime);
+        window.clearInterval(timerId);
+        state = 2;
+    };
+
+    this.resume = function () {
+        if (state != 2) return;
+
+        state = 3;
+        window.setTimeout(this.timeoutCallback, remaining);
+    };
+
+    this.timeoutCallback = function () {
+        if (state != 3) return;
+
+        callback();
+
+        startTime = new Date();
+        timerId = window.setInterval(callback, interval);
+        state = 1;
+    };
+
+    this.start = function () {
+    	if (state !== 0) return;
+
+	    startTime = new Date();
+	    timerId = window.setInterval(callback, interval);
+	    state = 1;
+    };
+
+    this.stop = function () {
+    	if (state === 0) return;
+
+	    window.clearInterval(timerId);
+	    state = 0;
+    };
+
+}
+
 let levels = [
 	{
 		enemyPath: [
@@ -28,38 +74,35 @@ let levels = [
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 45000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
 						y: (Math.random() * 0.8 + 0.15) * 768,
 						type: 0
 					})
-				}
+				}, 45000)
 			},
 			"spawnTower1": {
 				enabled: true,
-				interval: 25000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
 						x: 1800,
 						y: 500,
 						type: 0
 					})
-				}
+				}, 25000)
 			},
 			"spawnTower2": {
 				enabled: true,
-				interval: 75000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower2")
 					strategyManager.spawnTower({
 						x: 320,
 						y: 180,
 						type: 0
 					})
-				}
+				}, 75000)
 			}
 		}
 	},
@@ -92,38 +135,35 @@ let levels = [
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 45000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
 						y: (Math.random() * 0.8 + 0.15) * 768,
 						type: Math.floor(Math.random() * 2)
 					})
-				}
+				}, 45000)
 			},
 			"spawnTower1": {
 				enabled: true,
-				interval: 25000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
 						x: 1800,
 						y: 500,
 						type: 1
 					})
-				}
+				}, 25000)
 			},
 			"spawnTower2": {
 				enabled: true,
-				interval: 75000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower2")
 					strategyManager.spawnTower({
 						x: 320,
 						y: 180,
 						type: 0
 					})
-				}
+				}, 75000)
 			}
 		}
 	},
@@ -156,43 +196,39 @@ let levels = [
 		strategies: {
 			"spawnTower": {
 				enabled: true,
-				interval: 35000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.spawnTower({
 						x: (Math.random() * 0.9 + 0.05) * 1920,
 						y: (Math.random() * 0.8 + 0.15) * 768,
 						type: Math.floor(Math.random() * 3)
 					})
-				}
+				}, 35000)
 			},
 			"spawnTower1": {
 				enabled: true,
-				interval: 15000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower1")
 					strategyManager.spawnTower({
 						x: 1800,
 						y: 500,
 						type: 0
 					})
-				}
+				}, 15000)
 			},
 			"spawnTower2": {
 				enabled: true,
-				interval: 85000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower2")
 					strategyManager.spawnTower({
 						x: 320,
 						y: 180,
 						type: 1
 					})
-				}
+				}, 85000)
 			},
 			"spawnTower3": {
 				enabled: true,
-				interval: 110000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("spawnTower3")
 					strategyManager.spawnTower({
 						x: 1600,
@@ -209,23 +245,21 @@ let levels = [
 						y: 200,
 						type: 2
 					})
-				}
+				}, 110000)
 			},
 			"startUprootTower": {
 				enabled: true,
-				interval: 110000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					strategyManager.toggleStrategy("uprootTower")
-				}
+				}, 110000)
 			},
 			"uprootTower": {
 				enabled: false,
-				interval: 36000,
-				fire: function() {
+				interval: new IntervalTimer(function() {
 					if (enemyTowers.length > 0) {
 						enemyTowers[Math.floor(Math.random(enemyTowers.length))].uproot()
 					}
-				}
+				}, 36000)
 			}
 		}
 	}

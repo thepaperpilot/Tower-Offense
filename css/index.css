@@ -318,6 +318,11 @@ button:disabled {
 	background: unset;
 }
 
+.settings-button.inactive {
+	width: 0;
+	margin: 0;
+}
+
 .chatbox {
 	position: absolute;
 	height: 50%;
