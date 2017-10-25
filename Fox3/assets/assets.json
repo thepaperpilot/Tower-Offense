@@ -226,5 +226,13 @@
         "panning": [],
         "name": "RabbitBody",
         "location": "055869ba-3404-45a3-8f39-21d2e96a90ac\\48.png"
+    },
+    "055869ba-3404-45a3-8f39-21d2e96a90ac:50": {
+        "tab": "New Asset List (28)",
+        "type": "sprite",
+        "version": 0,
+        "panning": [],
+        "name": "Eyeball",
+        "location": "055869ba-3404-45a3-8f39-21d2e96a90ac\\50.png"
     }
 }

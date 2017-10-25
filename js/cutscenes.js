@@ -197,29 +197,22 @@ let cutscenes = {
 		"emote 1 2;\n" +
 		"add wolf 2 6;\n" +
 		"emote 2 2;\n" +
-		"add bear 3 6;\n" +
-		"emote 3 0;\n" +
-		"add rabbit 4 6;\n" +
-		"emote 4 2;\n" +
+		"add rabbit 3 6;\n" +
+		"emote 3 2;\n" +
 		"move 1 2,\n" +
 		"move 2 3,\n" +
 		"move 3 4,\n" +
-		"move 4 5;\n" +
-		"chat 4 23;\n" +
+		"chat 3 23;\n" +
 		"move 1 0,\n" +
 		"move 2 0,\n" +
-		"move 3 0,\n" +
-		"move 4 0;\n" +
-		"move 4 -4,\n" +
+		"move 3 0;\n" +
 		"move 3 -3,\n" +
 		"move 2 -2,\n" +
 		"move 1 -1;\n" +
 		"chat 0 24;\n" +
-		"move 4 0,\n" +
 		"move 3 0,\n" +
 		"move 2 0,\n" +
 		"move 1 0;\n" +
-		"move 4 -4,\n" +
 		"move 3 -3,\n" +
 		"move 2 -2,\n" +
 		"move 1 -1,\n" +
@@ -231,7 +224,6 @@ let cutscenes = {
 		"emote 1 7;\n" +
 		"emote 2 7;\n" +
 		"emote 3 7;\n" +
-		"emote 4 7;\n" +
 		"move 5 1,\n" +
 		"move 6 2;\n" +
 		"move 5 2,\n" +
@@ -240,8 +232,7 @@ let cutscenes = {
 		"chat 0 26;\n" +
 		"emote 1 4;\n" +
 		"emote 2 8;\n" +
-		"emote 3 7;\n" +
-		"emote 4 9;\n" +
+		"emote 3 9;\n" +
 		"move 5 1,\n" +
 		"move 6 2;\n" +
 		"move 5 2,\n" +
@@ -249,11 +240,10 @@ let cutscenes = {
 		"move 5 0;\n" +
 		"remove 5;\n" +
 		"remove 6;\n" +
-		"chat 4 27;\n" +
+		"chat 3 27;\n" +
 		"emote 1 8,\n" +
 		"emote 2 8,\n" +
-		"emote 3 4,\n" +
-		"emote 4 4;\n" +
+		"emote 3 4;\n" +
 		"add tower 5 0;\n" +
 		"emote 5 8;\n" +
 		"add youthWolf 6 0;\n" +
@@ -263,14 +253,12 @@ let cutscenes = {
 		"chat 1 28;\n" +
 		"move 6 0,\n" +
 		"move 5 0,\n" +
-		"move 4 0,\n" +
 		"move 3 0,\n" +
 		"move 2 0,\n" +
 		"move 1 0;\n" +
 		"remove 1;\n" +
 		"remove 2;\n" +
 		"remove 3;\n" +
-		"remove 4;\n" +
 		"remove 5;\n" +
 		"remove 6;\n",
 	endLevel3: "delay 500;\n" +
@@ -376,7 +364,7 @@ window.loadBabble = function() {
 	stage = new babble.Stage("screen", {
 	  "numCharacters": 5,
 	  "puppetScale": 1
-	}, {"165e1af4-93ac-4566-a5eb-bddb4fbcd16c:11":{"name":"body","location":"165e1af4-93ac-4566-a5eb-bddb4fbcd16c/11.png","tab":"shirts","version":0},"165e1af4-93ac-4566-a5eb-bddb4fbcd16c:12":{"name":"head","location":"165e1af4-93ac-4566-a5eb-bddb4fbcd16c/12.png","tab":"skin","version":0},"055869ba-3404-45a3-8f39-21d2e96a90ac:23":{"tab":"New Asset List (5)","type":"sprite","version":0,"panning":[],"name":"mouth4","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\23.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:22":{"tab":"New Asset List (4)","type":"sprite","version":0,"panning":[],"name":"mouth3","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\22.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:24":{"tab":"New Asset List (6)","type":"sprite","version":0,"panning":[],"name":"mouth5","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\24.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:25":{"tab":"New Asset List (7)","type":"sprite","version":0,"panning":[],"name":"mouth6","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\25.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:26":{"tab":"New Asset List (8)","type":"sprite","version":0,"panning":[],"name":"mouth7","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\26.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:27":{"tab":"New Asset List (9)","type":"sprite","version":0,"panning":[],"name":"mouth8","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\27.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:28":{"tab":"New Asset List (10)","type":"sprite","version":0,"panning":[],"name":"mouth9","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\28.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:29":{"tab":"New Asset List (11)","type":"sprite","version":0,"panning":[],"name":"12","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\29.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:30":{"tab":"New Asset List (12)","type":"sprite","version":0,"panning":[],"name":"11","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\30.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:31":{"tab":"New Asset List (13)","type":"sprite","version":0,"panning":[],"name":"eyes","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\31.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:32":{"tab":"New Asset List","type":"sprite","version":0,"panning":[],"name":"mouth10","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\32.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:33":{"tab":"New Asset List (1)","type":"sprite","version":0,"panning":[],"name":"mouth1","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\33.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:34":{"tab":"New Asset List (2)","type":"sprite","version":0,"panning":[],"name":"mouth2","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\34.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:35":{"tab":"New Asset List (14)","type":"sprite","version":0,"panning":[],"name":"grey1","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\35.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:36":{"tab":"New Asset List (15)","type":"sprite","version":0,"panning":[],"name":"grey2","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\36.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:37":{"tab":"New Asset List (16)","type":"sprite","version":0,"panning":[],"name":"tail","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\37.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:38":{"tab":"New Asset List (3)","type":"sprite","version":0,"panning":[],"name":"grey3","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\38.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:39":{"tab":"New Asset List (17)","type":"sprite","version":0,"panning":[],"name":"wolfbod","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\39.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:40":{"tab":"New Asset List (18)","type":"sprite","version":0,"panning":[],"name":"wolfhead","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\40.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:41":{"tab":"New Asset List (19)","type":"sprite","version":0,"panning":[],"name":"wolftail","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\41.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:42":{"tab":"New Asset List (21)","type":"sprite","version":0,"panning":[],"name":"bearbody","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\42.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:43":{"tab":"New Asset List (22)","type":"sprite","version":0,"panning":[],"name":"bearhead","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\43.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:44":{"tab":"New Asset List (23)","type":"sprite","version":0,"panning":[],"name":"bearnecklace","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\44.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:45":{"tab":"New Asset List (24)","type":"sprite","version":0,"panning":[],"name":"TowerBody","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\45.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:46":{"tab":"New Asset List (20)","type":"sprite","version":0,"panning":[],"name":"wolfbod2","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\46.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:47":{"tab":"New Asset List (26)","type":"sprite","version":0,"panning":[],"name":"RabbitHead","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\47.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:48":{"tab":"New Asset List (27)","type":"sprite","version":0,"panning":[],"name":"RabbitBody","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\48.png"}}, "assets", loaded);
+	}, {"165e1af4-93ac-4566-a5eb-bddb4fbcd16c:11":{"name":"body","location":"165e1af4-93ac-4566-a5eb-bddb4fbcd16c/11.png","tab":"shirts","version":0},"165e1af4-93ac-4566-a5eb-bddb4fbcd16c:12":{"name":"head","location":"165e1af4-93ac-4566-a5eb-bddb4fbcd16c/12.png","tab":"skin","version":0},"055869ba-3404-45a3-8f39-21d2e96a90ac:23":{"tab":"New Asset List (5)","type":"sprite","version":0,"panning":[],"name":"mouth4","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\23.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:22":{"tab":"New Asset List (4)","type":"sprite","version":0,"panning":[],"name":"mouth3","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\22.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:24":{"tab":"New Asset List (6)","type":"sprite","version":0,"panning":[],"name":"mouth5","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\24.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:25":{"tab":"New Asset List (7)","type":"sprite","version":0,"panning":[],"name":"mouth6","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\25.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:26":{"tab":"New Asset List (8)","type":"sprite","version":0,"panning":[],"name":"mouth7","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\26.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:27":{"tab":"New Asset List (9)","type":"sprite","version":0,"panning":[],"name":"mouth8","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\27.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:28":{"tab":"New Asset List (10)","type":"sprite","version":0,"panning":[],"name":"mouth9","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\28.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:29":{"tab":"New Asset List (11)","type":"sprite","version":0,"panning":[],"name":"12","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\29.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:30":{"tab":"New Asset List (12)","type":"sprite","version":0,"panning":[],"name":"11","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\30.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:31":{"tab":"New Asset List (13)","type":"sprite","version":0,"panning":[],"name":"eyes","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\31.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:32":{"tab":"New Asset List","type":"sprite","version":0,"panning":[],"name":"mouth10","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\32.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:33":{"tab":"New Asset List (1)","type":"sprite","version":0,"panning":[],"name":"mouth1","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\33.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:34":{"tab":"New Asset List (2)","type":"sprite","version":0,"panning":[],"name":"mouth2","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\34.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:35":{"tab":"New Asset List (14)","type":"sprite","version":0,"panning":[],"name":"grey1","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\35.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:36":{"tab":"New Asset List (15)","type":"sprite","version":0,"panning":[],"name":"grey2","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\36.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:37":{"tab":"New Asset List (16)","type":"sprite","version":0,"panning":[],"name":"tail","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\37.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:38":{"tab":"New Asset List (3)","type":"sprite","version":0,"panning":[],"name":"grey3","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\38.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:39":{"tab":"New Asset List (17)","type":"sprite","version":0,"panning":[],"name":"wolfbod","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\39.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:40":{"tab":"New Asset List (18)","type":"sprite","version":0,"panning":[],"name":"wolfhead","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\40.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:41":{"tab":"New Asset List (19)","type":"sprite","version":0,"panning":[],"name":"wolftail","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\41.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:42":{"tab":"New Asset List (21)","type":"sprite","version":0,"panning":[],"name":"bearbody","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\42.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:43":{"tab":"New Asset List (22)","type":"sprite","version":0,"panning":[],"name":"bearhead","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\43.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:44":{"tab":"New Asset List (23)","type":"sprite","version":0,"panning":[],"name":"bearnecklace","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\44.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:45":{"tab":"New Asset List (24)","type":"sprite","version":0,"panning":[],"name":"TowerBody","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\45.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:46":{"tab":"New Asset List (20)","type":"sprite","version":0,"panning":[],"name":"wolfbod2","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\46.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:47":{"tab":"New Asset List (26)","type":"sprite","version":0,"panning":[],"name":"RabbitHead","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\47.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:48":{"tab":"New Asset List (27)","type":"sprite","version":0,"panning":[],"name":"RabbitBody","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\48.png"},"055869ba-3404-45a3-8f39-21d2e96a90ac:50":{"tab":"New Asset List (28)","type":"sprite","version":0,"panning":[],"name":"Eyeball","location":"055869ba-3404-45a3-8f39-21d2e96a90ac\\50.png"}}, "assets", loaded);
 }
 
 window.startCutscene = function(i, cb) {
