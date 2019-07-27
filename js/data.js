@@ -256,13 +256,9 @@ let levels = [
 			"uprootTower": {
 				enabled: false,
 				interval: new IntervalTimer(function() {
-					while (enemyTowers.length > 0) {
-						let tower = enemyTowers[Math.floor(Math.random(enemyTowers.length))]
-						if (!tower.point) {
-							tower.uproot()
-							break
-						}
-					}
+					let towers = enemyTowers.filter(t => !t.point)
+					if (towers.length > 0)
+						towers[Math.floor(Math.random(towers.length))].uproot()
 				}, 35000)
 			}
 		}
